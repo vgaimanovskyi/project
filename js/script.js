@@ -137,7 +137,7 @@ const app = new Vue({
             if (this.endFly === 10 || this.endFly === 22) {
                 this.step = 1;
             } else if (this.endFly === 28) {
-                this.step = 3;
+                this.step = 4;
             } else if (!this.admin) {
                 this.step = Math.floor(Math.random() * 3 + 1);;
             }

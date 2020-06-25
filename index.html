@@ -37,7 +37,8 @@
                     <div class="achieve achieve--quest1" v-if="quest1.achieve" title="На пямять от Эйлома Шаска"></div>
                     <div class="achieve achieve--quest5" v-if="quest5.achieve"></div>
                     <div class="achieve achieve--quest9" v-if="quest9.achieve"></div>
-                    <div class="achieve achieve--quest10" v-if="quest10.achieve"></div>
+                    <div class="achieve achieve--quest10" v-if="quest10.achieve"
+                        title="Благодарочка от Тентель-Вентеля"></div>
                     <div class="achieve achieve--quest13" v-if="quest13.achieve"></div>
                     <!-- <div class="achieve" v-if="quest6.achieve"></div> -->
                     <!-- <div class="achieve" v-if="quest7.achieve"></div> -->
@@ -992,8 +993,9 @@
                                         понемногу.</p>
                                     <p>Как проходит полет?</p>
                                     <p>Не окажешь мне услугу? Будь добр, зацени мою <a target="_blank"
-                                            href="https://vgaimanovskyi.github.io/47-Exam/index.html"
-                                            @ckick="quest10.achieve = true;">постелнюю работу.</a></p>
+                                            v-on:click="quest10.achieve = true;"
+                                            href="https://vgaimanovskyi.github.io/47-Exam/index.html">постелнюю
+                                            работу.</a></p>
                                     <p>Тебе не тяжело, а мне приятно.</p>
                                     <p>Хорошего пути!</p>
                                 </div>
