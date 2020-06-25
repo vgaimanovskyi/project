@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/d223746498.js" crossorigin="anonymous"></script>
+    <title>Beetroot graduation project</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="menu">
+            <div class="menu__block menu__block--padding"><img class="avatar" :src="avatar" alt="avatar"
+                    title="Ваша аватарка. Похоже, не правда ли?">
+            </div>
+            <div class="menu__block">
+                <div class="lives" title="Жизни корабля">
+                    <div class="life" v-for="life of plane.life"></div>
+                </div>
+            </div>
+            <div class="menu__block">
+                <span title="plane score">Ваша позиция: {{plane.score}};</span>
+                <span title="step count">Количество ходов: {{stepCount}};</span>
+            </div>
+            <div class="menu__block" v-if="admin">
+                <span>top: {{plane.top}};</span>
+                <span>left: {{plane.left}};</span>
+            </div>
+            <div class="menu__block" v-if="admin">
+                <span>startFly: {{startFly}};</span>
+                <span>endFly: {{endFly}};</span>
+            </div>
+            <div class="menu__block">
+                <div class="achieves">
+                    <div class="achieve" v-if="quest1.achieve" title="На пямять от Эйлома Шаска"></div>
+                    <div class="achieve" v-if="quest5.achieve"></div>
+                    <div class="achieve" v-if="quest9.achieve"></div>
+                    <div class="achieve" v-if="quest10.achieve"></div>
+                    <div class="achieve" v-if="quest13.achieve"></div>
+                    <!-- <div class="achieve" v-if="quest6.achieve"></div> -->
+                    <!-- <div class="achieve" v-if="quest7.achieve"></div> -->
+                    <!-- <div class="achieve" v-if="quest8.achieve"></div> -->
+                    <!-- <div class="achieve" v-if="quest9.achieve"></div> -->
+                    <!-- <div class="achieve" v-if="quest10.achieve"></div> -->
+                </div>
+            </div>
+            <div class="menu__block" v-if="!admin">
+                <div class="step">{{step}}</div>
+            </div>
+            <div class="menu__block" v-if="admin" style="text-align: center;">
+                Вошли как админ!
+            </div>
+            <div class="menu__block" v-if="admin">
+                <input type="number" class="step" v-model="step" min="0">
+            </div>
+            <div class="menu__block">
+                <button class="step-btn" @click="addStep" :disabled="startFly != endFly">Go</button>
+            </div>
+        </div>
+        <div class="fild">
+            <div class="fild-grid">
+                <!-- finish -->
+                <div class="galaxy">
+                    <div class="fild-row">
+                        <div class="sector finish">
+                            <div class="planet-block" data-score="37" :class="{'planet-block--finish': plane.finish}">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- // galaxy-finish -->
+                <div class="galaxy">
+                    <!-- 36-34 -->
+                    <div class="fild-row">
+                        <div class="sector">
+                            <div class="planet-block" data-score="36">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="35">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="34">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 33-31 -->
+                    <div class="fild-row fild-row--reverse">
+                        <div class="sector">
+                            <div class="planet-block" data-score="33">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="32">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="31">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 30-28 -->
+                    <div class="fild-row">
+                        <div class="sector">
+                            <div class="planet-block" data-score="30">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="29">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="28">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- // galaxy-4 -->
+                <div class="galaxy">
+                    <!-- 27-25 -->
+                    <div class="fild-row fild-row--reverse">
+                        <div class="sector">
+                            <div class="planet-block" data-score="27">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="26">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="25">
+                                <div class="space-ship"
+                                    :class="{'space-ship--animate': endFly === 25 && plane.left === planetArr[24].left && plane.top === planetArr[24].top }">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 24-22 -->
+                    <div class="fild-row">
+                        <div class="sector">
+                            <div class="planet-block" data-score="24">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="23">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="22">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 21-19 -->
+                    <div class="fild-row fild-row--reverse">
+                        <div class="sector">
+                            <div class="planet-block" data-score="21">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="20">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="19">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- // galaxy-3 -->
+                <div class="galaxy">
+                    <!-- 18-16 -->
+                    <div class="fild-row">
+                        <div class="sector">
+                            <div class="planet-block" data-score="18">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="17">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="16">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 15-13 -->
+                    <div class="fild-row fild-row--reverse">
+                        <div class="sector">
+                            <div class="planet-block" data-score="15">
+                                <div class="space-ship"
+                                    :class="{'space-ship--animate': endFly === 15 && plane.left === planetArr[14].left && plane.top === planetArr[14].top}">
+                                </div>
+                                <div class="space-ship"
+                                    :class="{'space-ship--animate': endFly === 15 && plane.left === planetArr[14].left && plane.top === planetArr[14].top}">
+                                </div>
+                                <div class="space-ship"
+                                    :class="{'space-ship--animate': endFly === 15 && plane.left === planetArr[14].left && plane.top === planetArr[14].top}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="14">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="13">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 12-10 -->
+                    <div class="fild-row">
+                        <div class="sector">
+                            <div class="planet-block" data-score="12">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="11">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="10">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- // galaxy-2 -->
+                <div class="galaxy">
+                    <!-- 9-7 -->
+                    <div class="fild-row fild-row--reverse">
+                        <div class="sector">
+                            <div class="planet-block" data-score="9">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="8">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="7">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 6-4 -->
+                    <div class="fild-row">
+                        <div class="sector">
+                            <div class="planet-block" data-score="6">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="5">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="4">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 3-1 -->
+                    <div class="fild-row fild-row--reverse">
+                        <div class="sector">
+                            <div class="planet-block" data-score="3">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="2">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="1">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- // galaxy-1 -->
+                <!-- start -->
+                <div class="galaxy">
+                    <div class="fild-row">
+                        <div class="sector start" data-score="0"></div>
+                    </div>
+                </div> <!-- // galaxy-start -->
+            </div> <!-- // fild-grid -->
+            <div class="plane-block" :style="{top: plane.top + 'px', left: plane.left + 'px'}"
+                :class="{'plane-block--reverse': plane.reverse, 'plane-block--rotate': plane.rotate, 'plane-block--finish': plane.finish}">
+                <div class="plane" :style="{'background-image': 'url(' + this.plane.path + ')'}" id="plane"></div>
+            </div> <!-- // plane-block -->
+            <div class="space-ship-1" :style="{top: sectorArr[8] + 'px'}"></div>
+            <div class="space-ship-2" :style="{top: sectorArr[9] + 'px'}"></div>
+            <div class="space-ship-3" :style="{top: sectorArr[24] + 'px'}"></div>
+        </div> <!-- // fild -->
+        <!-- modal start -->
+        <div class="modal modal--start" v-if="questStart.modal">
+            <div class="start">
+                <div class="fild fild--start">
+                    <h1>Космический исследователь </h1>
+                    <div class="start-grid">
+                        <div class="start-grid__block">
+                            <h2>Выберите аватар</h2>
+                            <div class="start-carousel" id="avatars-carousel">
+                                <div class="start-carousel__item">
+                                    <img src="images/avatars/a1.jpg" alt="avatar 1">
+                                </div>
+                                <div class="start-carousel__item">
+                                    <img src="images/avatars/a2.jpg" alt="avatar 2">
+                                </div>
+                                <div class="start-carousel__item">
+                                    <img src="images/avatars/a3.jpg" alt="avatar 3">
+                                </div>
+                                <div class="start-carousel__item">
+                                    <img src="images/avatars/a4.jpg" alt="avatar 4">
+                                </div>
+                                <div class="start-carousel__item">
+                                    <img src="images/avatars/a5.jpg" alt="avatar 5">
+                                </div>
+                                <div class="start-carousel__item">
+                                    <img src="images/avatars/a6.jpg" alt="avatar 6">
+                                </div>
+                                <div class="start-carousel__item">
+                                    <img src="images/avatars/a7.jpg" alt="avatar 7">
+                                </div>
+                                <div class="start-carousel__item">
+                                    <img src="images/avatars/a8.jpg" alt="avatar 8">
+                                </div>
+                                <div class="start-carousel__item">
+                                    <img src="images/avatars/a9.jpg" alt="avatar 9">
+                                </div>
+                                <div class="start-carousel__item">
+                                    <img src="images/avatars/a10.jpg" alt="avatar 10">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="start-grid__block">
+                            <h2>Выберите корабль</h2>
+                            <div class="start-carousel" id="ships-carousel">
+                                <div class="start-carousel__item">
+                                    <img src="images/ships/start-ship-1.png" alt="ship 1">
+                                </div>
+                                <div class="start-carousel__item">
+                                    <img src="images/ships/start-ship-2.png" alt="ship 2">
+                                </div>
+                                <div class="start-carousel__item">
+                                    <img src="images/ships/start-ship-3.png" alt="ship 3">
+                                </div>
+                                <div class="start-carousel__item">
+                                    <img src="images/ships/start-ship-4.png" alt="ship 4">
+                                </div>
+                                <div class="start-carousel__item">
+                                    <img src="images/ships/start-ship-5.png" alt="ship 5">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="start-grid__block">
+                            <h2>Введите имя</h2>
+                            <input type="text" required v-model="name">
+                        </div>
+                    </div>
+                    <button class="start__btn" id="start-btn" @click="getStart">Начать</button>
+                </div>
+            </div>
+        </div>
+        <!-- modal quest1 data-score='3' -->
+        <div class="modal" v-show="quest1.modal">
+            <div class="fild">
+                <div class="body">
+                    <div class="panel-block">
+                        <div class="panel-block__col panel-block__col--photo">
+                            <img src="images/quests/quest1-1_data3.jpg" alt="quest1-1"
+                                class="panel__photo panel__photo--show">
+                            <img src="images/quests/quest1-2_data3.jpg" alt="quest1-2" class="panel__photo">
+                            <img src="images/quests/quest1-3_data3.jpg" alt="quest1-3" class="panel__photo">
+                            <img src="images/quests/quest1-4_data3.jpg" alt="quest1-4" class="panel__photo">
+                        </div>
+                        <div class="panel-block__col">
+                            <div class="panel">
+                                <div class="panel-carousel">
+                                    <div class="panel-carousel__block">
+                                        <div class="panel__text">
+                                            <p>На панеле повилось сообщение о неисправности одного из двигателей.</p>
+                                            <p>Вы можете забить на проблему продолжить полет дальше или приземлится на
+                                                Землю и попробовать поискать механика.</p>
+                                        </div>
+                                    </div>
+                                    <div class="panel-carousel__block">
+                                        <div class="panel__text">
+                                            <p>Вы приземлились. Вам нужно найти механика, но посадочная зона пуста.</p>
+                                            <p>Походя кругом Вы так никого и не нашли. Это и не удевидельно, ведь на
+                                                часах далеко за полночь.</p>
+                                            <p>Отчаявшись Вы было уже решили улетать, но вдруг в дальнем ангаре мигнул
+                                                свет и Вы стремительно пошли туда.</p>
+                                        </div>
+                                    </div>
+                                    <div class="panel-carousel__block">
+                                        <div class="panel__text">
+                                            <p>Зайдя в ангар Вы увидели человека. Он над чем-то трудился.</p>
+                                            <p>- Здрасте</p>
+                                            <p>- Здрасте</p>
+                                            <p>Это был сам Эйлом Шаск, человек-легенда в космической инженерии.</p>
+                                            <p>Вы расказали ему о своих проблемах с двигателем и он согласился Вам
+                                                помочь.</p>
+                                            <p>Но он сможет приступить как-только закончит свою задачу.</p>
+                                        </div>
+                                    </div>
+                                    <div class="panel-carousel__block">
+                                        <div class="panel__text">
+                                            <p>
+                                                Это сложная математическая задача с которой Эйлон никак не может
+                                                справится.
+                                            </p>
+                                            <p>2 + 2 * 2</p>
+                                            <p>
+                                                Ответ: <input type="number" class="panel__input" v-model="quest1.you">
+                                            </p>
+                                            <p v-if="quest1.you == quest1.correct">
+                                                Верно! Эйлон в тебе никапли не сомневался!
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div> <!-- // panel-carousel -->
+                            </div>
+                            <div class="panel panel--down">
+                                <button class="panel__btn" @click="quest1.modal = false; plane.life += -1"
+                                    :disabled="quest1.you == quest1.correct">Лететь дальше!</button>
+                                <button class="panel__btn" @click="quest1.modal = false; quest1.achieve = true;"
+                                    v-if="quest1.you == quest1.correct">Выполнено!</button>
+                            </div>
+                        </div>
+                    </div> <!-- // panel-block -->
+                </div> <!-- // body -->
+            </div> <!-- // fild -->
+        </div> <!-- // modal quest1 data-score='3' -->
+        <!-- modal quest2 data-score='5' || quest12 data-score='31' -->
+        <div class="modal" v-if="quest2.modal || quest12.modal">
+            <div class="fild">
+                <div class="body">
+                    <div class="panel-block">
+                        <div class="panel-block__col panel-block__col--photo">
+                            <img src="images/quests/quest2_data5.jpg" alt="asteroids"
+                                class="panel__photo panel__photo--show">
+                        </div>
+                        <div class="panel-block__col">
+                            <div class="panel">
+                                <div class="panel__alert">опасность!</div>
+                                <div class="panel__text">
+                                    <p>Вы попали в пояс астероидов и не смогли его протелеть.</p>
+                                    <p>Вам пришлось немного вернуться назад.</p>
+                                    <p>Возможно в следующий раз Вам повезет его преодатеть.</p>
+                                </div>
+                            </div>
+                            <div class="panel panel--down">
+                                <button class="panel__btn"
+                                    @click="quest2.modal = false;  quest12.modal = false; changeStep(-1)">продолжить</button>
+                            </div>
+                        </div>
+                    </div> <!-- // panel-block -->
+                </div> <!-- // body -->
+            </div> <!-- // fild -->
+        </div> <!-- // modal quest2 data-score='5' || quest12 data-score='31' -->
+        <!-- modal quest3 data-score='8' -->
+        <div class="modal" v-if="quest3.modal">
+            <div class="fild">
+                <div class="body">
+                    <div class="panel-block">
+                        <div class="panel-block__col panel-block__col--photo">
+                            <img src="images/quests/quest3_data8.jpg" alt="space"
+                                class="panel__photo panel__photo--show">
+                        </div>
+                        <div class="panel-block__col">
+                            <div class="panel">
+                                <div class="panel__alert">внимание!</div>
+                                <div class="panel__text">
+                                    <p>
+                                        Пролетая мимо Урана Вы получили дополнительно ускорение и пролетели на 1 секцию
+                                        дальше.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="panel panel--down">
+                                <button class="panel__btn"
+                                    @click="quest3.modal = false; changeStep(1)">продолжить</button>
+                            </div>
+                        </div>
+                    </div> <!-- // panel-block -->
+                </div> <!-- // body -->
+            </div> <!-- // fild -->
+        </div> <!-- // modal quest3 data-score='8' -->
+        <!-- modal quest4 data-score='10' || quest8 data-score='22' -->
+        <div class="modal" v-if="quest4.modal || quest8.modal">
+            <div class="fild">
+                <div class="body">
+                    <div class="panel-block">
+                        <div class="panel-block__col panel-block__col--photo">
+                            <img src="images/quests/quest4_data10.jpg" alt="comet"
+                                class="panel__photo panel__photo--show">
+                        </div>
+                        <div class="panel-block__col">
+                            <div class="panel">
+                                <div class="panel__alert">опасность!</div>
+                                <div class="panel__text">
+                                    <p>
+                                        Электроника вышла из строя! Перезапуск всех систем!
+                                    </p>
+                                    <p>
+                                        Пролетающая мимо комета спровоцировала мощный энергетический выброс.
+                                    </p>
+                                    <p>
+                                        В батареях мало мощности! Следующий скачек можно сделать только на одну секцию.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="panel panel--down">
+                                <button class="panel__btn"
+                                    @click="quest4.modal = false; quest8.modal = false;">продолжить</button>
+                            </div>
+                        </div>
+                    </div> <!-- // panel-block -->
+                </div> <!-- // body -->
+            </div> <!-- // fild -->
+        </div> <!-- // modal quest4 data-score='10' || quest8 data-score='22' || quest12 data-score='31' -->
+        <!-- modal quest5 data-score='12' -->
+        <div class="modal" v-show="quest5.modal">
+            <div class="fild">
+                <div class="body body--station body--station--ranger">
+                    <div class="station-block">
+                        <div class="panel panel--border">
+                            <div class="panel-carousel">
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Приветствую тебя исследователь {{name}}!</p>
+                                        <p>Мое имя слишком тяжелое для твоих человеческих ушей, потому можешь звать меня
+                                            Валера.</p>
+                                        <p>Я представитель космической цивилизации Феян.</p>
+                                        <p>Мы славимся своим умом и самыми прогрессивными знаниями во Вселенной.</p>
+                                        <p>Недавно к нам на станцию попала одна очень старая и очень интерессная вещь,
+                                            которая пренадлежит земной цивилизации.</p>
+                                        <p>Лучшие наши умы пытались ее расшифровать, но все безуспешно.</p>
+                                        <p>Исследователь {{name}}, я очень прошу тебя помочь нам расшифровать эту
+                                            чертову штуку!</p>
+                                        <p>Если ты справишся, то мы установим тебе на корабль дополнительный
+                                            энергетический двигатель.</p>
+                                        <p>Что скажешь, готов продолжить?</p>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Вопрос 1</p>
+                                        <p>Какой селектор следует использовать, чтобы задать стиль для класса title?</p>
+                                        <p class="important" v-if="quest5.answer1">Ответ принят</p>
+                                        <form class="quest-form" onsubmit="return false"
+                                            :class="{'quest-form--hidden': quest5.answer1}">
+                                            <label>
+                                                <input type="radio" value="3" v-model="quest5.question1">
+                                                title
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="2" v-model="quest5.question1">
+                                                :title
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="1" v-model="quest5.question1">
+                                                .title
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="4" v-model="quest5.question1">
+                                                #title
+                                            </label>
+                                            <button class="quest-form__btn" @click="questAnswer('q4q1')">
+                                                ответить
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Вопрос 2</p>
+                                        <p>Как задать цвет фона веб-страницы?</p>
+                                        <p class="important" v-if="quest5.answer2">Ответ принят</p>
+                                        <form class="quest-form" onsubmit="return false"
+                                            :class="{'quest-form--hidden': quest5.answer2}">
+                                            <label>
+                                                <input type="radio" value="1" v-model="quest5.question2">
+                                                body { background: #fdf5e6; }
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="2" v-model="quest5.question2">
+                                                body { bg-color: #fdf5e6; }
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="3" v-model="quest5.question2">
+                                                body { bcolor: #fdf5e6; }
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="4" v-model="quest5.question2">
+                                                body { color: #fdf5e6; }
+                                            </label>
+                                            <button class="quest-form__btn" @click="questAnswer('q4q2')">
+                                                ответить
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Вопрос 3</p>
+                                        <p>Какая функция изменяет масштаб элемента?</p>
+                                        <p class="important" v-if="quest5.answer3">Ответ принят</p>
+                                        <form class="quest-form" onsubmit="return false"
+                                            :class="{'quest-form--hidden': quest5.answer3}">
+                                            <label>
+                                                <input type="radio" value="3" v-model="quest5.question3">
+                                                rotate()
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="2" v-model="quest5.question3">
+                                                skew()
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="1" v-model="quest5.question3">
+                                                scale()
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="4" v-model="quest5.question3">
+                                                translate()
+                                            </label>
+                                            <button class="quest-form__btn" @click="questAnswer('q4q3')">
+                                                ответить
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text" v-if="quest5.you == quest5.correct">
+                                        <p>Поздравляю, исследователь {{name}}, у тебя получило!</p>
+                                        <p>Задача решена!</p>
+                                        <p>Наши механики уже приступили к установке дополнительного двигателя и ты
+                                            можешь
+                                            отправляться в путь.</p>
+                                        <p>Удачи!</p>
+                                    </div>
+                                    <div class="panel__text"
+                                        v-else-if="quest5.you != quest5.correct && quest5.you.length === 3">
+                                        <p>К сожалению, исследователь {{name}}, у тебя не получило!</p>
+                                        <p>Где-то в ответах была ошибка.</p>
+                                        <p>Ничего ты от нас не получишь.</p>
+                                        <p>Мандруй дальше!</p>
+                                    </div>
+                                    <div class="panel__text" v-else>
+                                        <p>Как успехи, исследователь {{name}}?</p>
+                                        <p>Возвращайся, когда ответишь на все вопросы</p>
+                                    </div>
+                                </div>
+                            </div> <!-- // panel-carousel -->
+                        </div>
+                        <div class="panel panel--down panel--border">
+                            <button class="panel__btn" @click="quest5.modal = false;"
+                                :disabled="quest5.you == quest5.correct">Лететь дальше!</button>
+                            <button class="panel__btn"
+                                @click="quest5.modal = false; quest5.achieve = true; plane.life += 1; "
+                                v-if="quest5.you == quest5.correct">Выполнено!</button>
+                        </div>
+                    </div> <!-- // station-block -->
+                </div> <!-- // body -->
+            </div> <!-- // fild -->
+        </div> <!-- // modal quest5 data-score='12' -->
+        <!-- modal quest6 data-score='15' -->
+        <div class="modal" v-if="quest6.modal">
+            <div class="fild">
+                <div class="body">
+                    <div class="panel-block">
+                        <div class="panel-block__col panel-block__col--photo">
+                            <img src="images/quests/quest6_data15.jpg" alt="pirates"
+                                class="panel__photo panel__photo--show">
+                        </div>
+                        <div class="panel-block__col">
+                            <div class="panel">
+                                <div class="panel__alert">опасность!</div>
+                                <div class="panel__text">
+                                    <p>На вас напали!</p>
+                                    <p>Это была шайка злобных космических пиратов.</p>
+                                    <p>Вам с трудом удалось отбится.</p>
+                                    <p>В результате атаки один из энергетических двигателей поврежден, но это не
+                                        помешает вам двигаться дальше.</p>
+                                    <p>Удачи и будьте осторожны!</p>
+                                </div>
+                            </div>
+                            <div class="panel panel--down">
+                                <button class="panel__btn"
+                                    @click="quest6.modal = false; plane.life += -1">продолжить</button>
+                            </div>
+                        </div>
+                    </div> <!-- // panel-block -->
+                </div> <!-- // body -->
+            </div> <!-- // fild -->
+        </div> <!-- // modal quest6 data-score='15' -->
+        <!-- modal quest7 data-score='19' -->
+        <div class="modal" v-if="quest7.modal">
+            <div class="fild">
+                <div class="body">
+                    <div class="panel-block">
+                        <div class="panel-block__col panel-block__col--photo">
+                            <img src="images/quests/quest7_data19.jpg" alt="artefact"
+                                class="panel__photo panel__photo--show">
+                        </div>
+                        <div class="panel-block__col">
+                            <div class="panel">
+                                <div class="panel__alert">внимание!</div>
+                                <div class="panel__text">
+                                    <p>Вы подобрали летающию капсулу. Это был топлевный бак.</p>
+                                    <p>В нем было немного топлива. Оно куда лучше вашего 92го...</p>
+                                    <p>Перелив его к себе вы смогли дополнительно совершить прижок на 1 секции вперед.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="panel panel--down">
+                                <button class="panel__btn"
+                                    @click="quest7.modal = false; changeStep(1)">продолжить</button>
+                            </div>
+                        </div>
+                    </div> <!-- // panel-block -->
+                </div> <!-- // body -->
+            </div> <!-- // fild -->
+        </div> <!-- // modal quest7 data-score='19' -->
+        <!-- modal quest9 data-score='24' -->
+        <div class="modal" v-show="quest9.modal">
+            <div class="fild">
+                <div class="body body--station body--station--peling">
+                    <div class="station-block">
+                        <div class="panel panel--border">
+                            <div class="panel-carousel">
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Исследователь {{name}}, Вы арестованы!</p>
+                                        <p>Вы нарушили воздушное пространство планеты Кряк-кен и предстанете перед
+                                            судом.</p>
+                                        <p>Земным кораблям запрещено совершать посадку на планету. С вашей стороны это
+                                            было очень нагло и опрометчиво, потому понесете за это суровое наказание!
+                                        </p>
+                                        <p>Хм... хотя есть и другой способ решить этоту деликатную проблемму...</p>
+
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>... на твоем корабле, {{name}}, есть несколько очень хороших деталей, которые
+                                            я уже давно пытаюсь достать.</p>
+                                        <p>Я б любезно согласился принять их в дар, а любой, кто преподносит столь
+                                            желанный подарок становится моим другом.</p>
+                                        <p>А я слегкостью сэкономлю другу время с этой долгой процерудой.</p>
+                                        <p>Ну дак как мы поступим?</p>
+
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Хорошо. Тогда держи вопросы.</p>
+                                        <p>По моей доброй милости я готов принять твой подарок, пока ты, исследователь
+                                            {{name}}, не ответил на постедний вопрос.</p>
+                                        <p>Напряги извилины, они тебе понадобятся!</p>
+                                        <p>Я очень сомневаюсь, что ты знаешь хоть что-то о древнем и сложном языке
+                                            ранних программистов JavaScript</p>
+                                        <p>Ха-Ха-Ха!!</p>
+
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Вопрос 1</p>
+                                        <p>Как будет выглядеть код для вывода на экран слова "goodbye"?</p>
+                                        <p class="important" v-if="quest9.answer1">Ответ принят</p>
+                                        <form class="quest-form" onsubmit="return false"
+                                            :class="{'quest-form--hidden': quest9.answer1}">
+                                            <label>
+                                                <input type="radio" value="1" v-model="quest9.question1">
+                                                console.log('goodbye');
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="2" v-model="quest9.question1">
+                                                goodbye.log;
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="3" v-model="quest9.question1">
+                                                console.log('hello, world');
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="4" v-model="quest9.question1">
+                                                console.log.goodbye;
+                                            </label>
+                                            <button class="quest-form__btn" @click="questAnswer('q9q1')">
+                                                ответить
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Вопрос 2</p>
+                                        <p>Арифметические операции в JavaScript можно выполнять с константами, без
+                                            участия самих чисел. Например, <i class="important">a + b + age +
+                                                weight</i>. Верно?</p>
+                                        <p class="important" v-if="quest9.answer2">Ответ принят</p>
+                                        <form class="quest-form" onsubmit="return false"
+                                            :class="{'quest-form--hidden': quest9.answer2}">
+                                            <label>
+                                                <input type="radio" value="1" v-model="quest9.question2">
+                                                Да, если у этих констант численные значения
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="2" v-model="quest9.question2">
+                                                Нет. Нужно как минимум одно настоящее число в вычислении
+                                            </label>
+                                            <button class="quest-form__btn" @click="questAnswer('q9q2')">
+                                                ответить
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Вопрос 3</p>
+                                        <p>Какое выражение возведения четверки во вторую степень является некорректным в
+                                            JavaScript?</p>
+                                        <p class="important" v-if="quest9.answer3">Ответ принят</p>
+                                        <form class="quest-form" onsubmit="return false"
+                                            :class="{'quest-form--hidden': quest9.answer3}">
+                                            <label>
+                                                <input type="radio" value="3" v-model="quest9.question3">
+                                                4 ** 2
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="2" v-model="quest9.question3">
+                                                Math.pow(4, 2)
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="1" v-model="quest9.question3">
+                                                4 ^ 2
+                                            </label>
+                                            <button class="quest-form__btn" @click="questAnswer('q9q3')">
+                                                ответить
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Вопрос 4</p>
+                                        <p>Каким будет результат вызова функции?</p>
+                                        <p><code class="language-javascript">
+                                            const firstNum = 10;<br>
+                                            const secondNum = 5;<br>
+                                            
+                                            const sum = (z, g) =&gt; z + g;<br>
+                                            
+                                            sum(firstNum, secondNum);
+                                        </code></p>
+                                        <p class="important" v-if="quest9.answer3">Ответ принят</p>
+                                        <form class="quest-form" onsubmit="return false"
+                                            :class="{'quest-form--hidden': quest9.answer4}">
+                                            <label>
+                                                <input type="radio" value="2" v-model="quest9.question4">
+                                                Такой код не заработает, потому что не совпадают имена формальных и
+                                                фактических параметров
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="1" v-model="quest9.question4">
+                                                15
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="3" v-model="quest9.question4">
+                                                Результатом будет undefined потому что нет return
+                                            </label>
+                                            <button class="quest-form__btn" @click="questAnswer('q9q4')">
+                                                ответить
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Вопрос 5</p>
+                                        <p>Этот скрипт определяет оценку в зависимости от набранных в тесте баллов:</p>
+                                        <p><code class="language-javascript">
+                                        const testScore = 10;<br>
+                                        const result = testScore &lt; 10 ? 'bad' : 'good';<br>
+                                        console.log(result);<br>
+                                    </code></p>
+                                        <p>Что будет выведено в консоль?</p>
+                                        <p class="important" v-if="quest9.answer5">Ответ принят</p>
+                                        <form class="quest-form" onsubmit="return false"
+                                            :class="{'quest-form--hidden': quest9.answer5}">
+                                            <label>
+                                                <input type="radio" value="1" v-model="quest9.question5">
+                                                good
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="2" v-model="quest9.question5">
+                                                bad
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="3" v-model="quest9.question5">
+                                                undefined
+                                            </label>
+                                            <button class="quest-form__btn" @click="questAnswer('q9q5')">
+                                                ответить
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text" v-if="quest9.you == quest9.correct">
+                                        <p>Что?! Как?! Этого не может быть?!</p>
+                                        <p>Откуда ты знаешь JavaScript? Никто, никто до этого не мог пройти этот тест!
+                                        </p>
+                                        <p>Забирай свой корабль и убирайся!</p>
+                                        <p>Советую больше сюда не прилетать.</p>
+                                        <p>В следующий раз тебе так не повезет - в наших манускриптах есть сведения об
+                                            FORTRAN и Ассемблер!</p>
+                                    </div>
+                                    <div class="panel__text"
+                                        v-else-if="quest9.you != quest9.correct && quest9.you.length === 5">
+                                        <p>Ха-ха-ха, исследователь {{name}}, я так и знал!</p>
+                                        <p>Ничего у тебя не получилось.</p>
+                                        <p>Надо было соглашатся на сделку! Ха-Ха.</p>
+                                        <p>Мои ребята уже сняли необходимое оборудование.</p>
+                                        <p>Можешь забирать свое корыто и
+                                            убираться отсюда! Ха-Ха.</p>
+                                    </div>
+                                    <div class="panel__text" v-else>
+                                        <p>Вижу ты вспотел, исследователь {{name}}.</p>
+                                        <p>Хе-хе!</p>
+                                        <p>Соглашайся на сделку и не страдай!</p>
+                                        <p>Или шуруй делай задание!</p>
+                                    </div>
+                                </div>
+                            </div> <!-- // panel-carousel -->
+                        </div>
+                        <div class="panel panel--down panel--border">
+                            <button class="panel__btn" @click="quest9.modal = false; plane.life += -1"
+                                :disabled="quest9.you == quest9.correct">договориться</button>
+                            <button class="panel__btn" @click="quest9.modal = false; quest9.achieve = true;"
+                                v-if="quest9.you == quest9.correct">Выполнено!</button>
+                        </div>
+                    </div> <!-- // station-block -->
+                </div> <!-- // body -->
+            </div> <!-- // fild -->
+        </div> <!-- // modal quest9 data-score='24' -->
+        <!-- modal quest10 data-score='25' -->
+        <div class="modal" v-if="quest10.modal">
+            <div class="fild">
+                <div class="body">
+                    <div class="panel-block">
+                        <div class="panel-block__col panel-block__col--photo">
+                            <img src="images/quests/quest10_data25.jpg" alt="space-ship"
+                                class="panel__photo panel__photo--show">
+                        </div>
+                        <div class="panel-block__col">
+                            <div class="panel">
+                                <div class="panel__alert">внимание!</div>
+                                <div class="panel__text">
+                                    <p>Приветствую тебя, исследователь {{name}}.</p>
+                                    <p>Я начинающий верстальщик Тентель-Вентель. Летаю по галактикам и фриланшу
+                                        понемногу.</p>
+                                    <p>Как проходит полет?</p>
+                                    <p>Не окажешь мне услугу? Будь добр, зацени мою <a target="_blank"
+                                            href="https://vgaimanovskyi.github.io/47-Exam/index.html"
+                                            @ckick="quest10.achieve = true;">постелнюю работу.</a></p>
+                                    <p>Тебе не тяжело, а мне приятно.</p>
+                                    <p>Хорошего пути!</p>
+                                </div>
+                            </div>
+                            <div class="panel panel--down">
+                                <button class="panel__btn" @click="quest10.modal = false;">продолжить</button>
+                            </div>
+                        </div>
+                    </div> <!-- // panel-block -->
+                </div> <!-- // body -->
+            </div> <!-- // fild -->
+        </div> <!-- // modal quest10 data-score='25' -->
+        <!-- modal quest11 data-score='28' -->
+        <div class="modal" v-if="quest11.modal">
+            <div class="fild">
+                <div class="body">
+                    <div class="panel-block">
+                        <div class="panel-block__col panel-block__col--photo">
+                            <img src="images/quests/quest11_data28.jpg" alt="scaner"
+                                class="panel__photo panel__photo--show">
+                        </div>
+                        <div class="panel-block__col">
+                            <div class="panel">
+                                <div class="panel__alert">внимание!</div>
+                                <div class="panel__text">
+                                    <p>В космосе летала какая-то штука. Вы ее подобрали.</p>
+                                    <p>Это был радар. Потрепаный жизнью, но может быть полезным.</p>
+                                    <p>Подключивши его, перед Вами открылась звездная карта этой галактики.</p>
+                                    <p>Хорошая находка!</p>
+                                    <p>Следующий прыжок будет максимальным.</p>
+                                    <p>Погнали!</p>
+                                </div>
+                            </div>
+                            <div class="panel panel--down">
+                                <button class="panel__btn" @click="quest11.modal = false;">продолжить</button>
+                            </div>
+                        </div>
+                    </div> <!-- // panel-block -->
+                </div> <!-- // body -->
+            </div> <!-- // fild -->
+        </div> <!-- // modal quest11 data-score='28' -->
+        <!-- modal quest13 data-score='32' -->
+        <div class="modal" v-show="quest13.modal">
+            <div class="fild">
+                <div class="body body--station body--station--science">
+                    <div class="station-block">
+                        <div class="panel panel--border">
+                            <div class="panel-carousel">
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Мое искреннее почтение тебе, исследователь {{name}}!</p>
+                                        <p>Перед тобой Гараан-гор, преставитель самой древней из всех существующий рас
+                                            во вселенной - Гаальской.</p>
+                                        <p>Гараан-гор готов выслушать тебя.</p>
+                                        <p>Вы:</p>
+                                        <p>- Я уже давно в пути и мой корабль изрядно поизносился. Могу ли я
+                                            воспользоваться Вашей помощью и подчинить его?</p>
+                                        <p>Гараан-гор услышать тебя, исследователь {{name}}, и говорит нет. Никто на
+                                            этой станции тебе помогать не будет.</p>
+                                        <p>Наша помощь внесет дисбаланс в гамонию Вселенно.</p>
+                                        <p>Только ты можешь помочь себе и самостоятельно решить свои проблемы.</p>
+                                        <p>Можешь проследовать далее в мастерскую. Помогать мы не будем, но и мешать
+                                            тоже.</p>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Вопрос 1</p>
+                                        <p>Нужно подключить стили к панели управления.</p>
+                                        <p><i>(используй одинарные кавычки)</i></p>
+                                        <p><code>
+                                            .panel {<br>
+                                                font-size: 14px;<br>
+                                                font-weight: 700;<br>
+                                                color: red;<br>
+                                            }
+                                        </code></p>
+                                        <p class="important" v-if="quest13.answer1 === quest13.question1">Вышло!</p>
+                                        <form class="quest-form" onsubmit="return false">
+                                            <label>
+                                                <code>
+                                                    &lt;div <input type="text" v-model="quest13.question1" :disabled="quest13.answer1 === quest13.question1">&gt;
+                                                    Панель управления
+                                                    &lt;/div&gt;
+                                                </code>
+                                            </label>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Вопрос 2</p>
+                                        <p>Панель не отображается, нужно дописать необходимое свойство.</p>
+                                        <p class="important" v-if="quest13.answer2 === quest13.question2">Вышло!</p>
+                                        <form class="quest-form" onsubmit="return false">
+                                            <label>
+                                                <code>
+                                                    .panel {<br>
+                                                        font-size: 14px;<br>
+                                                        font-weight: 700;<br>
+                                                        color: red;<br>
+                                                        visibility: <input type="text" v-model="quest13.question2" :disabled="quest13.answer2 === quest13.question2">;<br>
+                                                    }
+                                                </code>
+                                            </label>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Вопрос 3</p>
+                                        <p>Нужно сделать упорядоченный список.</p>
+                                        <p class="important"
+                                            v-if="quest13.answer31 === quest13.question31 && quest13.answer32 === quest13.question32">
+                                            Вышло!</p>
+                                        <form class="quest-form" onsubmit="return false">
+                                            <label>
+                                                <code>
+                                                    <input type="text" v-model="quest13.question31" :disabled="quest13.answer31 === quest13.question31 && quest13.answer32 === quest13.question32" style="width: 50px;"><br>
+                                                    &lt;li&gt;износ двигателя - 40%;&lt;/li&gt;<br>
+                                                    &lt;li&gt;топливный бак - полон;&lt;/li&gt;<br>
+                                                    &lt;li&gt;навигационные системы - в норме;&lt;/li&gt;<br>
+                                                    <input type="text" v-model="quest13.question32" :disabled="quest13.answer31 === quest13.question31 && quest13.answer32 === quest13.question32" style="width: 50px;">
+                                                </code>
+                                            </label>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Вопрос 4</p>
+                                        <p>Ну и на последок выровняем блок по центру.</p>
+                                        <p class="important" v-if="quest13.answer4 === quest13.question4">
+                                            Вышло!</p>
+                                        <form class="quest-form" onsubmit="return false">
+                                            <label>
+                                                <code>
+                                                    .block {<br>
+                                                        position: absolute;<br>
+                                                        top: 50%;<br>
+                                                        left: 50%;<br>
+                                                        width: 100px;<br>
+                                                        heigth: 100px;<br>
+                                                        background-color: blue;<br>
+                                                        transform: <input type="text" v-model="quest13.question4" :disabled="quest13.answer4 === quest13.question4">;<br>
+                                                    }
+                                                </code>
+                                            </label>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text" v-if="quest13.answer1 === quest13.question1 
+                                            && quest13.answer2 === quest13.question2 
+                                            && quest13.answer31 === quest13.question31 
+                                            && quest13.answer32 === quest13.question32 
+                                            && quest13.answer4 === quest13.question4">
+                                        <p>Все так, как и должно было быть</p>
+                                        <p>У тебя все получилось и самостоятельно, исследователь {{name}}.</p>
+                                        <p>Можешь отправляться дальше в путь.</p>
+                                        <p>Прощай, исследователь {{name}}.</p>
+                                    </div>
+                                    <div class="panel__text" v-else>
+                                        <p>От Гараан-гора помощи не жди.</p>
+                                        <p>Потому попрошу не отвлекать.</p>
+                                        <p>Гараан-гор гармонирует со Вселенной под звуки прекрасного древнего классика,
+                                            гуру музыки и слова - Павла Миколайовича Зіброва.</p>
+                                        <p>..мертві бджоли, мертві бджоли, мертві бджоли не губуть...</p>
+                                        <p>Кхе, кхе.</p>
+                                        <p>Возвращайся к работе, исследователь {{name}}.</p>
+                                    </div>
+                                </div>
+                            </div> <!-- // panel-carousel -->
+                        </div>
+                        <div class="panel panel--down panel--border">
+                            <button class="panel__btn" @click="quest13.modal = false; plane.life += -1">
+                                Мне лень!</button>
+                            <button class="panel__btn" @click="quest13.modal = false; quest13.achieve = true;" v-if="quest13.answer1 === quest13.question1 
+                                && quest13.answer2 === quest13.question2 
+                                && quest13.answer31 === quest13.question31 
+                                && quest13.answer32 === quest13.question32 
+                                && quest13.answer4 === quest13.question4">
+                                Выполнено!</button>
+                        </div>
+                    </div> <!-- // station-block -->
+                </div> <!-- // body -->
+            </div> <!-- // fild -->
+        </div> <!-- // modal quest13 data-score='32' -->
+
+        <!-- modal quest13 data-score='37' -->
+        <div class="modal" v-if="questFinish.modal">
+            <div class="fild">
+                <div class="body body--station body--station--finish">
+                    <div class="station-block">
+                        <div class="panel panel--border">
+                            <div class="panel-carousel">
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Мои поздравления, исследователь {{name}}!</p>
+                                        <p>Безумно рад видеть тебя на нашем Доминионе.</p>
+                                        <p>Ты живая легенда, ты пример как для начинающих, так и опытных исследоватилей.
+                                        </p>
+                                        <p>Космос бесконечен и его исследование не закончится никогда.</p>
+                                        <p>Нас ждут новые, удаленные и неизведанные уголки космоса.</p>
+                                        <p>Моя команда готова отправится в путь и ждет моего приказа.</p>
+                                        <p>Готов ли ты, исследователь {{name}}, отправится вместе с нами?</p>
+                                    </div>
+                                </div>
+                            </div> <!-- // panel-carousel -->
+                        </div>
+                        <div class="panel panel--down panel--border">
+                            <button class="panel__btn" @click="finish">Погнали!</button>
+                        </div>
+                    </div> <!-- // station-block -->
+                </div> <!-- // body -->
+            </div> <!-- // fild -->
+        </div> <!-- // modal quest13 data-score='32' -->
+
+        <!-- modal reload -->
+        <div class="modal" v-if="plane.life === 0">
+            <div class="fild">
+                <div class="body body--station body--station--reload">
+                    <div class="station-block">
+                        <div class="panel panel--border">
+                            <div class="panel-carousel">
+                                <div class="panel-carousel__block">
+                                    <div class="panel__alert">опасность!</div>
+                                    <div class="panel__text">
+                                        <p>Отказ двигателя...</p>
+                                        <p>Навигационная системы вышли из строя...</p>
+                                        <p>Топливный бак пуст...</p>
+                                        <p>Сканер сломан...</p>
+                                        <p>Заряд батарей - 1%</p>
+                                        <p>Состояние корпуса - критическое..</p>
+                                        <p>Исследователь {{name}}, твой корабль - рушлять!</p>
+                                    </div>
+                                </div>
+                            </div> <!-- // panel-carousel -->
+                        </div>
+                        <div class="panel panel--down panel--border">
+                            <button class="panel__btn" @click="pageReload">SOS</button>
+                        </div>
+                    </div> <!-- // station-block -->
+                </div> <!-- // body -->
+            </div> <!-- // fild -->
+        </div> <!-- // modal quest13 data-score='32' -->
+    </div> <!-- // vue -->
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" type="text/javascript"></script>
+    <script src="js/script.js"></script>
+    <script src="js/carousel.js"></script>
+</body>
+
+</html>
