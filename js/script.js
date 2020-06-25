@@ -115,7 +115,7 @@ const app = new Vue({
         quest13: {
             modal: false,
             question1: "",
-            answer1: "class='.panel'",
+            answer1: "class='panel'",
             question2: "",
             answer2: "visible",
             question31: "",

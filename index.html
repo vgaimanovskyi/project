@@ -34,12 +34,14 @@
             </div>
             <div class="menu__block">
                 <div class="achieves">
-                    <div class="achieve achieve--quest1" v-if="quest1.achieve" title="На пямять от Эйлома Шаска"></div>
-                    <div class="achieve achieve--quest5" v-if="quest5.achieve"></div>
-                    <div class="achieve achieve--quest9" v-if="quest9.achieve"></div>
-                    <div class="achieve achieve--quest10" v-if="quest10.achieve"
-                        title="Благодарочка от Тентель-Вентеля"></div>
-                    <div class="achieve achieve--quest13" v-if="quest13.achieve"></div>
+                    <div class="achieve achieve--quest1" v-if="quest1.achieve" title="Автограф Эйлома Шаска"></div>
+                    <div class="achieve achieve--quest5" v-if="quest5.achieve" title="Медаль от феянина Валеры">
+                    </div>
+                    <div class="achieve achieve--quest9" v-if="quest9.achieve" title="Тест по js"></div>
+                    <div class="achieve achieve--quest10" v-if="quest10.achieve" title="Брелок от Тентель-Вентеля">
+                    </div>
+                    <div class="achieve achieve--quest13" v-if="quest13.achieve"
+                        title="Золота колекція пісень Павла Зіброва"></div>
                     <!-- <div class="achieve" v-if="quest6.achieve"></div> -->
                     <!-- <div class="achieve" v-if="quest7.achieve"></div> -->
                     <!-- <div class="achieve" v-if="quest8.achieve"></div> -->
@@ -1185,7 +1187,7 @@
             </div> <!-- // fild -->
         </div> <!-- // modal quest13 data-score='32' -->
 
-        <!-- modal quest13 data-score='37' -->
+        <!-- modal questFinal data-score='37' -->
         <div class="modal" v-if="questFinish.modal">
             <div class="fild">
                 <div class="body body--station body--station--finish">
@@ -1212,7 +1214,7 @@
                     </div> <!-- // station-block -->
                 </div> <!-- // body -->
             </div> <!-- // fild -->
-        </div> <!-- // modal quest13 data-score='32' -->
+        </div> <!-- // modal questFinal data-score='37' -->
 
         <!-- modal reload -->
         <div class="modal" v-if="plane.life === 0">
@@ -1241,7 +1243,7 @@
                     </div> <!-- // station-block -->
                 </div> <!-- // body -->
             </div> <!-- // fild -->
-        </div> <!-- // modal quest13 data-score='32' -->
+        </div> <!-- // modal reload -->
     </div> <!-- // vue -->
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

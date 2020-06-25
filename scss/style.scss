@@ -111,13 +111,13 @@ body {
 
         &--quest1 { background-position-x: 0; }
         &--quest5 { background-position-x: -36px; }
-        &--quest9 { background-position-x: -72px; }
+        &--quest9 { background-position-x: -180px; }
         &--quest10 { background-position-x: -108px; }
-        &--quest13{ background-position-x: -144px; }
-        // &:nth-child(6) { background-position-x: -180px; }
+        &--quest13{ background-position-x: -288px; }
+        // &:nth-child(6) { background-position-x: -72px; }
         // &:nth-child(7) { background-position-x: -216px; }
         // &:nth-child(8) { background-position-x: -252px; }
-        // &:nth-child(9) { background-position-x: -288px; }
+        // &:nth-child(9) { background-position-x: -144px; }
         // &:last-child { background-position-x: -324px; }
     }
 }
