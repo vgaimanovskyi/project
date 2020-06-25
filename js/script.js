@@ -235,7 +235,7 @@ const app = new Vue({
 
             // console.log("startFly", this.startFly, "endFly", this.endFly);
 
-            this.fly(this.startFly)
+            this.fly(this.startFly);
             this.step = 0;
         },
         openModal(q) {
