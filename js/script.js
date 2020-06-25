@@ -137,9 +137,9 @@ const app = new Vue({
             if (this.endFly === 10 || this.endFly === 22) {
                 this.step = 1;
             } else if (this.endFly === 28) {
-                this.step = 6;
+                this.step = 3;
             } else if (!this.admin) {
-                this.step = Math.floor(Math.random() * 6 + 1);;
+                this.step = Math.floor(Math.random() * 3 + 1);;
             }
             // this.step = Math.floor(Math.random() * 6 + 1);
             this.startFly = this.plane.score;
@@ -216,7 +216,7 @@ const app = new Vue({
                 this.openModal("quest12");
             } else if (this.endFly === 32 && this.plane.left === this.planetArr[31].left && this.plane.top === this.planetArr[31].top) {
                 this.openModal("quest13");
-            } else if (this.endFly === 37 && this.plane.left === this.planetArr[36].left && this.plane.top === this.planetArr[36].top) {
+            } else if (this.plane.left === this.planetArr[36].left && this.plane.top === this.planetArr[36].top) {
                 this.openModal("questFinish");
             }
         },
