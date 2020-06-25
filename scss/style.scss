@@ -103,11 +103,11 @@ body {
         background-image: url(../images/achieves/achieves-sprite.jpg);
         background-size: cover;
 
-        &:first-child { background-position-x: 0; }
-        &:nth-child(2) { background-position-x: -36px; }
-        &:nth-child(3) { background-position-x: -72px; }
-        &:nth-child(4) { background-position-x: -108px; }
-        &:nth-child(5) { background-position-x: -144px; }
+        &--quest1 { background-position-x: 0; }
+        &--quest5 { background-position-x: -36px; }
+        &--quest9 { background-position-x: -72px; }
+        &--quest10 { background-position-x: -108px; }
+        &--quest13{ background-position-x: -144px; }
         // &:nth-child(6) { background-position-x: -180px; }
         // &:nth-child(7) { background-position-x: -216px; }
         // &:nth-child(8) { background-position-x: -252px; }

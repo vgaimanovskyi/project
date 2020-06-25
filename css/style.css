@@ -193,23 +193,23 @@ body {
   background-size: cover;
 }
 
-.achieves .achieve:first-child {
+.achieves .achieve--quest1 {
   background-position-x: 0;
 }
 
-.achieves .achieve:nth-child(2) {
+.achieves .achieve--quest5 {
   background-position-x: -36px;
 }
 
-.achieves .achieve:nth-child(3) {
+.achieves .achieve--quest9 {
   background-position-x: -72px;
 }
 
-.achieves .achieve:nth-child(4) {
+.achieves .achieve--quest10 {
   background-position-x: -108px;
 }
 
-.achieves .achieve:nth-child(5) {
+.achieves .achieve--quest13 {
   background-position-x: -144px;
 }
 
