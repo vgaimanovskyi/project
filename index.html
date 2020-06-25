@@ -21,8 +21,8 @@
                 </div>
             </div>
             <div class="menu__block">
-                <span title="plane score">Ваша позиция: {{plane.score}};</span>
-                <span title="step count">Количество ходов: {{stepCount}};</span>
+                <span title="plane score">Позиция: {{plane.score}};</span>
+                <span title="step count">К-во ходов: {{stepCount}};</span>
             </div>
             <div class="menu__block" v-if="admin">
                 <span>top: {{plane.top}};</span>
@@ -53,7 +53,7 @@
                 Вошли как админ!
             </div>
             <div class="menu__block" v-if="admin">
-                <input type="number" class="step" v-model="step" min="0">
+                <input type="number" class="step step--admin" v-model="step" min="0" :disabled="startFly != endFly">
             </div>
             <div class="menu__block">
                 <button class="step-btn" @click="addStep" :disabled="startFly > endFly">Go</button>

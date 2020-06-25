@@ -171,6 +171,14 @@ body {
   text-align: center;
 }
 
+.step--admin {
+  width: 120px;
+}
+
+.step--admin:disabled {
+  border-color: red;
+}
+
 .achieves {
   width: 184px;
   height: 100%;
@@ -594,7 +602,7 @@ body {
 
 .planet-block[data-score='15'] .space-ship:last-child {
   top: -60%;
-  left: 60%;
+  left: 70%;
 }
 
 .planet-block[data-score='16'] .planet {
