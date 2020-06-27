@@ -1028,6 +1028,10 @@ body {
   border-color: #adabac;
 }
 
+.start-grid input.error {
+  border-color: red;
+}
+
 .start-carousel {
   width: 100px;
   background-color: #000;

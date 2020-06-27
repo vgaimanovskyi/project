@@ -386,7 +386,8 @@
                         </div>
                         <div class="start-grid__block">
                             <h2>Введите имя</h2>
-                            <input type="text" required v-model="name">
+                            <input type="text" v-model="name" v-on:keyup.enter="getStart"
+                                :class="{error: questStart.inputError}">
                         </div>
                     </div>
                     <button class="start__btn" id="start-btn" @click="getStart">Начать</button>

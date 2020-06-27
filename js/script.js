@@ -49,6 +49,7 @@ const app = new Vue({
         endFly: 0,
         questStart: {
             modal: true,
+            inputError: false
         },
         quest1: {
             modal: false,
@@ -301,14 +302,18 @@ const app = new Vue({
             }
         },
         getStart() {
-            this.avatar = document.querySelector("#avatars-carousel .slick-active").children[0].attributes[0].nodeValue;
-            this.plane.path = document.querySelector("#ships-carousel .slick-active").children[0].attributes[0].nodeValue;
-            this.questStart.modal = false;
-            if (this.name === "admin") {
-                this.admin = true;
-                document.body.style.overflow = "visible";
+            if (this.name.length > 0) {
+                this.avatar = document.querySelector("#avatars-carousel .slick-active").children[0].attributes[0].nodeValue;
+                this.plane.path = document.querySelector("#ships-carousel .slick-active").children[0].attributes[0].nodeValue;
+                this.questStart.modal = false;
+                if (this.name === "admin") {
+                    this.admin = true;
+                    document.body.style.overflow = "visible";
+                }
+                $(window).scrollTop($(document).height())
+            } else {
+                this.questStart.inputError = true;
             }
-            $(window).scrollTop($(document).height())
         },
         finish() {
             this.questFinish.modal = false;

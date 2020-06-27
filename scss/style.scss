@@ -767,6 +767,7 @@ body {
         text-align: center;
         padding: 0;
         margin: 0 0 20px 0;
+        
     }
     input {
         width: 200px;
@@ -775,8 +776,9 @@ body {
         padding: 10px 5px;
         border: 2px ridge #1d77bd;
         font-size: 16px;
-
+        
         &:focus, &:hover { border-color: $colorBorderPanel; }
+        &.error { border-color: red; }
     }
 }
 .start-carousel {
