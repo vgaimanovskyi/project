@@ -42,7 +42,8 @@
                     </div>
                     <div class="achieve achieve--quest13" v-if="quest13.achieve"
                         title="Золота колекція пісень Павла Зіброва"></div>
-                    <!-- <div class="achieve" v-if="quest6.achieve"></div> -->
+                    <div class="achieve achieve--quest15" v-if="quest15.achieve"
+                        title="Метка власти древних Тёмных повелителей ситхов"></div>
                     <!-- <div class="achieve" v-if="quest7.achieve"></div> -->
                     <!-- <div class="achieve" v-if="quest8.achieve"></div> -->
                     <!-- <div class="achieve" v-if="quest9.achieve"></div> -->
@@ -68,12 +69,68 @@
                 <div class="galaxy">
                     <div class="fild-row">
                         <div class="sector finish">
-                            <div class="planet-block" data-score="37" :class="{'planet-block--finish': plane.finish}">
+                            <div class="planet-block" data-score="46" :class="{'planet-block--finish': plane.finish}">
                                 <div class="planet"></div>
                             </div>
                         </div>
                     </div>
                 </div> <!-- // galaxy-finish -->
+                <div class="galaxy">
+                    <!-- 45-43 -->
+                    <div class="fild-row fild-row--reverse">
+                        <div class="sector">
+                            <div class="planet-block" data-score="45">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="44">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="43">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 42-40 -->
+                    <div class="fild-row">
+                        <div class="sector">
+                            <div class="planet-block" data-score="42">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="41">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="40">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 39-37 -->
+                    <div class="fild-row fild-row--reverse">
+                        <div class="sector">
+                            <div class="planet-block" data-score="39">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="38">
+                                <div class="planet"></div>
+                            </div>
+                        </div>
+                        <div class="sector">
+                            <div class="planet-block" data-score="37">
+                                <div class="space-ship"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- // galaxy-5 -->
                 <div class="galaxy">
                     <!-- 36-34 -->
                     <div class="fild-row">
@@ -322,6 +379,7 @@
             <div class="space-ship-1" :style="{top: sectorArr[8] + 'px'}"></div>
             <div class="space-ship-2" :style="{top: sectorArr[9] + 'px'}"></div>
             <div class="space-ship-3" :style="{top: sectorArr[24] + 'px'}"></div>
+            <div class="space-ship-4" :style="{top: sectorArr[36] + 'px'}"></div>
         </div> <!-- // fild -->
         <!-- modal start -->
         <div class="modal modal--start" v-if="questStart.modal">
@@ -390,6 +448,7 @@
                                 :class="{error: questStart.inputError}">
                         </div>
                     </div>
+                    <a href="pages/about.html" target="_blank" class="start__link">Read me</a>
                     <button class="start__btn" id="start-btn" @click="getStart">Начать</button>
                 </div>
             </div>
@@ -442,7 +501,7 @@
                                                 Это сложная математическая задача с которой Эйлон никак не может
                                                 справится.
                                             </p>
-                                            <p>2 + 2 * 2</p>
+                                            <p>true * 4 - false * 2 + !false</p>
                                             <p>
                                                 Ответ: <input type="number" class="panel__input" v-model="quest1.you">
                                             </p>
@@ -1187,8 +1246,543 @@
                 </div> <!-- // body -->
             </div> <!-- // fild -->
         </div> <!-- // modal quest13 data-score='32' -->
+        <!-- modal quest14 data-score='37' -->
+        <div class="modal" v-if="quest14.modal">
+            <div class="fild">
+                <div class="body">
+                    <div class="panel-block">
+                        <div class="panel-block__col panel-block__col--photo">
+                            <img src="images/quests/quest14_data37.jpg" alt="pilot"
+                                class="panel__photo panel__photo--show">
+                        </div>
+                        <div class="panel-block__col">
+                            <div class="panel">
+                                <div class="panel__alert">внимание!</div>
+                                <div class="panel__text">
+                                    <p>Приветствую тебя путник.</p>
+                                    <p>Что привело тебя в далекую-далекую галактику?</p>
+                                    <p>Здесь идет гражданская война. Мы недавно одержали первую победу над зловещей
+                                        Галактической империей.</p>
+                                    <p>Во время сражения нашим разведчикам удалось выкрасть секретные чертежи мощнейшего
+                                        оружия Империи, которое называется Звездой смерти. Это бронированная космическая
+                                        станция, способная уничтожить целую планету.</p>
+                                    <p>Можешь смело пролететь на одну секцию вперед. Эта территория под нашим контролем,
+                                        а дальше будь осторожен.</p>
+                                    <p>И да прибудет с тобой сила, исследователь {{name}}</p>
+                                </div>
+                            </div>
+                            <div class="panel panel--down">
+                                <button class="panel__btn"
+                                    @click="quest14.modal = false; changeStep(1)">продолжить</button>
+                            </div>
+                        </div>
+                    </div> <!-- // panel-block -->
+                </div> <!-- // body -->
+            </div> <!-- // fild -->
+        </div> <!-- // modal quest14 data-score='37' -->
+        <!-- modal quest15 data-score='40' -->
+        <div class="modal" v-show="quest15.modal">
+            <div class="fild">
+                <div class="body body--station body--station--destroyer">
+                    <div class="station-block">
+                        <div class="panel panel--border">
+                            <div class="panel-carousel">
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Я ждал тебя, исследователь {{name}}. Наконец-то мы встретились. Когда я
+                                            тоже был учеником. Теперь я учитель.</p>
+                                        <p>Я чувствую в тебе мощь Силы!</p>
+                                        <p>Я готов помочь тебе раскрыть ее.</p>
+                                        <p>Ты многому научишься, исследователь {{name}}. Плата за это всего лишь твоя
+                                            преданность.</p>
+                                        <p>Но перед этим я попрошу тебя показать на что ты способен.</p>
+                                        <p>Готов последовать за мной?</p>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>For the questions below, please choose the best option to complete the
+                                            sentence or conversation.</p>
+                                        <ol class="panel__list">
+                                            <li>
+                                                <div class="list-question">
+                                                    Can I park here?
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest15.question[0]">Sorry, I did that.</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest15.question[0]">It's the same place..</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest15.question[0]">Only
+                                                        for half an hour.</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    What colour will you paint the children's bedroom?
+                                                    <label><input type="radio" value="2" v-model="quest15.question[1]">I
+                                                        hope it was right.</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest15.question[1]">We
+                                                        can't decide.</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest15.question[1]">It
+                                                        wasn't very difficult.</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    I can't understand this email.
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest15.question[2]">Would you like some
+                                                        help?</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest15.question[2]">Don't you know?</label>
+                                                    <label><input type="radio" value="3" v-model="quest15.question[2]">I
+                                                        suppose you can.</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    I'd like two tickets for tomorrow night.
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest15.question[3]">How
+                                                        much did you pay?</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest15.question[3]">Afternoon and evening.</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest15.question[3]">I'll just check for
+                                                        you.</label>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>For the questions below, please choose the best option to complete the
+                                            sentence or conversation.</p>
+                                        <ol class="panel__list" start="5">
+                                            <li>
+                                                <div class="list-question">
+                                                    Shall we go to the gym now?
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest15.question[4]">I'm
+                                                        too tired.</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest15.question[4]">It's very good.</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest15.question[4]">Not
+                                                        at all.</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    His eyes were ...... bad that he couldn't read the number plate of
+                                                    the car in front.
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest15.question[5]">such</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest15.question[5]">too</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest15.question[5]">so</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest15.question[5]">very</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    The company needs to decide ...... and for all what its position is
+                                                    on this point.
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest15.question[6]">here</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest15.question[6]">once</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest15.question[6]">first</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest15.question[6]">finally</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    Don't put your cup on the ...... of the table – someone will knock
+                                                    it off.
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest15.question[7]">outside</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest15.question[7]">edge</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest15.question[7]">boundary</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest15.question[7]">border</label>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>For the questions below, please choose the best option to complete the
+                                            sentence or conversation.</p>
+                                        <ol class="panel__list" start="9">
+                                            <li>
+                                                <div class="list-question">
+                                                    I'm sorry - I didn't ...... to disturb you.
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest15.question[8]">hope</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest15.question[8]">think</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest15.question[8]">mean</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest15.question[8]">suppose</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    The singer ended the concert ...... her most popular song.
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest15.question[9]">by</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest15.question[9]">with</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest15.question[9]">in</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest15.question[9]">as</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    Would you mind ...... these plates a wipe before putting them in the
+                                                    cupboard?
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest15.question[10]">making</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest15.question[10]">doing</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest15.question[10]">getting</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest15.question[10]">giving</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    I was looking forward ...... at the new restaurant, but it was
+                                                    closed.
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest15.question[11]">to
+                                                        eat</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest15.question[11]">to
+                                                        have eaten</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest15.question[11]">to
+                                                        eating</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest15.question[11]">eating</label>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>For the questions below, please choose the best option to complete the
+                                            sentence or conversation.</p>
+                                        <ol class="panel__list" start="13">
+                                            <li>
+                                                <div class="list-question">
+                                                    ...... tired Melissa is when she gets home from work, she always
+                                                    makes time to say goodnight to the children.
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest15.question[12]">Whatever</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest15.question[12]">No
+                                                        matter how</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest15.question[12]">However much</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest15.question[12]">Although</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    It was only ten days ago ...... she started her new job.
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest15.question[13]">then</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest15.question[13]">since</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest15.question[13]">after</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest15.question[13]">that</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    The shop didn't have the shoes I wanted, but they've ...... a pair
+                                                    specially for me.
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest15.question[14]">booked</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest15.question[14]">ordered</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest15.question[14]">commanded</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest15.question[14]">asked</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    Have you got time to discuss your work now or are you ...... to
+                                                    leave?
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest15.question[15]">thinking</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest15.question[15]">round</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest15.question[15]">planned</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest15.question[15]">about</label>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>For the questions below, please choose the best option to complete the
+                                            sentence or conversation.</p>
+                                        <ol class="panel__list" start="17">
+                                            <li>
+                                                <div class="list-question">
+                                                    She came to live here ...... a month ago.
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest15.question[16]">quite</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest15.question[16]">beyond</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest15.question[16]">already</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest15.question[16]">almost</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    Once the plane is in the air, you can ...... your seat belts if you
+                                                    wish.
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest15.question[17]">undress</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest15.question[17]">unfasten</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest15.question[17]">unlock</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest15.question[17]">untie</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    I left my last job because I had no ...... to travel.
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest15.question[18]">place</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest15.question[18]">position</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest15.question[18]">opportunity</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest15.question[18]">possibility</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    It wasn't a bad crash and ...... damage was done to my car.
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest15.question[19]">little</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest15.question[19]">small</label>
+                                                    <label><input type="radio" value="3 "
+                                                            v-model="quest15.question[19]">light</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest15.question[19]">mere</label>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>For the questions below, please choose the best option to complete the
+                                            sentence or conversation.</p>
+                                        <ol class="panel__list" start="21">
+                                            <li>
+                                                <div class="list-question">
+                                                    I'd rather you ...... to her why we can't go.
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest15.question[20]">would explain</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest15.question[20]">explained</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest15.question[20]">to
+                                                        explain</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest15.question[20]">will explain</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    Before making a decision, the leader considered all ...... of the
+                                                    argument.
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest15.question[21]">sides</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest15.question[21]">features</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest15.question[21]">perspectives</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest15.question[21]">shades</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    This new printer is recommended as being ...... reliable.
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest15.question[22]">greatly</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest15.question[22]">highly</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest15.question[22]">strongly</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest15.question[22]">readily</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    When I realised I had dropped my gloves, I decided to ...... my
+                                                    steps.
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest15.question[23]">retrace</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest15.question[23]">regress</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest15.question[23]">resume</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest15.question[23]">return</label>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text" v-if="quest15.answer.length != quest15.question.length">
+                                        <p>Ты ответил не на все вопросы, исследователь {{name}}!</p>
+                                        <p>Возвращайся, когда будешь готов.</p>
+                                    </div>
+                                    <div class="panel__text"
+                                        v-else-if="quest15.answer.length === quest15.question.length, quest15.you === 0">
+                                        <p>Ты закончил, исследователь {{name}}?</p>
+                                        <p>Готов предоставить мне результат?</p>
+                                        <button class="quest-form__btn" @click="questSWanswer">
+                                            Да, я все сделал.
+                                        </button>
+                                    </div>
+                                    <div class="panel__text" v-else>
+                                        <p>Твой результат {{quest15.you}}/{{quest15.answer.length}}</p>
+                                        <p v-if="5 > quest15.you">
+                                            Это означает, что твой уровень силы находится на уровне Pre A1.
+                                            <br>
+                                            <br>
+                                            <i>Она не раскрыта, придется начинать с самых азов.</i>
+                                        </p>
+                                        <p v-else-if="9 >= quest15.you && quest15.you >= 5">
+                                            Это означает, что твой уровень силы находится на уровне A1.
+                                            <br>
+                                            <br>
+                                            <i>
+                                                Этого будет достаточно для очень простых взаимодействий, например, в
+                                                качестве туриста в стране, где говорят на английском. Уровня А1 не будет
+                                                достаточно для академических или профессиональных целей.
+                                            </i>
+                                        </p>
+                                        <p v-else-if="15 >= quest15.you && quest15.you >= 10">
+                                            Это означает, что твой уровень силы находится на уровне A2.
+                                            <br>
+                                            <br>
+                                            <i>
+                                                Этого достаточно для туристических путешествий по англоязычной
+                                                стране и общения с носителями английского языка. Однако для установления
+                                                более глубоких дружеских отношений уровень А2 считается недостаточным.
+                                                Уровень английского А2 также позволяет сотрудничать с англоговорящими
+                                                коллегами, но рабочее общение на английском языке ограничено хорошо
+                                                знакомыми темами на уровне А2. Уровня английского языка А2 недостаточно
+                                                для проведения научного исследования или для понимания англоязычных СМИ
+                                                (телевидение, кино, радио, журналы и т.д.).
+                                            </i>
+                                        </p>
+                                        <p v-else-if="19 >= quest15.you && quest15.you >= 16">
+                                            Это означает, что твой уровень силы находится на уровне B1.
+                                            <br>
+                                            <br>
+                                            <i>
+                                                Этого достаточно для общения с носителями английского языка на знакомые
+                                                темы. На рабочем месте уровень английского языка B1 позволяет сотруднику
+                                                читать простые отчеты на знакомые темы и писать несложные электронные
+                                                письма в своей профессиональной области. Тем не менее, уровня В1
+                                                недостаточно для того, чтобы общаться на рабочем месте только на
+                                                английском языке.
+                                            </i>
+                                        </p>
+                                        <p v-else-if="22 >= quest15.you && quest15.you >= 20">
+                                            Это означает, что твой уровень силы находится на уровне B2.
+                                            <br>
+                                            <br>
+                                            <i>
+                                                Этого достаточно для работы в международной компании на английском
+                                                языке, более того, большинство профессионалов, использующих английский
+                                                на работе в качестве не родного, владеют им именно на этом уровне.
+                                                Однако уровня B2 может быть недостаточно, чтобы не упустить нюансы при
+                                                обсуждении широких тем.
+                                            </i>
+                                        </p>
+                                        <p v-else-if="quest15.you === 23">
+                                            Это означает, что твой уровень силы находится на уровне C1 Advanced.
+                                            <br>
+                                            <br>
+                                            <i>
+                                                Это позволяет выполнять самые разнообразные академические и
+                                                профессиональные задачи. Уровень С1 позволяет полностью автономно
+                                                общаться в стране, где родным языком жителей является английский.
+                                            </i>
+                                        </p>
+                                        <p v-else-if="quest15.you === 24">
+                                            Это означает, что твой уровень силы находится на уровне C2 Proficiency.
+                                            <br>
+                                            <br>
+                                            <i>
+                                                Это соответствует уровню носителя языка. Он позволяет читать и писать
+                                                тексты любого типа на любую тему, с учётом нюансов выражения эмоций и
+                                                мнений, а также активного участвовать в любой академической или
+                                                профессиональной дискуссии.
+                                            </i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div> <!-- // panel-carousel -->
+                        </div>
+                        <div class="panel panel--down panel--border">
+                            <button class="panel__btn" @click="quest15.modal = false; plane.life += -1"
+                                :disabled="quest15.you > 0">
+                                Бежать отсюда!</button>
+                            <button class="panel__btn" @click="quest15.modal = false; quest15.achieve = true"
+                                v-if="quest15.you > 0">
+                                Выполнено!</button>
+                        </div>
+                    </div> <!-- // station-block -->
+                </div> <!-- // body -->
+            </div> <!-- // fild -->
+        </div> <!-- // modal quest15 data-score='40' -->
 
-        <!-- modal questFinal data-score='37' -->
+        <!-- modal questFinal data-score='46' -->
         <div class="modal" v-if="questFinish.modal">
             <div class="fild">
                 <div class="body body--station body--station--finish">
@@ -1199,7 +1793,8 @@
                                     <div class="panel__text">
                                         <p>Мои поздравления, исследователь {{name}}!</p>
                                         <p>Безумно рад видеть тебя на нашем Доминионе.</p>
-                                        <p>Ты живая легенда, ты пример как для начинающих, так и опытных исследоватилей.
+                                        <p>Ты живая легенда, ты пример как для начинающих, так и опытных
+                                            исследоватилей.
                                         </p>
                                         <p>Космос бесконечен и его исследование не закончится никогда.</p>
                                         <p>Нас ждут новые, удаленные и неизведанные уголки космоса.</p>
@@ -1215,7 +1810,7 @@
                     </div> <!-- // station-block -->
                 </div> <!-- // body -->
             </div> <!-- // fild -->
-        </div> <!-- // modal questFinal data-score='37' -->
+        </div> <!-- // modal questFinal data-score='46' -->
 
         <!-- modal reload -->
         <div class="modal" v-if="plane.life === 0">
