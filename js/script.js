@@ -136,6 +136,19 @@ const app = new Vue({
             you: 0,
             achieve: false
         },
+        quest16: {
+            modal: false,
+        },
+        quest17: {
+            modal: false,
+            question: [],
+            answer: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            time: 1500,
+            min: 0,
+            sec: 0,
+            you: 0,
+            achieve: false
+        },
         questFinish: {
             modal: false,
         }
@@ -230,6 +243,10 @@ const app = new Vue({
                 this.openModal("quest14");
             } else if (this.endFly === 40 && this.plane.left === this.planetArr[39].left && this.plane.top === this.planetArr[39].top) {
                 this.openModal("quest15");
+            } else if (this.endFly === 16 && this.plane.left === this.planetArr[15].left && this.plane.top === this.planetArr[15].top) {
+                this.openModal("quest16");
+            } else if (this.endFly === 43 && this.plane.left === this.planetArr[42].left && this.plane.top === this.planetArr[42].top) {
+                this.openModal("quest17");
             } else if (this.plane.left === this.planetArr[45].left && this.plane.top === this.planetArr[45].top) {
                 this.openModal("questFinish");
             }
@@ -288,6 +305,11 @@ const app = new Vue({
             } else if (q === "quest15") {
                 this.quest15.modal = true;
                 $(".panel-carousel").slick("setPosition");
+            } else if (q === "quest16") {
+                this.quest16.modal = true;
+            } else if (q === "quest17") {
+                this.quest17.modal = true;
+                $(".panel-carousel").slick("setPosition");
             } else if (q === "questFinish") {
                 this.questFinish.modal = true;
             }
@@ -317,12 +339,17 @@ const app = new Vue({
             } else if (q === "q9q5") {
                 this.quest9.you += this.quest9.question5;
                 this.quest9.answer5 = true;
-            }
-        },
-        questSWanswer() {
-            for (let i = 0; i <= this.quest15.question.length - 1; i++) {
-                if (this.quest15.question[i] == this.quest15.answer[i]) {
-                    this.quest15.you++;
+            } else if (q === "quest15") {
+                for (let i = 0; i <= this.quest15.question.length - 1; i++) {
+                    if (this.quest15.question[i] == this.quest15.answer[i]) {
+                        this.quest15.you++;
+                    }
+                }
+            } else if (q === "quest17") {
+                for (let i = 0; i <= this.quest17.question.length - 1; i++) {
+                    if (this.quest17.question[i] == this.quest17.answer[i]) {
+                        this.quest17.you++;
+                    }
                 }
             }
         },

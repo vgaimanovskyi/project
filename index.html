@@ -550,8 +550,8 @@
                 </div> <!-- // body -->
             </div> <!-- // fild -->
         </div> <!-- // modal quest2 data-score='5' || quest12 data-score='31' -->
-        <!-- modal quest3 data-score='8' -->
-        <div class="modal" v-if="quest3.modal">
+        <!-- modal quest3 data-score='8' || quest16 data-score='16' -->
+        <div class="modal" v-if="quest3.modal || quest16.modal">
             <div class="fild">
                 <div class="body">
                     <div class="panel-block">
@@ -564,14 +564,14 @@
                                 <div class="panel__alert">внимание!</div>
                                 <div class="panel__text">
                                     <p>
-                                        Пролетая мимо Урана Вы получили дополнительно ускорение и пролетели на 1 секцию
-                                        дальше.
+                                        Пролетая мимо планеты Вы получили дополнительно ускорение и пролетели на 1
+                                        секцию дальше.
                                     </p>
                                 </div>
                             </div>
                             <div class="panel panel--down">
                                 <button class="panel__btn"
-                                    @click="quest3.modal = false; changeStep(1)">продолжить</button>
+                                    @click="quest3.modal = false; quest16.modal = false; changeStep(1)">продолжить</button>
                             </div>
                         </div>
                     </div> <!-- // panel-block -->
@@ -1682,7 +1682,7 @@
                                         v-else-if="quest15.answer.length === quest15.question.length, quest15.you === 0">
                                         <p>Ты закончил, исследователь {{name}}?</p>
                                         <p>Готов предоставить мне результат?</p>
-                                        <button class="quest-form__btn" @click="questSWanswer">
+                                        <button class="quest-form__btn" @click="questAnswer('quest15')">
                                             Да, я все сделал.
                                         </button>
                                     </div>
@@ -1776,6 +1776,479 @@
                             <button class="panel__btn" @click="quest15.modal = false; quest15.achieve = true"
                                 v-if="quest15.you > 0">
                                 Выполнено!</button>
+                        </div>
+                    </div> <!-- // station-block -->
+                </div> <!-- // body -->
+            </div> <!-- // fild -->
+        </div> <!-- // modal quest15 data-score='40' -->
+
+        <!-- modal quest17 data-score='43' -->
+        <div class="modal" v-show="quest17.modal">
+            <div class="fild">
+                <div class="body body--station body--station--death-star">
+                    <div class="station-block">
+                        <div class="panel panel--border">
+                            <div class="panel-carousel">
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Вы приземлились на Звезду Смерти. Это была боевая космическая станция —
+                                            астросооружение Галактической Империи.</p>
+                                        <p>Она была оснащена сверхмощным энергетическим лазерным оружием чрезвычайно
+                                            разрушительной силы, способным уничтожать целые планеты.</p>
+                                        <p>От некогда грозного оружия остались дрейфующие обломки в космосе.</p>
+                                        <p>Нужно побыстрее собрать данные и сматываться, пока эта штука
+                                            окончательно не рухнула.</p>
+                                        <p>Будет не просто. Минимальное количество корректных данных - 20, а цена ошибки
+                                            велика!</p>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Circle the correct answers.</p>
+                                        <ol class="panel__list">
+                                            <li>
+                                                <div class="list-question">
+                                                    ...... you interested in sport?
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[0]">be</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[0]">am</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[0]">is</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[0]">are</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    My ...... is a writer and his books are very popular
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[1]">aunt</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[1]">uncle</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[1]">sister</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[1]">mother</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    We live in the city centre and our house ...... have a big garden.
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[2]">doesn’t</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[2]">isn’t</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[2]">aren’t</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[2]">don’t</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    There ...... a lot of people outside the school.
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[3]">are</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[3]">is</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[3]">be</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[3]">am</label>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Circle the correct answers.</p>
+                                        <ol class="panel__list" start="5">
+                                            <li>
+                                                <div class="list-question">
+                                                    Cathy ...... a game on her computer at the moment.
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[4]">plays</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[4]">is playing</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[4]">to play</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[4]">play</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    Paul is very ...... . He doesn’t go out a lot.
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[5]">bored</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[5]">confident</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[5]">angry</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[5]">shy</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    ...... you like to come out tonight?
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[6]">do</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[6]">would</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[6]">are</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[6]">will</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    Dad’s ...... work right now. He’s a teacher.
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[7]">on</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[7]">at</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[7]">for</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[7]">by</label>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Circle the correct answers.</p>
+                                        <ol class="panel__list" start="9">
+                                            <li>
+                                                <div class="list-question">
+                                                    Did you ...... shopping after school yesterday?
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[8]">went</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[8]">goed</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[8]">going</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[8]">go</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    There wasn’t ...... milk for breakfast this morning so I had toast
+                                                    and orange juice.
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[9]">a</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[9]">some</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[9]">the</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[9]">any</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    Tom got the ...... marks in the class for his homework.
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[10]">worse</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[10]">worst</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[10]">baddest</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[10]">most bad</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    Turn ...... and you'll see the museum on the left.
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[11]">on the right</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[11]">rightly</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[11]">by the right</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[11]">right</label>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Circle the correct answers.</p>
+                                        <ol class="panel__list" start="13">
+                                            <li>
+                                                <div class="list-question">
+                                                    The beach was very crowded ...... Monday.
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[12]">in</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[12]">on</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[12]">at</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[12]">to</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    Our teacher speaks English to us ...... so that we can understand
+                                                    her.
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[13]">slow</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[13]">slower</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[13]">more slow</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[13]">slowly</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    I ...... the new Batman film yet. Is it any good?
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[14]">haven’t seen</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[14]">didn`t see</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[14]">don’t see</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[14]">am not seen</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    You ...... eat all the cake! It isn’t good for you.
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[15]">don’t</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[15]">may not</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[15]">should not</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[15]">will not</label>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Circle the correct answers.</p>
+                                        <ol class="panel__list" start="17">
+                                            <li>
+                                                <div class="list-question">
+                                                    How ...... time have we got to do this exercise?
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[16]">long</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[16]">many</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[16]">much</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[16]">quick</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    Don`t forget to get ...... the bus at Station Road.
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[17]">out</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[17]">off</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[17]">cover</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[17]">down</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    I ...... five emails before school today.
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[18]">sent</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[18]">sended</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[18]">did sent</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[18]">was sent</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    My sister ...... speak French when she was only six years old.
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[19]">was</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[19]">should</label>
+                                                    <label><input type="radio" value="1 "
+                                                            v-model="quest17.question[19]">could</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[19]">had</label>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Circle the correct answers.</p>
+                                        <ol class="panel__list" start="21">
+                                            <li>
+                                                <div class="list-question">
+                                                    I really enjoy ...... new languages and I’d like to learn Italian
+                                                    soon.
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[20]">to learn</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[20]">learning</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[20]">learn</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[20]">learned</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    My father has been a pilot ...... twenty years and he still loves
+                                                    his job.
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[21]">since</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[21]">for</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[21]">until</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[21]">by</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    Quick – get the food inside! It ...... any moment.
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[22]">rains</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[22]">is raining</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[22]">is going to rain</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[22]">can rain</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    Sam asked me if I ...... a lift home after the concert.
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[23]">had wanted</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[23]">wanted</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[23]">would want</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[23]">want</label>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Circle the correct answers.</p>
+                                        <ol class="panel__list" start="25">
+                                            <li>
+                                                <div class="list-question">
+                                                    Which train ...... for when I saw you on the platform on Saturday?
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[24]">did you wait</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[24]">were you waiting</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[24]">have you waited</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[24]">are you waiting</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    I ...... not be home this evening. Phone me on my mobile.
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[25]">can</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[25]">could</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[25]">may</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[25]">should</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    If we ...... in the countryside, we’d have much better views than we
+                                                    do now.
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[26]">lived</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[26]">were live</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[26]">would live</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[26]">live</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    I hope you ...... a good time at the moment in Greece! Phone soon.
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest17.question[27]">are having</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest17.question[27]">have</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest17.question[27]">have had</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest17.question[27]">had</label>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text" v-if="quest17.answer.length != quest17.question.length">
+                                        <p>Еще есть вопросы без ответов.</p>
+                                        <p>Нужно ответить на все вопросы.</p>
+                                    </div>
+                                    <div class="panel__text" v-else>
+                                        <p>Все материалы собраны.</p>
+                                        <p>Подгрузить данные на корабль?</p>
+                                        <button class="quest-form__btn" @click="questAnswer('quest17')">
+                                            Да.
+                                        </button>
+                                        <p v-if="quest17.you > 0">Твой результат
+                                            {{quest17.you}}/{{quest17.answer.length}}</p>
+
+                                    </div>
+                                </div>
+                            </div> <!-- // panel-carousel -->
+                        </div>
+                        <div class="panel panel--down panel--border">
+                            <button class="panel__btn" @click="quest17.modal = false; plane.life += -3"
+                                :disabled="quest17.you > 0">
+                                Бежать отсюда!</button>
+                            <button class="panel__btn"
+                                @click="quest17.modal = false; plane.life += -3; quest17.achieve = true"
+                                v-if="quest17.you > 0 && 20 > quest17.you">
+                                увы</button>
+                            <button class="panel__btn" @click="quest15.modal = false; quest15.achieve = true"
+                                v-if="quest17.you >= 20">
+                                отлично</button>
                         </div>
                     </div> <!-- // station-block -->
                 </div> <!-- // body -->

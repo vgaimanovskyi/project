@@ -1057,6 +1057,10 @@ body {
   background-image: url(../images/quests/quest15_data39.jpg);
 }
 
+.modal .body--station--death-star {
+  background-image: url(../images/quests/quest17_data43.jpg);
+}
+
 .modal .body--station--finish {
   background-image: url(../images/quests/questFinish_data46.jpg);
 }
@@ -1666,8 +1670,12 @@ body {
   margin-bottom: 0;
 }
 
-.main-carousel .article__text > div {
+.main-carousel .article__control {
   height: 100px;
+}
+
+.main-carousel .article__map {
+  position: relative;
 }
 
 .main-carousel .article p {
@@ -1696,6 +1704,41 @@ body {
 
 .main-carousel .article a:hover, .main-carousel .article a:focus {
   text-decoration: underline;
+}
+
+.map {
+  display: block;
+  width: 100%;
+  height: 335px;
+}
+
+.map .gmnoprint {
+  display: none;
+}
+
+.infowindow {
+  list-style: none;
+  margin: 0;
+  padding: 0 30px;
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 300px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 0 10px grda(#000, 0.5);
+          box-shadow: 0 0 10px grda(#000, 0.5);
+}
+
+.infowindow.hide {
+  display: none;
+}
+
+.infowindow__block {
+  font-size: 16px;
+  color: #000;
+  margin: 25px 0;
 }
 
 /* ------------------------------------------- */

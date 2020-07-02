@@ -803,6 +803,7 @@ body {
             &--peling { background-image: url(../images/quests/quest9_data24.jpg); }
             &--science { background-image: url(../images/quests/quest13_data32.jpg); }
             &--destroyer { background-image: url(../images/quests/quest15_data39.jpg); }
+            &--death-star { background-image: url(../images/quests/quest17_data43.jpg); }
             &--finish { background-image: url(../images/quests/questFinish_data46.jpg); }
         }
     }
@@ -1246,7 +1247,10 @@ body {
             margin: 0 0 30px 0;
 
             &:last-child { margin-bottom: 0; }
-            & > div { height: 100px; }
+        }
+        &__control { height: 100px; }
+        &__map {
+            position: relative;
         }
         p {
             font-size: 16px;
@@ -1269,6 +1273,32 @@ body {
 
             &:hover, &:focus { text-decoration: underline; }
         }
+    }
+}
+.map {
+    display: block;
+    width: 100%;
+    height: 335px;
+
+    .gmnoprint { display: none; }
+}
+.infowindow {
+    list-style: none;
+    margin: 0;
+    padding: 0 30px;
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background-color: #fff;
+    box-shadow: 0 0 10px grda(#000, 0.5);
+
+    &.hide { display: none; }
+    &__block {
+        font-size: 16px;
+        color: #000;
+        margin: 25px 0;
     }
 }
 /* ------------------------------------------- */
