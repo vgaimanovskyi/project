@@ -63,10 +63,10 @@
                 <button class="step-btn" @click="addStep" :disabled="startFly > endFly">Go</button>
             </div>
         </div>
-        <div class="fild">
+        <div class="fild" id="js-fild">
             <div class="fild-grid">
                 <!-- finish -->
-                <div class="galaxy">
+                <div class="galaxy" :class="{'galaxy--bg-finish': sectorArr[36] > (plane.top - 800) }">
                     <div class="fild-row">
                         <div class="sector finish">
                             <div class="planet-block" data-score="46" :class="{'planet-block--finish': plane.finish}">
@@ -75,22 +75,25 @@
                         </div>
                     </div>
                 </div> <!-- // galaxy-finish -->
-                <div class="galaxy">
+                <div class="galaxy" :class="{'galaxy--bg-5': sectorArr[27] > (plane.top - 800) }">
                     <!-- 45-43 -->
                     <div class="fild-row fild-row--reverse">
                         <div class="sector">
                             <div class="planet-block" data-score="45">
-                                <div class="planet"></div>
+                                <div class="planet" :class="{'planet--animate': sectorArr[27] > (plane.top - 800) }">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="44">
-                                <div class="planet"></div>
+                                <div class="planet" :class="{'planet--animate': sectorArr[27] > (plane.top - 800) }">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="43">
-                                <div class="planet"></div>
+                                <div class="planet" :class="{'planet--animate': sectorArr[27] > (plane.top - 800) }">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -98,17 +101,20 @@
                     <div class="fild-row">
                         <div class="sector">
                             <div class="planet-block" data-score="42">
-                                <div class="planet"></div>
+                                <div class="planet" :class="{'planet--animate': sectorArr[27] > (plane.top - 800) }">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="41">
-                                <div class="planet"></div>
+                                <div class="planet" :class="{'planet--animate': sectorArr[27] > (plane.top - 800) }">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="40">
-                                <div class="planet"></div>
+                                <div class="planet" :class="{'planet--animate': sectorArr[27] > (plane.top - 800) }">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -116,12 +122,14 @@
                     <div class="fild-row fild-row--reverse">
                         <div class="sector">
                             <div class="planet-block" data-score="39">
-                                <div class="planet"></div>
+                                <div class="planet" :class="{'planet--animate': sectorArr[27] > (plane.top - 800) }">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="38">
-                                <div class="planet"></div>
+                                <div class="planet" :class="{'planet--animate': sectorArr[27] > (plane.top - 800) }">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
@@ -131,22 +139,25 @@
                         </div>
                     </div>
                 </div> <!-- // galaxy-5 -->
-                <div class="galaxy">
+                <div class="galaxy" :class="{'galaxy--bg-4': sectorArr[18] > (plane.top - 800) }">
                     <!-- 36-34 -->
                     <div class="fild-row">
                         <div class="sector">
                             <div class="planet-block" data-score="36">
-                                <div class="planet"></div>
+                                <div class="planet" :class="{'planet--animate': sectorArr[18] > (plane.top - 800) }">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="35">
-                                <div class="planet"></div>
+                                <div class="planet" :class="{'planet--animate': sectorArr[18] > (plane.top - 800) }">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="34">
-                                <div class="planet"></div>
+                                <div class="planet" :class="{'planet--animate': sectorArr[18] > (plane.top - 800) }">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -154,17 +165,20 @@
                     <div class="fild-row fild-row--reverse">
                         <div class="sector">
                             <div class="planet-block" data-score="33">
-                                <div class="planet"></div>
+                                <div class="planet" :class="{'planet--animate': sectorArr[18] > (plane.top - 800) }">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="32">
-                                <div class="planet"></div>
+                                <div class="planet" :class="{'planet--animate': sectorArr[18] > (plane.top - 800) }">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="31">
-                                <div class="planet"></div>
+                                <div class="planet" :class="{'planet--animate': sectorArr[18] > (plane.top - 800) }">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -172,32 +186,39 @@
                     <div class="fild-row">
                         <div class="sector">
                             <div class="planet-block" data-score="30">
-                                <div class="planet"></div>
+                                <div class="planet" :class="{'planet--animate': sectorArr[18] > (plane.top - 800) }">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="29">
-                                <div class="planet"></div>
+                                <div class="planet" :class="{'planet--animate': sectorArr[18] > (plane.top - 800) }">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="28">
-                                <div class="planet"></div>
+                                <div class="planet" :class="{'planet--animate': sectorArr[18] > (plane.top - 800) }">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div> <!-- // galaxy-4 -->
-                <div class="galaxy">
+                <div class="galaxy" :class="{'galaxy--bg-3': sectorArr[9] > (plane.top - 800) }">
                     <!-- 27-25 -->
                     <div class="fild-row fild-row--reverse">
                         <div class="sector">
                             <div class="planet-block" data-score="27">
-                                <div class="planet"></div>
+                                <div class="planet"
+                                    :class="{'planet--animate': sectorArr[9] > (plane.top - 800) && (plane.top - 800) > sectorArr[31]}">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="26">
-                                <div class="planet"></div>
+                                <div class="planet"
+                                    :class="{'planet--animate': sectorArr[9] > (plane.top - 800) && (plane.top - 800) > sectorArr[31]}">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
@@ -212,17 +233,23 @@
                     <div class="fild-row">
                         <div class="sector">
                             <div class="planet-block" data-score="24">
-                                <div class="planet"></div>
+                                <div class="planet"
+                                    :class="{'planet--animate': sectorArr[9] > (plane.top - 800) && (plane.top - 800) > sectorArr[31]}">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="23">
-                                <div class="planet"></div>
+                                <div class="planet"
+                                    :class="{'planet--animate': sectorArr[9] > (plane.top - 800) && (plane.top - 800) > sectorArr[31]}">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="22">
-                                <div class="planet"></div>
+                                <div class="planet"
+                                    :class="{'planet--animate': sectorArr[9] > (plane.top - 800) && (plane.top - 800) > sectorArr[31]}">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -230,37 +257,49 @@
                     <div class="fild-row fild-row--reverse">
                         <div class="sector">
                             <div class="planet-block" data-score="21">
-                                <div class="planet"></div>
+                                <div class="planet"
+                                    :class="{'planet--animate': sectorArr[9] > (plane.top - 800) && (plane.top - 800) > sectorArr[31]}">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="20">
-                                <div class="planet"></div>
+                                <div class="planet"
+                                    :class="{'planet--animate': sectorArr[9] > (plane.top - 800) && (plane.top - 800) > sectorArr[31]}">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="19">
-                                <div class="planet"></div>
+                                <div class="planet"
+                                    :class="{'planet--animate': sectorArr[9] > (plane.top - 800) && (plane.top - 800) > sectorArr[31]}">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div> <!-- // galaxy-3 -->
-                <div class="galaxy">
+                <div class="galaxy" :class="{'galaxy--bg-2': sectorArr[1] > (plane.top - 800) }">
                     <!-- 18-16 -->
                     <div class="fild-row">
                         <div class="sector">
                             <div class="planet-block" data-score="18">
-                                <div class="planet"></div>
+                                <div class="planet"
+                                    :class="{'planet--animate': sectorArr[1] > (plane.top - 800) && (plane.top - 800) > sectorArr[22]}">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="17">
-                                <div class="planet"></div>
+                                <div class="planet"
+                                    :class="{'planet--animate': sectorArr[1] > (plane.top - 800) && (plane.top - 800) > sectorArr[22]}">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="16">
-                                <div class="planet"></div>
+                                <div class="planet"
+                                    :class="{'planet--animate': sectorArr[1] > (plane.top - 800) && (plane.top - 800) > sectorArr[22]}">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -281,12 +320,16 @@
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="14">
-                                <div class="planet"></div>
+                                <div class="planet"
+                                    :class="{'planet--animate': sectorArr[1] > (plane.top - 800) && (plane.top - 800) > sectorArr[22]}">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="13">
-                                <div class="planet"></div>
+                                <div class="planet"
+                                    :class="{'planet--animate': sectorArr[1] > (plane.top - 800) && (plane.top - 800) > sectorArr[22]}">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -294,17 +337,23 @@
                     <div class="fild-row">
                         <div class="sector">
                             <div class="planet-block" data-score="12">
-                                <div class="planet"></div>
+                                <div class="planet"
+                                    :class="{'planet--animate': sectorArr[1] > (plane.top - 800) && (plane.top - 800) > sectorArr[22]}">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="11">
-                                <div class="planet"></div>
+                                <div class="planet"
+                                    :class="{'planet--animate': sectorArr[1] > (plane.top - 800) && (plane.top - 800) > sectorArr[22]}">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="10">
-                                <div class="planet"></div>
+                                <div class="planet"
+                                    :class="{'planet--animate': sectorArr[1] > (plane.top - 800) && (plane.top - 800) > sectorArr[22]}">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -314,17 +363,20 @@
                     <div class="fild-row fild-row--reverse">
                         <div class="sector">
                             <div class="planet-block" data-score="9">
-                                <div class="planet"></div>
+                                <div class="planet" :class="{'planet--animate': (plane.top - 800) > sectorArr[13]}">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="8">
-                                <div class="planet"></div>
+                                <div class="planet" :class="{'planet--animate': (plane.top - 800) > sectorArr[13]}">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="7">
-                                <div class="planet"></div>
+                                <div class="planet" :class="{'planet--animate': (plane.top - 800) > sectorArr[13]}">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -332,17 +384,20 @@
                     <div class="fild-row">
                         <div class="sector">
                             <div class="planet-block" data-score="6">
-                                <div class="planet"></div>
+                                <div class="planet" :class="{'planet--animate': (plane.top - 800) > sectorArr[13]}">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="5">
-                                <div class="planet"></div>
+                                <div class="planet" :class="{'planet--animate': (plane.top - 800) > sectorArr[13]}">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="4">
-                                <div class="planet"></div>
+                                <div class="planet" :class="{'planet--animate': (plane.top - 800) > sectorArr[13]}">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -350,17 +405,20 @@
                     <div class="fild-row fild-row--reverse">
                         <div class="sector">
                             <div class="planet-block" data-score="3">
-                                <div class="planet"></div>
+                                <div class="planet" :class="{'planet--animate': (plane.top - 800) > sectorArr[13]}">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="2">
-                                <div class="planet"></div>
+                                <div class="planet" :class="{'planet--animate': (plane.top - 800) > sectorArr[13]}">
+                                </div>
                             </div>
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="1">
-                                <div class="planet"></div>
+                                <div class="planet" :class="{'planet--animate': (plane.top - 800) > sectorArr[13]}">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -374,12 +432,33 @@
             </div> <!-- // fild-grid -->
             <div class="plane-block" :style="{top: plane.top + 'px', left: plane.left + 'px'}"
                 :class="{'plane-block--reverse': plane.reverse, 'plane-block--rotate': plane.rotate, 'plane-block--finish': plane.finish}">
-                <div class="plane" :style="{'background-image': 'url(' + this.plane.path + ')'}" id="plane"></div>
+                <div class="plane" :style="{'background-image': 'url(' + this.plane.path + ')'}" id="plane">
+                    <div class="plane__fire plane__fire--type-0" :class="{'plane__fire--animate': plane.fire}"
+                        v-if="plane.type === 0">
+                    </div>
+                    <div class="plane__fire plane__fire--type-1" :class="{'plane__fire--animate': plane.fire}"
+                        v-if="plane.type === 1">
+                    </div>
+                    <div class="plane__fire plane__fire--type-2" :class="{'plane__fire--animate': plane.fire}"
+                        v-if="plane.type === 2">
+                    </div>
+                    <div class="plane__fire plane__fire--type-3" :class="{'plane__fire--animate': plane.fire}"
+                        v-if="plane.type === 3">
+                    </div>
+                    <div class="plane__fire plane__fire--type-4" :class="{'plane__fire--animate': plane.fire}"
+                        v-if="plane.type === 4">
+                    </div>
+                </div>
             </div> <!-- // plane-block -->
-            <div class="space-ship-1" :style="{top: sectorArr[8] + 'px'}"></div>
-            <div class="space-ship-2" :style="{top: sectorArr[9] + 'px'}"></div>
-            <div class="space-ship-3" :style="{top: sectorArr[24] + 'px'}"></div>
-            <div class="space-ship-4" :style="{top: sectorArr[36] + 'px'}"></div>
+            <div class="space-ship-1" :style="{top: sectorArr[8] + 'px'}"
+                :class="{'space-ship-1--animate': (plane.top - 800) > sectorArr[22]}"></div>
+            <div class="space-ship-2"
+                :class="{'space-ship-2--animate': sectorArr[1] > (plane.top - 800) && (plane.top - 800) > sectorArr[22]}"
+                :style="{top: sectorArr[9] + 'px'}"></div>
+            <div class="space-ship-3" :class="{'space-ship-3--animate': sectorArr[9] > (plane.top - 800) }"
+                :style="{top: sectorArr[24] + 'px'}"></div>
+            <div class="space-ship-4" :class="{'space-ship-4--animate': sectorArr[27] > (plane.top - 800) }"
+                :style="{top: sectorArr[36] + 'px'}"></div>
         </div> <!-- // fild -->
         <!-- modal start -->
         <div class="modal modal--start" v-if="questStart.modal">

@@ -20,8 +20,8 @@ for (let planet of planets) {
 for (let s of sector) {
     sectorArr.unshift(pageYOffset + s.getBoundingClientRect().top - s.getBoundingClientRect().height - 100);
 }
-// console.log("planetArr", planetArr);
-// console.log("sectorArr", (sectorArr.length - 1) % 2);
+console.log("sectorArr", sectorArr);
+console.log("sectorArr", sectorArr[10], "plane.top", sectorArr[0] + 800);
 
 const app = new Vue({
     el: '#app',
@@ -33,6 +33,7 @@ const app = new Vue({
         admin: false,
         plane: {
             path: "",
+            type: 0,
             life: 3,
             score: 0,
             top: sectorArr[0] + 800,
@@ -358,6 +359,8 @@ const app = new Vue({
                 this.avatar = document.querySelector("#avatars-carousel .slick-active").children[0].attributes[0].nodeValue;
                 this.plane.path = document.querySelector("#ships-carousel .slick-active").children[0].attributes[0].nodeValue;
                 this.questStart.modal = false;
+
+                this.plane.type = +document.querySelector("#ships-carousel .slick-active").attributes[1].nodeValue;
                 if (this.name === "admin") {
                     this.admin = true;
                     document.body.style.overflow = "visible";
@@ -377,4 +380,4 @@ const app = new Vue({
             location.reload();
         }
     },
-})
+});

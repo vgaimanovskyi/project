@@ -60,44 +60,6 @@ body > i {
           animation: stars linear infinite;
 }
 
-@-webkit-keyframes stars {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    -webkit-transform: translateY(-100px);
-            transform: translateY(-100px);
-  }
-}
-
-@keyframes stars {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    -webkit-transform: translateY(-100px);
-            transform: translateY(-100px);
-  }
-}
-
 .menu {
   position: fixed;
   left: 0;
@@ -305,8 +267,77 @@ body > i {
   height: 100%;
   background-image: url(../images/ships/start-ship-1.png);
   background-size: cover;
+  position: relative;
   -webkit-animation: planeMove 3s linear infinite;
           animation: planeMove 3s linear infinite;
+}
+
+.plane__fire {
+  position: absolute;
+  height: 30px;
+  left: 50%;
+  -webkit-transform: translateX(-50%) scale(0);
+          transform: translateX(-50%) scale(0);
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+
+.plane__fire--type-0 {
+  bottom: -20px;
+  width: 5px;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#00d0ff), to(transparent));
+  background-image: linear-gradient(#00d0ff, transparent);
+}
+
+.plane__fire--type-1 {
+  bottom: -15px;
+  width: 22px;
+}
+
+.plane__fire--type-1::before, .plane__fire--type-1::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 5px;
+  height: 100%;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#a5f88b), to(transparent));
+  background-image: linear-gradient(#a5f88b, transparent);
+}
+
+.plane__fire--type-1::before {
+  left: 0;
+}
+
+.plane__fire--type-1::after {
+  right: 0;
+}
+
+.plane__fire--type-2 {
+  bottom: 0;
+  width: 6px;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#e7e292), to(transparent));
+  background-image: linear-gradient(#e7e292, transparent);
+}
+
+.plane__fire--type-3 {
+  bottom: -5px;
+  width: 16px;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#9ee8fa), to(transparent));
+  background-image: linear-gradient(#9ee8fa, transparent);
+}
+
+.plane__fire--type-4 {
+  bottom: -4px;
+  width: 5px;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#8ed6f1), to(transparent));
+  background-image: linear-gradient(#8ed6f1, transparent);
+}
+
+.plane__fire--animate {
+  -webkit-transform: translateX(-50%) scale(1);
+          transform: translateX(-50%) scale(1);
 }
 
 .space-ship-1,
@@ -322,6 +353,9 @@ body > i {
 
 .space-ship-1 {
   background-image: url(../images/ships/ship01.png);
+}
+
+.space-ship-1--animate {
   -webkit-animation: spaceShipMove 10s linear infinite;
           animation: spaceShipMove 10s linear infinite;
 }
@@ -330,12 +364,18 @@ body > i {
   background-image: url(../images/ships/ship04.png);
   -webkit-transform: scaleX(-1);
           transform: scaleX(-1);
+}
+
+.space-ship-2--animate {
   -webkit-animation: spaceShipMoveReverse 10s linear infinite;
           animation: spaceShipMoveReverse 10s linear infinite;
 }
 
 .space-ship-3 {
   background-image: url(../images/ships/ship05.png);
+}
+
+.space-ship-3--animate {
   -webkit-animation: spaceShipMove 10s linear infinite;
           animation: spaceShipMove 10s linear infinite;
 }
@@ -344,6 +384,9 @@ body > i {
   background-image: url(../images/ships/ship06.png);
   -webkit-transform: scaleX(-1);
           transform: scaleX(-1);
+}
+
+.space-ship-4--animate {
   -webkit-animation: spaceShipMoveReverse 10s linear infinite;
           animation: spaceShipMoveReverse 10s linear infinite;
 }
@@ -352,7 +395,7 @@ body > i {
   display: block;
   content: "";
   width: 100%;
-  height: 100%;
+  height: 110%;
   background-image: url(../images/ships/ship06a.png);
   background-size: cover;
   position: relative;
@@ -406,23 +449,23 @@ body > i {
           box-shadow: 0 100px 70px -25px #000 inset, 0 -100px 70px -25px #000 inset;
 }
 
-.galaxy:first-child {
+.galaxy--bg-finish {
   background-image: url(../images/bg/galaxy-finish.jpg);
 }
 
-.galaxy:nth-last-child(6) {
+.galaxy--bg-5 {
   background-image: url(../images/bg/galaxy05.jpg);
 }
 
-.galaxy:nth-last-child(5) {
+.galaxy--bg-4 {
   background-image: url(../images/bg/galaxy04.jpg);
 }
 
-.galaxy:nth-last-child(4) {
+.galaxy--bg-3 {
   background-image: url(../images/bg/galaxy03.jpg);
 }
 
-.galaxy:nth-last-child(3) {
+.galaxy--bg-2 {
   background-image: url(../images/bg/galaxy02.jpg);
 }
 
@@ -1046,6 +1089,9 @@ body > i {
   background-size: 400px;
   -webkit-box-shadow: inset 16px 0 40px 3px rgba(0, 0, 0, 0.9), inset -3px 0 5px 2px rgba(255, 255, 255, 0.16);
           box-shadow: inset 16px 0 40px 3px rgba(0, 0, 0, 0.9), inset -3px 0 5px 2px rgba(255, 255, 255, 0.16);
+}
+
+.planet--animate {
   -webkit-animation: planetMove 10s linear infinite;
           animation: planetMove 10s linear infinite;
 }
@@ -2278,6 +2324,44 @@ body > i {
     right: 65%;
     -webkit-transform: translate(-50%, -30%) rotate(0) scale(0);
             transform: translate(-50%, -30%) rotate(0) scale(0);
+  }
+}
+
+/* body bg stars*/
+@-webkit-keyframes stars {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(-100px);
+            transform: translateY(-100px);
+  }
+}
+@keyframes stars {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(-100px);
+            transform: translateY(-100px);
   }
 }
 /*# sourceMappingURL=style.css.map */
