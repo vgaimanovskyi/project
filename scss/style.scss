@@ -6,6 +6,26 @@ $colorBorderPanel: #adabac;
 
 body {
     overflow:  hidden;
+    overflow-x: hidden !important;
+}
+body > i{
+    position: absolute;
+    background-color: #fff;
+    border-radius: 50%;
+    z-index: -1;
+    animation: stars linear infinite;
+}
+@keyframes stars {
+    0% { 
+        opacity: 0; 
+        transform: translateY(0);
+    }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% {
+        opacity: 0; 
+        transform: translateY(-100px); 
+    }
 }
 .menu {
     position: fixed;
@@ -1249,9 +1269,7 @@ body {
             &:last-child { margin-bottom: 0; }
         }
         &__control { height: 100px; }
-        &__map {
-            position: relative;
-        }
+        &__map { position: relative; }
         p {
             font-size: 16px;
             line-height: 25px;

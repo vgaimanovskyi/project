@@ -48,6 +48,54 @@ h1, h2 {
 
 body {
   overflow: hidden;
+  overflow-x: hidden !important;
+}
+
+body > i {
+  position: absolute;
+  background-color: #fff;
+  border-radius: 50%;
+  z-index: -1;
+  -webkit-animation: stars linear infinite;
+          animation: stars linear infinite;
+}
+
+@-webkit-keyframes stars {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(-100px);
+            transform: translateY(-100px);
+  }
+}
+
+@keyframes stars {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(-100px);
+            transform: translateY(-100px);
+  }
 }
 
 .menu {
