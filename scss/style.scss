@@ -8,7 +8,7 @@ body {
     overflow:  hidden;
     overflow-x: hidden !important;
 }
-body > i{
+body > i {
     position: absolute;
     background-color: #fff;
     border-radius: 50%;
@@ -54,6 +54,30 @@ body > i{
     border: 2px ridge #1d77bd;
     box-sizing: border-box;
     margin: 0 auto;
+}
+.player-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    button { 
+        margin: 3px;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        outline: none;
+        cursor: pointer;
+
+        &:hover, &:focus { box-shadow: 0 0 10px $colorBorderPanel inset; }
+    }
+    & .hide { display: none; }
+    .player-controls__play,
+    .player-controls__pause {
+        width: 100px;
+        height: 20px;
+        border-radius: 5px;
+    }
+    
 }
 .lives {
     width: 100px;
@@ -969,7 +993,7 @@ body > i{
         flex-direction: column;
         align-items: center;
     }
-    h2 {
+    h2, label {
         font-size: 20px;
         color: #fff;
         text-shadow: 0 0 10px #000;
@@ -979,17 +1003,20 @@ body > i{
         margin: 0 0 20px 0;
         
     }
-    input {
+    .input-name,
+    .input-music {
         width: 200px;
         color: #fff;
         background-color: #000;
         padding: 10px 5px;
+        margin: 0 0 10px 0;
         border: 2px ridge #1d77bd;
         font-size: 16px;
         
         &:focus, &:hover { border-color: $colorBorderPanel; }
         &.error { border-color: red; }
     }
+    .input-music { width: 20px; }
 }
 .start-carousel {
     width: 100px;

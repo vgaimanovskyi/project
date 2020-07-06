@@ -7,7 +7,6 @@ function stars() {
         let star = document.createElement("i");
         const xLeft = document.getElementById("js-fild").getBoundingClientRect().left;
         const xRight = document.getElementById("js-fild").getBoundingClientRect().right;
-        console.log(xLeft);
         let x;
         if (i % 2) {
             x = Math.floor(Math.random() * xLeft);

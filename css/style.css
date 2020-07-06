@@ -127,6 +127,44 @@ body > i {
   margin: 0 auto;
 }
 
+.player-controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.player-controls button {
+  margin: 3px;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  outline: none;
+  cursor: pointer;
+}
+
+.player-controls button:hover, .player-controls button:focus {
+  -webkit-box-shadow: 0 0 10px #adabac inset;
+          box-shadow: 0 0 10px #adabac inset;
+}
+
+.player-controls .hide {
+  display: none;
+}
+
+.player-controls .player-controls__play,
+.player-controls .player-controls__pause {
+  width: 100px;
+  height: 20px;
+  border-radius: 5px;
+}
+
 .lives {
   width: 100px;
   display: -webkit-box;
@@ -1284,7 +1322,7 @@ body > i {
           align-items: center;
 }
 
-.start-grid h2 {
+.start-grid h2, .start-grid label {
   font-size: 20px;
   color: #fff;
   text-shadow: 0 0 10px #000;
@@ -1294,21 +1332,30 @@ body > i {
   margin: 0 0 20px 0;
 }
 
-.start-grid input {
+.start-grid .input-name,
+.start-grid .input-music {
   width: 200px;
   color: #fff;
   background-color: #000;
   padding: 10px 5px;
+  margin: 0 0 10px 0;
   border: 2px ridge #1d77bd;
   font-size: 16px;
 }
 
-.start-grid input:focus, .start-grid input:hover {
+.start-grid .input-name:focus, .start-grid .input-name:hover,
+.start-grid .input-music:focus,
+.start-grid .input-music:hover {
   border-color: #adabac;
 }
 
-.start-grid input.error {
+.start-grid .input-name.error,
+.start-grid .input-music.error {
   border-color: red;
+}
+
+.start-grid .input-music {
+  width: 20px;
 }
 
 .start-carousel {

@@ -2,7 +2,7 @@
 top: document.body.scrollHeight,
 behavior: "smooth"
 }); */
-//console.log(!((10 - 4) % 6))
+
 const planetArr = [];
 const sectorArr = [];
 const planets = document.getElementsByClassName("planet-block");
@@ -20,8 +20,8 @@ for (let planet of planets) {
 for (let s of sector) {
     sectorArr.unshift(pageYOffset + s.getBoundingClientRect().top - s.getBoundingClientRect().height - 100);
 }
-console.log("sectorArr", sectorArr);
-console.log("sectorArr", sectorArr[10], "plane.top", sectorArr[0] + 800);
+// console.log("sectorArr", sectorArr);
+// console.log("sectorArr", sectorArr[10], "plane.top", sectorArr[0] + 800);
 
 const app = new Vue({
     el: '#app',
@@ -30,6 +30,7 @@ const app = new Vue({
         sectorArr: sectorArr,
         avatar: "",
         name: "",
+        music: false,
         admin: false,
         plane: {
             path: "",
@@ -381,3 +382,14 @@ const app = new Vue({
         }
     },
 });
+
+$(document).ready(function () {
+    $('#bgStars').on("click", function () {
+        if ($('#bgStars').is(':checked')) {
+            $("body > i").css("display", "block");
+        } else {
+            $("body > i").css("display", "none");
+        }
+    })
+
+})

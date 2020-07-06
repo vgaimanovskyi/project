@@ -12,12 +12,30 @@
 <body>
     <div id="app">
         <div class="menu">
-            <div class="menu__block menu__block--padding"><img class="avatar" :src="avatar" alt="avatar"
-                    title="Ваша аватарка. Похоже, не правда ли?">
+            <div class="menu__block menu__block--padding">
+                <img class="avatar" :src="avatar" alt="avatar" title="Ваша аватарка. Похоже, не правда ли?">
             </div>
             <div class="menu__block">
                 <div class="lives" title="Жизни корабля">
                     <div class="life" v-for="life of plane.life"></div>
+                </div>
+            </div>
+            <div class="menu__block" v-if="music">
+                <audio id="player" autoplay loop>
+                    <source src="audio/mixOGG.ogg" type="audio/ogg">
+                    <source src="audio/mixMP3.mp3" type="audio/mpeg">
+                    Тег audio не поддерживается вашим браузером.
+                </audio>
+                <p style="text-align: center;">Музыка</p>
+                <div class="player-controls">
+                    <button class="player-controls__play hide" onclick="btnPlay()">Play</button>
+                    <button class="player-controls__pause" onclick="btnPause()">Pause</button>
+                    <div>
+                        <button class="player-controls__volume"
+                            onclick="document.getElementById('player').volume-=0.1">-</button>
+                        <button class="player-controls__volume"
+                            onclick="document.getElementById('player').volume+=0.1">+</button>
+                    </div>
                 </div>
             </div>
             <div class="menu__block">
@@ -54,7 +72,7 @@
                 <div class="step">{{step}}</div>
             </div>
             <div class="menu__block" v-if="admin" style="text-align: center;">
-                Вошли как админ!
+                Вошли<br>как админ!
             </div>
             <div class="menu__block" v-if="admin">
                 <input type="number" class="step step--admin" v-model="step" min="0" :disabled="startFly != endFly">
@@ -523,8 +541,16 @@
                         </div>
                         <div class="start-grid__block">
                             <h2>Введите имя</h2>
-                            <input type="text" v-model="name" v-on:keyup.enter="getStart"
+                            <input type="text" class="input-name" v-model="name" v-on:keyup.enter="getStart"
                                 :class="{error: questStart.inputError}">
+                            <label>
+                                <input type="checkbox" class="input-music" v-model="music">
+                                Музыка
+                            </label>
+                            <label>
+                                <input type="checkbox" id="bgStars" class="input-music" checked>
+                                Звезды
+                            </label>
                         </div>
                     </div>
                     <a href="pages/about.html" target="_blank" class="start__link">Read me</a>
@@ -2453,6 +2479,7 @@
     <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" type="text/javascript"></script>
     <script src="js/script.js"></script>
     <script src="js/carousel.js"></script>
+    <script src="js/player.js"></script>
 </body>
 
 </html>
