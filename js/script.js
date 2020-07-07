@@ -31,6 +31,7 @@ const app = new Vue({
         avatar: "",
         name: "",
         music: false,
+        stars: false,
         admin: false,
         plane: {
             path: "",
@@ -366,6 +367,17 @@ const app = new Vue({
                     this.admin = true;
                     document.body.style.overflow = "visible";
                 }
+                if (this.stars) {
+                    let stars = document.querySelectorAll("body > i");
+                    for (let i of stars) {
+                        i.classList.add("aminate");
+                    }
+                } else {
+                    let stars = document.querySelectorAll("body > i");
+                    for (let i of stars) {
+                        i.classList.remove("aminate");
+                    }
+                }
                 $(window).scrollTop($(document).height())
             } else {
                 this.questStart.inputError = true;
@@ -382,14 +394,3 @@ const app = new Vue({
         }
     },
 });
-
-$(document).ready(function () {
-    $('#bgStars').on("click", function () {
-        if ($('#bgStars').is(':checked')) {
-            $("body > i").css("display", "block");
-        } else {
-            $("body > i").css("display", "none");
-        }
-    })
-
-})

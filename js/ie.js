@@ -1,15 +1,16 @@
-$(function () {
+function ie() {
     //ie detection
     if (!!window.MSInputMethodContext && !!document.documentMode) {
-        $("html").addClass("ie11");
+        document.documentElement.classList.add("ie11")
     }
-    if ($.browser.msie && $.browser.version == 10) {
-        $("html").addClass("ie10");
+    if (navigator.userAgent.toLowerCase().indexOf("msie 10") != -1) {
+        document.documentElement.classList.add("ie10")
     }
-    if ($.browser.msie && $.browser.version == 9) {
-        $("html").addClass("ie9");
+    /* if (navigator.userAgent.toLowerCase().indexOf('msie 9') != -1) {
+        document.documentElement.classList.add("ie9")
     }
-    if ($.browser.msie && $.browser.version == 8) {
-        $("html").addClass("ie8");
-    }
-});
+    if (navigator.userAgent.toLowerCase().indexOf('msie 8') != -1) {
+        document.documentElement.classList.add("ie8")
+    } */
+};
+ie();

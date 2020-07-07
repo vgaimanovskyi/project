@@ -56,6 +56,9 @@ body > i {
   background-color: #fff;
   border-radius: 50%;
   z-index: -1;
+}
+
+body > i.aminate {
   -webkit-animation: stars linear infinite;
           animation: stars linear infinite;
 }
@@ -1528,10 +1531,6 @@ body > i {
   color: #adae51;
 }
 
-.panel__text .important {
-  color: #adae51;
-}
-
 .panel__input {
   width: 100px;
   padding: 5px;
@@ -1584,6 +1583,10 @@ body > i {
 .panel__btn:disabled:focus, .panel__btn:disabled:hover {
   -webkit-box-shadow: none;
           box-shadow: none;
+}
+
+.important {
+  color: #adae51;
 }
 
 .list-question {
@@ -1880,6 +1883,53 @@ body > i {
   font-size: 16px;
   color: #000;
   margin: 25px 0;
+}
+
+/* ----------------ie page----------------- */
+.ie-body {
+  height: 1000px;
+  background-image: url(../images/ie/bg-ie.jpg);
+  background-position: top center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  padding: 50px 0 0 50px;
+}
+
+.ie-body .ie-panel {
+  width: 40%;
+  padding: 20px;
+  border-radius: 10px;
+  border: 10px groove #adabac;
+  background-color: #1b2727;
+}
+
+.ie-body .panel__alert {
+  margin-bottom: 30px;
+}
+
+.ie-body p {
+  font-size: 16px;
+  line-height: 25px;
+  color: #99a18c;
+  text-align: justify;
+  margin-bottom: 10px;
+}
+
+.ie11 .ie-body,
+.ie10 .ie-body {
+  height: 100vh;
+  padding: 0;
+  background-image: url(../images/ie/bg-ie.jpg);
+  background-position: top center;
+  background-size: cover;
+  position: relative;
+}
+
+.ie11 .ie-body .ie-panel,
+.ie10 .ie-body .ie-panel {
+  position: absolute;
+  top: 10%;
+  left: 5%;
 }
 
 /* ------------------------------------------- */

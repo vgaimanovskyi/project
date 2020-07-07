@@ -1,8 +1,9 @@
-@import '_reset';
+@import "_reset";
 
 $colorTextQuest: #99a18c;
 $colorTextQuestImportant: #adae51;
 $colorBorderPanel: #adabac;
+$colorBgPanel: #1b2727;
 
 body {
     overflow:  hidden;
@@ -13,7 +14,10 @@ body > i {
     background-color: #fff;
     border-radius: 50%;
     z-index: -1;
-    animation: stars linear infinite;
+    
+    &.aminate {
+        animation: stars linear infinite;
+    }
 }
 .menu {
     position: fixed;
@@ -917,7 +921,7 @@ body > i {
             border: 5px groove $colorBorderPanel;
             border-radius: 50px;
             padding: 10px 80px 10px 0;
-            background-color: #1b2727;
+            background-color: $colorBgPanel;
             position: relative;
 
             &::after {
@@ -972,7 +976,7 @@ body > i {
             border: 5px groove $colorBorderPanel;
             border-radius: 50px;
             padding: 20px 30px;
-            background-color: #1b2727;
+            background-color: $colorBgPanel;
             outline: none;
             margin: 0 auto;
             cursor: pointer;
@@ -1074,7 +1078,7 @@ body > i {
 }
 .panel {
     text-align: center;
-    background-color: #1b2727;
+    background-color: $colorBgPanel;
     border: 5px ridge $colorBorderPanel;
     border-top: none;
     border-bottom-right-radius: 20px;
@@ -1137,13 +1141,12 @@ body > i {
         a {
             color: $colorTextQuestImportant;
         }
-        & .important { color: $colorTextQuestImportant; }
     }
     &__input {
         width: 100px;
         padding: 5px;
         color: $colorTextQuest;
-        background-color: lighten(#1b2727, 5%);
+        background-color: lighten($colorBgPanel, 5%);
         border-style: solid;
         border-color: $colorTextQuestImportant;
     }
@@ -1182,6 +1185,7 @@ body > i {
         }
     }
 }
+.important { color: $colorTextQuestImportant; }
 .list-question {
     display: flex;
     flex-direction: column;
@@ -1230,7 +1234,7 @@ body > i {
     flex-direction: column;
     border: 5px ridge $colorBorderPanel;
     padding:  10px;
-    background-color: #1b2727;
+    background-color: $colorBgPanel;
 }
 .quest-form {
     margin: 20px 0;
@@ -1264,7 +1268,7 @@ body > i {
 }
 .aside-menu {
     width: 20%;
-    background-color: #1b2727;
+    background-color: $colorBgPanel;
     padding: 40px 20px 20px 40px;
     box-sizing: border-box;
     margin: 30px 15px 30px 30px;
@@ -1313,7 +1317,7 @@ body > i {
 }
 .main {
     width: 80%;
-    background-color: #1b2727;
+    background-color: $colorBgPanel;
     padding: 40px;
     box-sizing: border-box;
     margin: 30px 30px 30px 15px;
@@ -1396,8 +1400,9 @@ body > i {
         margin: 25px 0;
     }
 }
+/* ----------------ie page----------------- */
+@import "_ie";
 /* ------------------------------------------- */
-
 @keyframes planeMove {
     0% { transform: translateX(-10px) rotateY(20deg); }
     50% { transform: translateZ(50px) translateX(10px) rotateY(-20deg); }

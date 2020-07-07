@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/d223746498.js" crossorigin="anonymous"></script>
+    <script src="js/replace.js"></script>
     <title>Beetroot graduation project</title>
 </head>
 
@@ -548,8 +549,8 @@
                                 Музыка
                             </label>
                             <label>
-                                <input type="checkbox" id="bgStars" class="input-music" checked>
-                                Звезды
+                                <input type="checkbox" id="bgStars" class="input-music" v-model="stars">
+                                Анимация звезд
                             </label>
                         </div>
                     </div>

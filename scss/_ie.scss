@@ -1,20 +1,43 @@
-.ie11,
-.ie10,
-.ie9,
-.ie8 {
 
-    .scroll {
-        width: 100px;
-        text-align: center;
+.ie-body {
+    height: 1000px;
+    background-image: url(../images/ie/bg-ie.jpg);
+    background-position: top center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    padding: 50px 0 0 50px;
+
+    .ie-panel {
+        width: 40%;
+        padding: 20px;
+        border-radius: 10px;
+        border: 10px groove $colorBorderPanel;
+        background-color: $colorBgPanel;
     }
-    .works {
+    & .panel__alert { margin-bottom: 30px; }
+    & p {
+        font-size: 16px;
+        line-height: 25px;
+        color: $colorTextQuest;
+        text-align: justify;
+        margin-bottom: 10px;
+    }
+}
+.ie11,
+.ie10 {
+
+    .ie-body {
+        height: 100vh;
+        padding: 0;
+        background-image: url(../images/ie/bg-ie.jpg);
+        background-position: top center;
+        background-size: cover;
+        position: relative;
     
-            &::before,
-            &::after {
-                display: none;
-            }
-    }
-    .reviews-block {
-        display: block;
+        .ie-panel {
+            position: absolute;
+            top: 10%;
+            left: 5%;
+        }
     }
 }
