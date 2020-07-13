@@ -20,7 +20,7 @@ for (let planet of planets) {
 for (let s of sector) {
     sectorArr.unshift(pageYOffset + s.getBoundingClientRect().top - s.getBoundingClientRect().height - 100);
 }
-// console.log("sectorArr", sectorArr);
+console.log("sectorArr", sectorArr);
 // console.log("sectorArr", sectorArr[10], "plane.top", sectorArr[0] + 800);
 
 const app = new Vue({
@@ -126,7 +126,7 @@ const app = new Vue({
             question32: "",
             answer32: "</ol>",
             question4: "",
-            answer4: "translate(-50%, -50%)",
+            answer4: "translate(-50%,-50%)",
             achieve: false
         },
         quest14: {
@@ -152,15 +152,30 @@ const app = new Vue({
             you: 0,
             achieve: false
         },
+        quest18: {
+            modal: false,
+        },
+        quest19: {
+            modal: false,
+        },
         questFinish: {
             modal: false,
+        }
+    },
+    computed: {
+        windowWidth: function () {
+            if (document.body.clientWidth >= 1250) {
+                return true;
+            } else {
+                return false;
+            }
         }
     },
     methods: {
         addStep() {
             this.stepCount++;
             this.plane.fire = true;
-            if (this.endFly === 10 || this.endFly === 22) {
+            if (this.endFly === 10 || this.endFly === 22 || this.endFly === 33) {
                 this.step = 1;
             } else if (this.endFly === 28) {
                 this.step = 4;
@@ -250,6 +265,10 @@ const app = new Vue({
                 this.openModal("quest16");
             } else if (this.endFly === 43 && this.plane.left === this.planetArr[42].left && this.plane.top === this.planetArr[42].top) {
                 this.openModal("quest17");
+            } else if (this.endFly === 33 && this.plane.left === this.planetArr[32].left && this.plane.top === this.planetArr[32].top) {
+                this.openModal("quest18");
+            } else if (this.endFly === 35 && this.plane.left === this.planetArr[34].left && this.plane.top === this.planetArr[34].top) {
+                this.openModal("quest19");
             } else if (this.plane.left === this.planetArr[45].left && this.plane.top === this.planetArr[45].top) {
                 this.openModal("questFinish");
             }
@@ -313,6 +332,10 @@ const app = new Vue({
             } else if (q === "quest17") {
                 this.quest17.modal = true;
                 $(".panel-carousel").slick("setPosition");
+            } else if (q === "quest18") {
+                this.quest18.modal = true;
+            } else if (q === "quest19") {
+                this.quest19.modal = true;
             } else if (q === "questFinish") {
                 this.questFinish.modal = true;
             }
@@ -391,6 +414,6 @@ const app = new Vue({
         },
         pageReload() {
             location.reload();
-        }
+        },
     },
 });

@@ -29,4 +29,6 @@ function stars() {
         i++;
     }
 }
-stars();
+if (document.body.clientWidth >= 1250) {
+    stars();
+}

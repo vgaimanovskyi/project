@@ -5,6 +5,30 @@ $colorTextQuestImportant: #adae51;
 $colorBorderPanel: #adabac;
 $colorBgPanel: #1b2727;
 
+%plane-circle {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate3d(0.8, 0.2, 0, 75deg);
+    width: 170%;
+    height: 150%;
+    box-shadow: inset 16px 0 40px 3px rgba(#a09382,0.9),
+      inset -3px 0 5px 2px rgba(255,255,255,0.16);
+    background-color: transparent;
+    border: 2px solid #a09382;
+    border-radius: 50%;
+
+    @media screen and (max-width: 1199px) {
+        box-shadow: inset 10px 0 40px 3px rgba(#a09382,0.9),
+      inset -3px 0 5px 2px rgba(255,255,255,0.16);
+    }
+    @media screen and (max-width: 575px) {
+        box-shadow: inset 0px 0 32px 0px rgba(#a09382,0.9),
+      inset -3px 0 5px 2px rgba(255,255,255,0.16);
+    }
+}
+
 body {
     overflow:  hidden;
     overflow-x: hidden !important;
@@ -33,6 +57,7 @@ body > i {
     border-bottom: 2px ridge $colorBorderPanel;
     box-sizing: border-box;
 
+    @media screen and (max-width: 991px) { height: 80px; }
     &__block {
         flex-grow: 1;
         height: 100%;
@@ -44,9 +69,33 @@ body > i {
         border-right: 2px ridge $colorBorderPanel;
         box-sizing: border-box;
 
-        &--padding { padding: 0 15px; }
+        @media screen and (max-width: 1199px) { padding: 5px; }
+        @media screen and (max-width: 991px) { font-size: 10px; }
+        @media screen and (max-width: 767px) {
+            &--player,
+            &--achieves {
+                display: none;
+            }
+            
+        }
+        @media screen and (max-width: 575px) { padding: 2px; }
+        &--avatar { 
+            padding: 0 15px; 
+            
+            @media screen and (max-width: 1199px) { padding: 0 5px; }
+            @media screen and (max-width: 575px) { padding: 0 2px; }
+        }
+        &--hamburger {
+            display: none;
+        
+            @media screen and (max-width: 767px) {
+                display: flex;
+                align-items: center;
+            }
+        }
+        &--admin { min-width: 63px; }
         span {
-            margin-bottom: 10px;
+            margin-bottom: 4px;
 
             &:last-child { margin-bottom: 0; }
         }
@@ -54,10 +103,13 @@ body > i {
 }
 .avatar {
     display: block;
-    height: 100px;
+    height: 100%;
     border: 2px ridge #1d77bd;
     box-sizing: border-box;
     margin: 0 auto;
+}
+.player-text {
+    text-align: center;
 }
 .player-controls {
     display: flex;
@@ -80,6 +132,8 @@ body > i {
         width: 100px;
         height: 20px;
         border-radius: 5px;
+    
+        @media screen and (max-width: 767px) { width: 80px; }
     }
     
 }
@@ -87,11 +141,22 @@ body > i {
     width: 100px;
     display: flex;
     flex-wrap: wrap;
-
+    
+    @media screen and (max-width: 991px) {
+        height: 100%;
+        width: 44px;
+        flex-direction: column;
+        align-items: center;
+    }
     .life {
         width: 25px;
         height: 25px;
         background-image: url(../images/rocket.svg);
+
+        @media screen and (max-width: 991px) {
+            width: 22px;
+            height: 22px;
+        }
     }
 }
 .step-btn {
@@ -108,6 +173,10 @@ body > i {
     cursor: pointer;
     transition-duration: 0.5s;
     
+    @media screen and (max-width: 991px) {
+        width: 68px;
+        height: 68px;
+    }
     &:focus, &:hover { background-color: #46b846; }
     &:disabled { background-color: #1d77bd; cursor: default; }
 }
@@ -123,10 +192,45 @@ body > i {
     color: $colorTextQuestImportant;
     text-align: center;
 
+    @media screen and (max-width: 991px) {
+        width: 68px;
+        height: 68px;
+        font-size: 60px;
+        line-height: 68px;
+    }
     &--admin {
         width: 120px;
-    
+        
+        @media screen and (max-width: 991px) { width: 100px; }
         &:disabled {  border-color: red; }
+    }
+}
+.hamburger {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    margin: auto 0;
+    cursor: pointer;
+
+    &__line {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background-color: #000;
+        border-radius: 4px;
+        transition: 0.3s ease;
+
+        &:nth-child(1) { top: 4px; }
+        &:nth-child(2) { top: 19px; }
+        &:nth-child(3) { bottom: 4px; }
+    }
+    &--open {
+        .hamburger__line {
+            &:nth-child(1) { transform: rotate(45deg) translate(10px, 10px); }
+            &:nth-child(2) { transform: scale(0); }
+            &:nth-child(3) { transform: rotate(-45deg) translate(10px, -10px); }
+        }
     }
 }
 .achieves {
@@ -138,13 +242,15 @@ body > i {
     border: 2px ridge $colorBorderPanel;
     margin: 0 auto;
     box-sizing: border-box;
-
+    
+    @media screen and (max-width: 991px) { width: 164px; }
+    @media screen and (max-width: 767px) { width: 84px; }
     .achieve {
         width: 36px;
         height: 36px;
         background-image: url(../images/achieves/achieves-sprite.jpg);
         background-size: cover;
-
+        
         &--quest1 { background-position-x: 0; }
         &--quest5 { background-position-x: -36px; }
         &--quest9 { background-position-x: -180px; }
@@ -155,6 +261,37 @@ body > i {
         // &:nth-child(8) { background-position-x: -72px; }
         // &:nth-child(9) { background-position-x: -144px; }
         // &:last-child { background-position-x: -324px; }
+
+        @media screen and (max-width: 991px) {
+            width: 32px;
+            height: 32px;
+
+            &--quest1 { background-position-x: 0; }
+            &--quest5 { background-position-x: -32px; }
+            &--quest9 { background-position-x: -160px; }
+            &--quest10 { background-position-x: -96px; }
+            &--quest13 { background-position-x: -256px; }
+            &--quest15 { background-position-x: -224px; }
+            // &:nth-child(7) { background-position-x: -192px; }
+            // &:nth-child(8) { background-position-x: -64px; }
+            // &:nth-child(9) { background-position-x: -128px; }
+            // &:last-child { background-position-x: -288px; }
+        }
+        @media screen and (max-width: 767px) {
+            width: 20px;
+            height: 20px;
+
+            &--quest1 { background-position-x: 0; }
+            &--quest5 { background-position-x: -20px; }
+            &--quest9 { background-position-x: -100px; }
+            &--quest10 { background-position-x: -60px; }
+            &--quest13 { background-position-x: -160px; }
+            &--quest15 { background-position-x: -140px; }
+            // &:nth-child(7) { background-position-x: -120px; }
+            // &:nth-child(8) { background-position-x: -40px; }
+            // &:nth-child(9) { background-position-x: -80px; }
+            // &:last-child { background-position-x: -180px; }
+        }
     }
 }
 .plane-block {
@@ -168,6 +305,14 @@ body > i {
     transform: translateY(-150%);
     perspective: 6000px;
     
+    @media screen and (max-width: 1199px) {
+        width: 75px;
+        height: 75px;
+    }
+    @media screen and (max-width: 767px) {
+        width: 56px;
+        height: 56px;
+    }
     &--rotate { transform: rotate(90deg);}
     &--reverse { transform: rotate(-90deg);}
     &--finish { display: none; }
@@ -236,7 +381,16 @@ body > i {
     background-size: cover;
     position: absolute;
     // top: 0;
-    left: 0; 
+    left: 0;
+    
+    @media screen and (max-width: 1199px) {
+        width: 75px;
+        height: 75px;
+    }
+    @media screen and (max-width: 767px) {
+        width: 56px;
+        height: 56px;
+    }
 }
 .space-ship-1 {
     background-image: url(../images/ships/ship01.png);
@@ -296,6 +450,7 @@ body > i {
     overflow: hidden;
     position: relative;
 
+    @media screen and (max-width: 991px) { margin-top: 80px; }
     &--start {
         margin-top: 0;
         overflow: visible;
@@ -339,7 +494,8 @@ body > i {
 }
 .sector {
     flex-grow: 1;
-    width: 400px;
+    // width: 400px;
+    width: 33.33333%;
     height: 400px;
     // border: 1px solid black;
     box-sizing: border-box;
@@ -361,6 +517,14 @@ body > i {
     color: #fff;
     transform: translate(-50%, -50%) rotate(-10deg);
     
+    @media screen and (max-width: 1199px) {
+        width: 150px;
+        height: 150px;
+    }
+    @media screen and (max-width: 767px) {
+        width: 100px;
+        height: 100px;
+    }
     &[data-score='1'] {
         & .planet {
             background-image: url(../images/map/data01.jpg);
@@ -397,6 +561,18 @@ body > i {
             position: relative;
             animation: none;
 
+            @media screen and (max-width: 1199px) {
+                width: 200px;
+                height: 148px;
+            }
+            @media screen and (max-width: 767px) {
+                width: 150px;
+                height: 111px;
+            }
+            @media screen and (max-width: 575px) {
+                width: 120px;
+                height: 89px;
+            }
             &::after {
                 content: "";
                 position: absolute;
@@ -412,6 +588,19 @@ body > i {
                 animation-duration: 4s,4s,4s;
                 animation-iteration-count: infinite,infinite,infinite;
                 animation-timing-function: ease-in-out,linear,linear;
+
+                @media screen and (max-width: 1199px) {
+                    width: 55px;
+                    height: 55px;
+                }
+                @media screen and (max-width: 767px) {
+                    width: 40px;
+                    height: 40px;
+                }
+                @media screen and (max-width: 575px) {
+                    width: 30px;
+                    height: 30px;
+                }
             }
         } 
     }
@@ -428,18 +617,7 @@ body > i {
             transform-style: preserve-3d;
 
             &::after {
-                content: "";
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%) rotate3d(0.8, 0.2, 0, 75deg);
-                width: 170%;
-                height: 150%;
-                box-shadow: inset 16px 0 40px 3px rgba(#a09382,0.9),
-                  inset -3px 0 5px 2px rgba(255,255,255,0.16);
-                background-color: transparent;
-                border: 2px solid #a09382;
-                border-radius: 50%;
+                @extend %plane-circle;
             }
         } 
     }
@@ -450,18 +628,7 @@ body > i {
             transform-style: preserve-3d;
 
             &::after {
-                content: "";
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%) rotate3d(0.8, 0.2, 0, 75deg); ;
-                width: 170%;
-                height: 150%;
-                box-shadow: inset 16px 0 40px 3px rgba(#828ea0,0.9),
-                  inset -3px 0 5px 2px rgba(255,255,255,0.16);
-                background-color: transparent;
-                border: 2px solid #828ea0;
-                border-radius: 50%;
+                @extend %plane-circle;
             }
         } 
     }
@@ -494,8 +661,8 @@ body > i {
         & .planet {
             position: absolute;
             background-image: url(../images/map/data12.png);
-            width: 200px;
-            height: 200px;
+            width: 100%;
+            height: 100%;
             background-size: 100%;
             background-repeat: no-repeat;
             box-shadow: none;
@@ -511,18 +678,7 @@ body > i {
             transform-style: preserve-3d;
 
             &::after {
-                content: "";
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%) rotate3d(3.8, 0.2, 0, 75deg); ;
-                width: 170%;
-                height: 150%;
-                box-shadow: inset 16px 0 40px 3px rgba(#cfd9e7,0.9),
-                  inset -3px 0 5px 2px rgba(255,255,255,0.16);
-                background-color: transparent;
-                border: 2px solid #cfd9e7;
-                border-radius: 50%;
+                @extend %plane-circle;
             }
         } 
     }
@@ -534,14 +690,14 @@ body > i {
     }
     &[data-score='15'] {
         & .space-ship {
-            width: 100px;
-            height: 100px;
+            width: 50%;
+            height: 50%;
             background-image: url(../images/ships/ship02.png);
             background-size: cover;
             position: absolute;
             top: -25%;
             left: 100%;
-            transform: translateX(200%);
+            transform: translateX(300%);
             transition-duration: 1s;
 
             &--animate { transform: translateX(0); }
@@ -578,6 +734,15 @@ body > i {
             box-shadow: none;
             border-radius: initial;
             animation: stationMove 10s linear infinite, rubbishRotate 2s linear infinite;
+        
+            @media screen and (max-width: 1199px) {
+                width: 55px;
+                height: 55px;
+            }
+            @media screen and (max-width: 767px) {
+                width: 40px;
+                height: 40px;
+            }
         } 
     }
     &[data-score='20'] {
@@ -619,15 +784,15 @@ body > i {
     }
     &[data-score='25'] {
         & .space-ship {
-            width: 100px;
-            height: 100px;
+            width: 50%;
+            height: 50%;
             background-image: url(../images/ships/ship03.png);
             background-size: cover;
             position: absolute;
             top: 0;
             left: 0;
             animation: none;
-            transform: translateX(-250%);
+            transform: translateX(-200%);
             transition-duration: 1s;
 
             &--animate { transform: translate(100%, 50%); } 
@@ -641,18 +806,7 @@ body > i {
             transform-style: preserve-3d;
 
             &::after {
-                content: "";
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%) rotate3d(3.8, 0.2, 0, 75deg); ;
-                width: 170%;
-                height: 150%;
-                box-shadow: inset 16px 0 40px 3px rgba(#cfd9e7,0.9),
-                  inset -3px 0 5px 2px rgba(255,255,255,0.16);
-                background-color: transparent;
-                border: 2px solid #cfd9e7;
-                border-radius: 50%;
+                @extend %plane-circle;
             }
         } 
     }
@@ -673,6 +827,15 @@ body > i {
             box-shadow: none;
             border-radius: initial;
             animation: stationMove 10s linear infinite, rubbishRotate 2s linear infinite;
+        
+            @media screen and (max-width: 1199px) {
+                width: 55px;
+                height: 55px;
+            }
+            @media screen and (max-width: 767px) {
+                width: 40px;
+                height: 40px;
+            }
         } 
     }
     &[data-score='29'] {
@@ -703,8 +866,8 @@ body > i {
         & .planet {
             position: absolute;
             background-image: url(../images/map/data32.png);
-            width: 200px;
-            height: 200px;
+            width: 100%;
+            height: 100%;
             background-size: 100%;
             background-repeat: no-repeat;
             box-shadow: none;
@@ -719,18 +882,7 @@ body > i {
             transform-style: preserve-3d;
 
             &::after {
-                content: "";
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%) rotate3d(0.8, 0.2, 0, 75deg);
-                width: 170%;
-                height: 150%;
-                box-shadow: inset 16px 0 40px 3px rgba(#a09382,0.9),
-                  inset -3px 0 5px 2px rgba(255,255,255,0.16);
-                background-color: transparent;
-                border: 2px solid #a09382;
-                border-radius: 50%;
+                @extend %plane-circle;
             }
         }
     }
@@ -762,8 +914,8 @@ body > i {
     }
     &[data-score='37'] {
         & .space-ship {
-            width: 200px;
-            height: 200px;
+            width: 100%;
+            height: 100%;
             background-image: url(../images/map/data37.png);
             background-size: 100%;
             background-repeat: no-repeat;
@@ -795,8 +947,8 @@ body > i {
         & .planet {
             position: absolute;
             background-image: url(../images/map/data40.png);
-            width: 200px;
-            height: 200px;
+            width: 100%;
+            height: 100%;
             background-size: 100%;
             background-repeat: no-repeat;
             box-shadow: none;
@@ -820,8 +972,8 @@ body > i {
         & .planet {
             position: absolute;
             background-image: url(../images/map/data43.png);
-            width: 200px;
-            height: 200px;
+            width: 100%;
+            height: 100%;
             background-size: 100%;
             background-repeat: no-repeat;
             box-shadow: none;
@@ -848,8 +1000,8 @@ body > i {
         & .planet {
             position: absolute;
             background-image: url(../images/map/data46.png);
-            width: 200px;
-            height: 200px;
+            width: 100%;
+            height: 100%;
             background-size: 100%;
             background-repeat: no-repeat;
             box-shadow: none;
@@ -886,9 +1038,12 @@ body > i {
         overflow: hidden;
         box-sizing: border-box; 
 
+        @media screen and (max-width: 767px) {
+            padding: 0;
+        }
         &--station {
             width: 100%;
-            height: 870px;
+            height: calc(100vh - 100px);
             border: 10px groove $colorBorderPanel;
             margin-top: 0;
             background-size: cover;
@@ -896,13 +1051,21 @@ body > i {
             transform: translateY(-100%);
             animation: panelShow 1s linear 2s forwards;
 
+            @media screen and (max-width: 991px) { height: calc(100vh - 80px); }
             &--reload { background-image: url(../images/quests/reload.jpg); }
             &--ranger { background-image: url(../images/quests/quest5_data12.jpg); }
             &--peling { background-image: url(../images/quests/quest9_data24.jpg); }
             &--science { background-image: url(../images/quests/quest13_data32.jpg); }
-            &--destroyer { background-image: url(../images/quests/quest15_data39.jpg); }
+            &--destroyer {
+                background-image: url(../images/quests/quest15_data39.jpg);
+                background-position: 70% bottom;
+            }
             &--death-star { background-image: url(../images/quests/quest17_data43.jpg); }
             &--finish { background-image: url(../images/quests/questFinish_data46.jpg); }
+            @media screen and (max-width: 575px) {
+                background-image: none;
+                border: none;
+            }
         }
     }
     .start {
@@ -924,6 +1087,11 @@ body > i {
             background-color: $colorBgPanel;
             position: relative;
 
+            @media screen and (max-width: 1199px) { font-size: 60px; }
+            @media screen and (max-width: 991px) { font-size: 45px; }
+            @media screen and (max-width : 767px) { font-size: 32px; }
+            @media screen and (max-width : 575px) { font-size: 24px; }
+            
             &::after {
                 content: "";
                 position: absolute;
@@ -938,6 +1106,19 @@ body > i {
                 background-image: url(../images/map/data03.jpg);
                 border-radius: 50%;
                 animation: planetMove 10s linear infinite;
+
+                @media screen and (max-width: 1199px) {
+                    width: 55px;
+                    height: 55px;
+                }
+                @media screen and (max-width: 767px) {
+                    width: 50px;
+                    height: 50px;
+                }
+                @media screen and (max-width : 575px) {
+                    width: 40px;
+                    height: 40px;
+                }
             }
         }
         &__link {
@@ -947,7 +1128,12 @@ body > i {
             text-decoration: none;
             margin-bottom: 30px;
             position: relative;
-
+            
+            @media screen and (max-width: 991px) {
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+            @media screen and (max-width: 575px) { margin-bottom: 10px; }
             &::before,
             &::after {
                 content: "";
@@ -981,6 +1167,8 @@ body > i {
             margin: 0 auto;
             cursor: pointer;
 
+            @media screen and (max-width: 991px) { font-size: 30px; }
+            @media screen and (max-width: 575px) { font-size: 24px; }
             &:focus, &:hover { box-shadow: 0 0 10px $colorBorderPanel inset; }
         }
     }
@@ -989,6 +1177,13 @@ body > i {
     display: flex;
     margin: 100px -15px 80px -15px;
     
+    @media screen and (max-width: 767px) { 
+        // flex-direction: column;
+        // align-items: center;
+        flex-wrap: wrap;
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
     &__block {
         flex-grow: 1;
         width: 33.333333%;
@@ -996,6 +1191,12 @@ body > i {
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        @media screen and (max-width: 767px) {
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
     }
     h2, label {
         font-size: 20px;
@@ -1005,7 +1206,11 @@ body > i {
         text-align: center;
         padding: 0;
         margin: 0 0 20px 0;
-        
+
+        @media screen and (max-width: 575px) {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
     }
     .input-name,
     .input-music {
@@ -1030,9 +1235,10 @@ body > i {
     margin: 0 auto;
     position: relative;
 
+    @media screen and (max-width: 575px) { width: 80px; }
     img {
         display: block;
-        width: 100px;
+        width: 100%;
     }
     .slick-slide { float: left; }
     .slick-list { overflow: hidden; }
@@ -1086,6 +1292,7 @@ body > i {
     margin: -10px 0 20px 0;
     padding: 10px 20px;
 
+    @media screen and (max-width: 991px) { padding: 10px; }
     &--down {
         border: 5px ridge $colorBorderPanel;
         border-bottom: none;
@@ -1114,6 +1321,8 @@ body > i {
         position: relative;
         animation: panelAlert 0.5s linear infinite;
         
+        @media screen and (max-width: 767px) { font-size: 20px; }
+        @media screen and (max-width: 575px) { font-size: 18px; }
         &::after {
             content: "";
             position: absolute;
@@ -1131,13 +1340,26 @@ body > i {
         overflow-y: auto;
         margin: 40px 0;
         
+        @media screen and (max-width: 767px) { margin: 20px 0; }
         p, a, pre {
             font-size: 16px;
             line-height: 22px;
             color: $colorTextQuest;
             text-align: justify;
             margin: 0 0 15px 0;
+
+            @media screen and (max-width: 767px) {
+                font-size: 14px;
+                line-height: 20px;
+                margin-bottom: 10px;
+            }
+            @media screen and (max-width: 575px) {
+                font-size: 12px;
+                line-height: 18px;
+                margin-bottom: 5px;
+            }
         }
+        p:last-child { margin-bottom: 0; }
         a {
             color: $colorTextQuestImportant;
         }
@@ -1156,6 +1378,14 @@ body > i {
         line-height: 22px;
         color: $colorTextQuestImportant;
 
+        @media screen and (max-width: 767px) {
+            font-size: 14px;
+            line-height: 20px;
+        }
+        @media screen and (max-width: 575px) {
+            font-size: 12px;
+            line-height: 18px;
+        }
         li {
             margin-bottom: 10px;
 
@@ -1176,6 +1406,12 @@ body > i {
         margin: 0 10px;
         cursor: pointer;
 
+        @media screen and (max-width: 767px) {
+            font-size: 12px;
+            line-height: 18px;
+            padding: 5px;
+        }
+        @media screen and (max-width: 575px) { font-size: 8px; }
         &:focus, &:hover { box-shadow: 0 0 7px #000 inset; }
         &:disabled {
             background: #ccc;
@@ -1185,7 +1421,7 @@ body > i {
         }
     }
 }
-.important { color: $colorTextQuestImportant; }
+.important { color: $colorTextQuestImportant !important; }
 .list-question {
     display: flex;
     flex-direction: column;
@@ -1195,6 +1431,14 @@ body > i {
     color: $colorTextQuest;
     text-align: left;
     
+    @media screen and (max-width: 767px) {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    @media screen and (max-width: 575px) {
+        font-size: 12px;
+        line-height: 18px;
+    }
     input {
         margin-right: 15px;
     }
@@ -1223,7 +1467,7 @@ body > i {
         outline: none;
 
         &:focus, &:hover { border-bottom-color: $colorTextQuestImportant; }
-        &.slick-prev { left: 40%; }
+        &.slick-prev { left: 30%; }
         &.slick-next { left: 60%; }
     }
 }
@@ -1235,6 +1479,9 @@ body > i {
     border: 5px ridge $colorBorderPanel;
     padding:  10px;
     background-color: $colorBgPanel;
+
+    @media screen and (max-width: 1199px) { max-width: 550px; }
+    @media screen and (max-width: 991px) { max-width: 450px; }
 }
 .quest-form {
     margin: 20px 0;
@@ -1246,6 +1493,8 @@ body > i {
         font-size: 16px;
         color: $colorTextQuest;
         margin: 0 0 10px 0;
+
+        @media screen and (max-width: 767px) { font-size: 14px; }
     }
     &__btn {
         margin: 10px 0 0 0;
@@ -1265,25 +1514,63 @@ body > i {
     height: 100vh;
     background-color: #000;
     display: flex;
+    padding: 30px;
+    box-sizing: border-box;
+
+    @media screen and (max-width: 991px) {
+        padding: 20px;
+        flex-wrap: wrap;
+    }
 }
 .aside-menu {
     width: 20%;
     background-color: $colorBgPanel;
-    padding: 40px 20px 20px 40px;
+    padding: 40px 20px 20px 30px;
     box-sizing: border-box;
-    margin: 30px 15px 30px 30px;
+    margin-right: 30px;
     border: 5px groove $colorTextQuestImportant;
     border-top-left-radius: 50px;
     border-bottom-right-radius: 50px;
 
+    @media screen and (max-width: 1199px) {
+        padding-left: 15px;
+        padding-right: 10px;
+        margin-right: 20px;
+    }
+    @media screen and (max-width: 991px) {
+        width: 100%;
+        padding: 40px 10px 10px 10px;
+        margin-right: 0;
+        margin-bottom: 10px;
+        border-top-right-radius: 50px;
+        border-bottom-right-radius: 0;
+    }
+    @media screen and (max-width: 767px) { padding-top: 20px; }
     & .slick-dots {
         list-style-type: none;
         padding: 0;
         margin: 0;
 
+        @media screen and (max-width: 991px) {
+            display: flex;
+            justify-content: center;
+        }
+        @media screen and (max-width: 767px) { 
+            flex-wrap: wrap;
+            max-width: 320px;
+            height: 100%;
+            margin: 0 auto;
+        }
         li {
+            display: flex;
+            align-items: center;
             margin: 0 0 10px 0;
             
+            @media screen and (max-width: 991px) { margin: 0 15px; }
+            @media screen and (max-width: 767px) {
+                width: 50%;
+                margin: 0;
+            }
             &::before {
                 content: "";
                 display: inline-block;
@@ -1293,16 +1580,25 @@ body > i {
                 background-image: url(../images/svg/plus.svg#plus);
                 margin-right: 10px;
                 transition-duration: 0.3s;
+
+                @media screen and (max-width: 991px) {
+                    width: 20px;
+                    height: 20px;
+                    margin-right: 10px;
+                }
             }
             &:last-child { margin-bottom: 0; }
             button {
+                font-size: 16px;
                 overflow: hidden;
-                border-color: transparent;
+                border: none;
                 color: $colorTextQuest;
                 background-color: transparent;
                 cursor: pointer;
                 outline: none;
 
+                @media screen and (max-width: 1199px) { padding: 0; }
+                @media screen and (max-width: 991px) { font-size: 18px; }
                 &:focus, &:hover { color: $colorTextQuestImportant; }
             }
             &.slick-active {
@@ -1320,10 +1616,16 @@ body > i {
     background-color: $colorBgPanel;
     padding: 40px;
     box-sizing: border-box;
-    margin: 30px 30px 30px 15px;
     border: 5px groove $colorTextQuestImportant;
     border-top-right-radius: 50px;
     border-bottom-left-radius: 50px;
+
+    @media screen and (max-width: 991px) {
+        width: 100%;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 50px;
+    }
+    @media screen and (max-width: 767px) { padding: 20px; }
 }
 .main-carousel {
 
@@ -1334,12 +1636,15 @@ body > i {
         outline: none;
         overflow-y: auto;
 
+        @media screen and (max-width: 991px) { height: calc(100vh - 250px); }
         &__caption {
             font-size: 24px;
             font-weight: 700;
             color: $colorTextQuestImportant;
             padding: 0;
             margin: 0 0 30px 0;
+
+            @media screen and (max-width: 767px) { margin: 0 0 20px 0; }
         }
         &__text {
             padding: 30px 0;
@@ -1347,9 +1652,13 @@ body > i {
             border-bottom: 1px dashed $colorTextQuest;
             margin: 0 0 30px 0;
 
+            @media screen and (max-width: 767px) {
+                padding: 20px 0;
+                margin: 0 0 20px 0;
+            }
             &:last-child { margin-bottom: 0; }
         }
-        &__control { height: 100px; }
+        &__control { min-height: 100px; }
         &__map { position: relative; }
         p {
             font-size: 16px;
@@ -1359,11 +1668,16 @@ body > i {
             padding: 0 10px;
             margin: 0 0 10px 0;
 
+            @media screen and (max-width: 575px) { font-size: 14px; }
             &:last-child { margin: 0; }
         }
         img {
             float: left;
             margin: 0 15px 0 0;
+
+            @media screen and (max-width: 767px) {
+                height: 70px;
+            }
         }
         a {
             font-size: inherit;
@@ -1384,20 +1698,35 @@ body > i {
 .infowindow {
     list-style: none;
     margin: 0;
-    padding: 0 30px;
+    padding: 0 25px;
     position: absolute;
     top: 50%;
-    left: 30%;
+    left: 25%;
     transform: translate(-50%, -50%);
-    width: 300px;
+    width: 270px;
     background-color: #fff;
-    box-shadow: 0 0 10px grda(#000, 0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 
+    @media screen and (max-width: 991px) { 
+        font-size: 14px; 
+        width: 266px;
+        padding: 0 15px;
+    }
+    @media screen and (max-width: 767px) {
+        top: 0;
+        left: 0;
+        transform: translate(0);
+    }
+    @media screen and (max-width: 575px) { width: 235px; }
     &.hide { display: none; }
     &__block {
         font-size: 16px;
         color: #000;
         margin: 25px 0;
+
+        @media screen and (max-width: 991px) { margin: 15px 0; }
+        @media screen and (max-width: 767px) { margin: 10px 0; }
+        @media screen and (max-width: 575px) { font-size: 14px; }
     }
 }
 /* ----------------ie page----------------- */
