@@ -1731,6 +1731,8 @@ body > i {
 }
 /* ----------------ie page----------------- */
 @import "_ie";
+/* ----------------mobile page----------------- */
+@import "_mobile";
 /* ------------------------------------------- */
 @keyframes planeMove {
     0% { transform: translateX(-10px) rotateY(20deg); }

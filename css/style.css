@@ -2593,7 +2593,7 @@ body > i.aminate {
 .ie-body {
   height: 1000px;
   background-image: url(../images/ie/bg-ie.jpg);
-  background-position: top center;
+  background-position: center top;
   background-size: 100%;
   background-repeat: no-repeat;
   padding: 50px 0 0 50px;
@@ -2624,7 +2624,7 @@ body > i.aminate {
   height: 100vh;
   padding: 0;
   background-image: url(../images/ie/bg-ie.jpg);
-  background-position: top center;
+  background-position: center top;
   background-size: cover;
   position: relative;
 }
@@ -2634,6 +2634,40 @@ body > i.aminate {
   position: absolute;
   top: 10%;
   left: 5%;
+}
+
+/* ----------------mobile page----------------- */
+.mobile-body {
+  height: 100vh;
+  padding: 0;
+  background-image: url(../images/ie/bg-ie.jpg);
+  background-position: 80% top;
+  background-size: cover;
+  position: relative;
+}
+
+.mobile-body .mobile-panel {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  border: 5px groove #adabac;
+  background-color: #1b2727;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.mobile-body .panel__alert {
+  margin-bottom: 20px;
+}
+
+.mobile-body p {
+  font-size: 16px;
+  line-height: 25px;
+  color: #99a18c;
+  text-align: justify;
 }
 
 /* ------------------------------------------- */
