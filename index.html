@@ -455,7 +455,7 @@
                 </div> <!-- // galaxy-start -->
             </div> <!-- // fild-grid -->
             <div class="plane-block" :style="{top: plane.top + 'px', left: plane.left + 'px'}"
-                :class="{'plane-block--reverse': plane.reverse, 'plane-block--rotate': plane.rotate, 'plane-block--finish': plane.finish}">
+                :class="{'plane-block--reverse': plane.reverse, 'plane-block--rotate': plane.rotate, 'plane-block--finish': plane.finish, 'plane-block--start': plane.start}">
                 <div class="plane" :style="{'background-image': 'url(' + this.plane.path + ')'}" id="plane">
                     <div class="plane__fire plane__fire--type-0" :class="{'plane__fire--animate': plane.fire}"
                         v-if="plane.type === 0">

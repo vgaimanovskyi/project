@@ -18,7 +18,7 @@ for (let planet of planets) {
     planetArr.unshift(planetObj);
 }
 for (let s of sector) {
-    sectorArr.unshift(pageYOffset + s.getBoundingClientRect().top - s.getBoundingClientRect().height - 100);
+    sectorArr.unshift(pageYOffset + s.getBoundingClientRect().top - s.getBoundingClientRect().height);
 }
 console.log("sectorArr", sectorArr);
 // console.log("sectorArr", sectorArr[10], "plane.top", sectorArr[0] + 800);
@@ -42,8 +42,9 @@ const app = new Vue({
             left: 100,
             rotate: false,
             reverse: false,
+            start: true,
             finish: false,
-            fire: false
+            fire: false,
         },
         step: 0,
         stepCount: 0,
@@ -175,6 +176,7 @@ const app = new Vue({
         addStep() {
             this.stepCount++;
             this.plane.fire = true;
+            this.plane.start = false;
             if (this.endFly === 10 || this.endFly === 22 || this.endFly === 33) {
                 this.step = 1;
             } else if (this.endFly === 28) {
@@ -190,13 +192,21 @@ const app = new Vue({
             this.fly(this.startFly);
         },
         fly(n) {
-            console.log(n, !(n - 4) % 6);
-            // console.log(this.sectorArr[n]);
+            // console.log(n, !(n - 4) % 6);
+            console.log(this.sectorArr[n]);
 
-            window.scrollTo({
-                top: this.sectorArr[n],
-                behavior: "smooth"
-            });
+            if (window.innerHeight < 576) {
+                window.scrollTo({
+                    top: this.sectorArr[n] + 320,
+                    behavior: "smooth"
+                });
+            } else {
+                window.scrollTo({
+                    top: this.sectorArr[n],
+                    behavior: "smooth"
+                });
+            }
+
             if (this.step > 0) {
                 n++;
             }
