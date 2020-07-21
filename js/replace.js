@@ -8,7 +8,7 @@ function replace() {
     }
 
     // document.body.clientWidth
-    if (window.innerWidth < 480) {
+    if (window.innerWidth < 480 || window.innerHeight < 480) {
         window.location.replace("pages/mobile.html");
     }
 };

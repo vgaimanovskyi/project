@@ -193,7 +193,7 @@ const app = new Vue({
         },
         fly(n) {
             // console.log(n, !(n - 4) % 6);
-            console.log(this.sectorArr[n]);
+            console.log(n);
 
             if (window.innerHeight < 576) {
                 window.scrollTo({
@@ -210,7 +210,8 @@ const app = new Vue({
             if (this.step > 0) {
                 n++;
             }
-            if (this.step != 0) {
+            if (n <= this.endFly) {
+
                 if (n === 1 && this.endFly === 1 || !((n - 1) % 6)) {
                     // n === 1 || n === 7 || n === 13 || n === 19 || n === 25 || n === 31 || n === 37 || n === 43
                     console.log(n);
@@ -228,18 +229,17 @@ const app = new Vue({
                     // console.log(n);
                 }
 
-                if (n <= this.endFly) {
-                    this.startFly = n;
-                    this.plane.top = this.planetArr[n - 1].top;
-                    this.plane.left = this.planetArr[n - 1].left;
+                this.startFly = n;
+                this.plane.top = this.planetArr[n - 1].top;
+                this.plane.left = this.planetArr[n - 1].left;
 
-                    // console.log(this.planetArr[n - 1])
+                // console.log(this.planetArr[n - 1])
 
-                    setTimeout(this.fly, 2000, this.startFly);
-                } else {
-                    this.plane.fire = false;
-                };
-            }
+                setTimeout(this.fly, 2000, this.startFly);
+            } else {
+                this.plane.fire = false;
+            };
+
             /* --- modal quests open --- */
             if (this.endFly === 3 && this.plane.left === this.planetArr[2].left && this.plane.top === this.planetArr[2].top) {
                 this.openModal("quest1");
