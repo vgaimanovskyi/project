@@ -218,7 +218,19 @@ const app = new Vue({
                 console.log("plane.top", n);
                 setTimeout(this.fly, 2000, this.startFly);
 
-                if (window.innerHeight < 576) {
+                if (window.innerWidth < 479) {
+                    window.scrollTo({
+                        top: this.sectorArr[n] + 20,
+                        behavior: "smooth"
+                    });
+                    console.log("scroll");
+                } else if (window.innerHeight < 479) {
+                    window.scrollTo({
+                        top: this.sectorArr[n] + 250,
+                        behavior: "smooth"
+                    });
+                    console.log("scroll");
+                } else if (window.innerHeight < 576) {
                     window.scrollTo({
                         top: this.sectorArr[n] + 350,
                         behavior: "smooth"
@@ -226,7 +238,7 @@ const app = new Vue({
                     console.log("scroll");
                 } else {
                     window.scrollTo({
-                        top: this.sectorArr[n] - 100,
+                        top: this.sectorArr[n],
                         behavior: "smooth"
                     });
                     console.log("scroll", n);

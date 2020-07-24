@@ -332,7 +332,12 @@ body > i {
     &--rotate { transform: rotate(90deg) translateX(-50%); }
     &--reverse { transform: rotate(-90deg) translateX(50%); }
     &--finish { display: none; }
-    &--start { transform: translateY(-300%); }
+    &--start {
+        transform: translateY(-300%);
+    
+        @media screen and (max-width: 575px) { transform: translateY(-700%); }
+        @media screen and (max-width: 479px) { transform: translateY(-800%); }
+    }
 }
 .plane {
     width: 100%;
@@ -577,6 +582,7 @@ body > i {
     text-align: center;
     position: relative;
 
+    @media screen and (max-width: 575px) { height: 300px; }
     &.start,
     &.finish {
         width: 100%;
