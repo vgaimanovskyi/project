@@ -31,7 +31,6 @@ $colorBgPanel: #1b2727;
 
 body {
     overflow:  hidden;
-    overflow-x: hidden !important;
 }
 body > i {
     position: absolute;
@@ -79,11 +78,22 @@ body > i {
             
         }
         @media screen and (max-width: 575px) { padding: 2px; }
+        @media screen and (max-width: 479px) { 
+            &--pos {
+                display: none;
+            
+                & > span {
+                    display: block;
+                    margin-top: 15px;
+                }
+            }
+        }
         &--avatar { 
             padding: 0 15px; 
             
             @media screen and (max-width: 1199px) { padding: 0 5px; }
             @media screen and (max-width: 575px) { padding: 0 2px; }
+            @media screen and (max-width: 479px) { display: none; }
         }
         &--hamburger {
             display: none;
@@ -198,10 +208,12 @@ body > i {
         font-size: 60px;
         line-height: 68px;
     }
+    
     &--admin {
         width: 120px;
         
         @media screen and (max-width: 991px) { width: 100px; }
+        @media screen and (max-width: 479px) { width: 75px; }
         &:disabled {  border-color: red; }
     }
 }
@@ -313,6 +325,10 @@ body > i {
         width: 56px;
         height: 56px;
     }
+    @media screen and (max-width: 479px) {
+        width: 45px;
+        height: 45px; 
+    }
     &--rotate { transform: rotate(90deg) translateX(-50%); }
     &--reverse { transform: rotate(-90deg) translateX(50%); }
     &--finish { display: none; }
@@ -392,6 +408,10 @@ body > i {
         width: 56px;
         height: 56px;
     }
+    @media screen and (max-width: 479px) { 
+        width: 45px;
+        height: 45px;
+    }
 }
 .space-ship-1 {
     background-image: url(../images/ships/ship01.png);
@@ -468,7 +488,12 @@ body > i {
     background-position: center;
     box-shadow: 0 100px 70px -25px #000 inset, 0 -100px 70px -25px #000 inset;
 
-    &--bg-finish { background-image: url(../images/bg/galaxy-finish.jpg); }  
+    &--bg-finish {
+        background-image: url(../images/bg/galaxy-finish.jpg);
+        
+        @media screen and (max-width: 479px) { background-position: 25%; }
+        
+    }  
     &--bg-5 { background-image: url(../images/bg/galaxy05.jpg); }  
     &--bg-4 { background-image: url(../images/bg/galaxy04.jpg); }  
     &--bg-3 { background-image: url(../images/bg/galaxy03.jpg); }  
@@ -478,7 +503,7 @@ body > i {
         background-image: url(../images/bg/galaxy-start.jpg);
         box-shadow: 0 100px 85px -25px #000 inset;
         background-size: auto;
-        background-position: 0 0;
+        background-position: 25%;
     }  
 }
 .fild-row {
@@ -525,6 +550,10 @@ body > i {
     @media screen and (max-width: 767px) {
         width: 100px;
         height: 100px;
+    }
+    @media screen and (max-width: 479px) {
+        width: 70px;
+        height: 70px; 
     }
     &[data-score='1'] {
         & .planet {
@@ -574,6 +603,10 @@ body > i {
                 width: 120px;
                 height: 89px;
             }
+            @media screen and (max-width: 479px) { 
+                width: 100%;
+                height: 100%;
+            }
             &::after {
                 content: "";
                 position: absolute;
@@ -601,6 +634,10 @@ body > i {
                 @media screen and (max-width: 575px) {
                     width: 30px;
                     height: 30px;
+                }
+                @media screen and (max-width: 479px) { 
+                    width: 20px;
+                    height: 20px;
                 }
             }
         } 
@@ -904,6 +941,10 @@ body > i {
             box-shadow: none;
             border-radius: initial;
             animation: asteroidRotate 10s linear infinite;
+
+            @media screen and (max-width: 767px) {
+                margin: 20px;
+            }
         }
     }
     &[data-score='36'] {
@@ -1044,6 +1085,7 @@ body > i {
             height: calc(100vh - 80px); 
         }
         @media screen and (max-height: 575px) {
+            padding: 0;
             margin-top: 0;
         }
         &--station {
@@ -1096,7 +1138,14 @@ body > i {
             @media screen and (max-width: 1199px) { font-size: 60px; }
             @media screen and (max-width: 991px) { font-size: 45px; }
             @media screen and (max-width: 767px) { font-size: 32px; }
-            @media screen and (max-width: 575px) { font-size: 24px; }
+            @media screen and (max-width: 575px) {
+                font-size: 25px;
+                padding-right: 60px;
+            }
+            @media screen and (max-width: 479px) {
+                font-size: 14px;
+                padding-right: 40px;
+            }
             &::after {
                 content: "";
                 position: absolute;
@@ -1123,6 +1172,10 @@ body > i {
                 @media screen and (max-width: 575px) {
                     width: 40px;
                     height: 40px;
+                }
+                @media screen and (max-width: 479px) {
+                    width: 30px;
+                    height: 30px;
                 }
             }
         }
@@ -1174,6 +1227,10 @@ body > i {
 
             @media screen and (max-width: 991px) { font-size: 30px; }
             @media screen and (max-width: 767px) { font-size: 24px; }
+            @media screen and (max-height: 479px) {
+                font-size: 20px;
+                padding: 15px 20px;
+            }
             &:focus, &:hover { box-shadow: 0 0 10px $colorBorderPanel inset; }
         }
     }
@@ -1189,7 +1246,7 @@ body > i {
         margin-top: 50px;
         margin-bottom: 15px;
     }
-    @media screen and (max-height: 575px) {
+    @media screen and (max-height: 479px) {
         margin-top: 20px;
         margin-bottom: 0px;
     }
@@ -1206,6 +1263,23 @@ body > i {
             box-sizing: border-box;
             margin-bottom: 10px;
         }
+        @media screen and (max-height: 575px) {
+            width: 33.333333%;
+            padding: 0 15px;
+        }
+        @media screen and (max-width: 479px) {
+            width: 100%;
+            padding: 0;
+
+            &:first-child { display: none; }
+        }
+        @media screen and (max-height: 479px) {
+            width: 50%;
+            padding: 0;
+
+            &:first-child { display: none; }
+        }
+        
     }
     h2, label {
         font-size: 20px;
@@ -1220,6 +1294,8 @@ body > i {
             font-size: 18px;
             margin-bottom: 5px;
         }
+        @media screen and (max-width: 479px) { font-size: 14px; }
+        @media screen and (max-height: 479px) { font-size: 14px; }
     }
     .input-name,
     .input-music {
@@ -1245,6 +1321,7 @@ body > i {
     position: relative;
 
     @media screen and (max-width: 767px) { width: 80px; }
+    @media screen and (max-height: 479px) { width: 70px; }
     img {
         display: block;
         width: 100%;
@@ -1284,14 +1361,24 @@ body > i {
     box-sizing: border-box;
 
     @media screen and (max-height: 575px) { height: 100%; }
+    @media screen and (max-height: 479px) { border-width: 5px; }
     &__col {
         width: 60%;
         padding: 10px;
         display: flex;
         flex-direction: column;
         box-sizing: border-box;
-        
-        &--photo { width: 40%; flex-grow: 0; }
+
+        @media screen and (max-width: 575px) { padding: 10px 5px; }
+        @media screen and (max-width: 479px) { width: 100%; }
+        @media screen and (max-height: 479px) { width: 70%; }
+        &--photo {
+            width: 40%;
+            flex-grow: 0;
+
+            @media screen and (max-width: 479px) { display: none; }
+            @media screen and (max-height: 479px) { width: 30%; }
+        }
     }
 }
 .panel {
@@ -1306,9 +1393,11 @@ body > i {
     box-sizing: border-box;
     
     @media screen and (max-width: 991px) { padding: 10px; }
-    @media screen and (max-height: 575px) { 
-        max-height: 85%;
-        // overflow: hidden;
+    @media screen and (max-height: 575px) { max-height: 85%; }
+    @media screen and (max-height: 479px) {
+        max-height: 82%;
+        overflow-y: auto;
+        margin-bottom: 10px;
     }
     &--down {
         border: 5px ridge $colorBorderPanel;
@@ -1318,6 +1407,8 @@ body > i {
         border-top-left-radius: 20px;
         margin-top: auto;
         margin-bottom: -10px;
+
+        @media screen and (max-height: 479px) { padding: 5px; }
     }
     &--border { border: none; }
     &__photo {
@@ -1354,7 +1445,7 @@ body > i {
     }
     &__text {
         max-height: 400px;
-        padding-right: 10px;
+        // padding-right: 10px;
         overflow-y: auto;
         margin: 40px 0;
         
@@ -1362,7 +1453,7 @@ body > i {
             max-height: 500px;
             margin: 20px 0;
         }
-        @media screen and (max-height: 575px) { max-height: inherit; }
+        @media screen and (max-height: 479px) { margin: 10px 0; }
         p, a, pre {
             font-size: 16px;
             line-height: 22px;
@@ -1375,10 +1466,15 @@ body > i {
                 line-height: 20px;
                 margin-bottom: 10px;
             }
-            @media screen and (max-width: 575px) {
+            @media screen and (max-width: 479px) {
                 font-size: 12px;
                 line-height: 18px;
                 margin-bottom: 5px;
+            }
+            @media screen and (max-height: 479px) { 
+                font-size: 12px;
+                line-height: 18px;
+                margin-bottom: 5px; 
             }
         }
         p:last-child { margin-bottom: 0; }
@@ -1469,11 +1565,15 @@ body > i {
     position: relative;
     padding-bottom: 20px;
 
+    @media screen and (max-height: 479px) { height: 85%;}
     &__block {
         padding-left: 20px;
         outline: none;
+        overflow-y: auto;
 
+        @media screen and (max-width: 575px) { padding-left: 15px; }
         @media screen and (max-height: 575px) { max-height: 278px; }
+        @media screen and (max-height: 479px) { max-height: 135px; }
     }
     .slick-slide { float: left; }
     .slick-list { overflow: hidden; }
@@ -1515,6 +1615,7 @@ body > i {
 .quest-form {
     margin: 20px 0;
 
+    @media screen and (max-height: 479px) { margin: 10px 0; }
     &--hidden { display: none;}
     label {
         display: block;
@@ -1524,6 +1625,7 @@ body > i {
         margin: 0 0 10px 0;
 
         @media screen and (max-width: 767px) { font-size: 14px; }
+        @media screen and (max-width: 479px) { font-size: 12px; }
     }
     &__btn {
         margin: 10px 0 0 0;
@@ -1550,6 +1652,8 @@ body > i {
         padding: 20px;
         flex-wrap: wrap;
     }
+    @media screen and (max-width: 575px) { padding: 0; }
+    @media screen and (max-height: 575px) { padding: 0; }
 }
 .aside-menu {
     width: 20%;
@@ -1575,6 +1679,7 @@ body > i {
         border-bottom-right-radius: 0;
     }
     @media screen and (max-width: 767px) { padding-top: 20px; }
+    @media screen and (max-height: 575px) { height: 80px; }
     & .slick-dots {
         list-style-type: none;
         padding: 0;
@@ -1590,6 +1695,7 @@ body > i {
             height: 100%;
             margin: 0 auto;
         }
+        @media screen and (max-height: 575px) { max-width: 100%; }
         li {
             display: flex;
             align-items: center;
@@ -1599,6 +1705,12 @@ body > i {
             @media screen and (max-width: 767px) {
                 width: 50%;
                 margin: 0;
+            }
+            @media screen and (max-height: 575px) {
+                width: fit-content;
+                margin-right: 20px;
+
+                &:last-child { margin-right: 0; }
             }
             &::before {
                 content: "";
@@ -1613,8 +1725,9 @@ body > i {
                 @media screen and (max-width: 991px) {
                     width: 20px;
                     height: 20px;
-                    margin-right: 10px;
                 }
+                @media screen and (max-width: 479px) { margin-right: 7px; }
+                @media screen and (max-height: 479px) { margin-right: 5px; }
             }
             &:last-child { margin-bottom: 0; }
             button {
@@ -1628,6 +1741,7 @@ body > i {
 
                 @media screen and (max-width: 1199px) { padding: 0; }
                 @media screen and (max-width: 991px) { font-size: 18px; }
+                @media screen and (max-width: 479px) { font-size: 16px; }
                 &:focus, &:hover { color: $colorTextQuestImportant; }
             }
             &.slick-active {
@@ -1655,6 +1769,8 @@ body > i {
         border-bottom-right-radius: 50px;
     }
     @media screen and (max-width: 767px) { padding: 20px; }
+    @media screen and (max-height: 575px) { height: calc(100vh - 90px); }
+    @media screen and (max-height: 479px) { padding: 10px; }
 }
 .main-carousel {
 
@@ -1666,6 +1782,7 @@ body > i {
         overflow-y: auto;
 
         @media screen and (max-width: 991px) { height: calc(100vh - 250px); }
+        @media screen and (max-height: 575px) { height: calc(100vh - 140px); }
         &__caption {
             font-size: 24px;
             font-weight: 700;
@@ -1674,6 +1791,10 @@ body > i {
             margin: 0 0 30px 0;
 
             @media screen and (max-width: 767px) { margin: 0 0 20px 0; }
+            @media screen and (max-height: 479px) {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
         }
         &__text {
             padding: 30px 0;
@@ -1685,6 +1806,11 @@ body > i {
                 padding: 20px 0;
                 margin: 0 0 20px 0;
             }
+            @media screen and (max-height: 479px) {
+                padding: 10px 0;
+                margin-bottom: 10px;
+            }
+
             &:last-child { margin-bottom: 0; }
         }
         &__control { min-height: 100px; }
@@ -1723,6 +1849,8 @@ body > i {
     height: 335px;
 
     .gmnoprint { display: none; }
+
+    @media screen and (max-height: 479px) { height: 200px; }
 }
 .infowindow {
     list-style: none;

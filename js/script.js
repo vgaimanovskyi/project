@@ -36,7 +36,7 @@ const app = new Vue({
         plane: {
             path: "",
             type: 0,
-            life: 3,
+            life: 5,
             score: 0,
             top: sectorArr[0] + 800,
             left: 100,
@@ -197,7 +197,7 @@ const app = new Vue({
 
             if (window.innerHeight < 576) {
                 window.scrollTo({
-                    top: this.sectorArr[n] + 320,
+                    top: this.sectorArr[n] + 350,
                     behavior: "smooth"
                 });
             } else {

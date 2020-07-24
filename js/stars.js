@@ -9,9 +9,9 @@ function stars() {
         const xRight = document.getElementById("js-fild").getBoundingClientRect().right;
         let x;
         if (i % 2) {
-            x = Math.floor(Math.random() * xLeft);
+            x = Math.floor(Math.random() * xLeft) - 20;
         } else {
-            x = xRight + xLeft - Math.floor(Math.random() * xLeft);
+            x = xRight + xLeft - Math.floor(Math.random() * xLeft) - 20;
         }
         // let y = document.body.clientHeight - Math.floor(Math.random() * window.innerHeight);
         let y = Math.floor(Math.random() * document.body.clientHeight);

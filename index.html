@@ -68,7 +68,7 @@
                     <div class="hamburger__line"></div>
                 </div>
             </div>
-            <div class="menu__block" v-if="!admin">
+            <div class="menu__block menu__block--step" v-if="!admin">
                 <div class="step">{{step}}</div>
             </div>
             <div class="menu__block menu__block--admin" v-if="admin">
@@ -78,10 +78,10 @@
                 <span>startFly: {{startFly}};</span>
                 <span>endFly: {{endFly}};</span>
             </div>
-            <div class="menu__block" v-if="admin">
+            <div class="menu__block menu__block--step" v-if="admin">
                 <input type="number" class="step step--admin" v-model="step" min="0" :disabled="startFly != endFly">
             </div>
-            <div class="menu__block">
+            <div class="menu__block menu__block--btn">
                 <button class="step-btn" @click="addStep" :disabled="startFly > endFly">Go</button>
             </div>
         </div>
@@ -1379,9 +1379,6 @@
                                     <p>Что привело тебя в далекую-далекую галактику?</p>
                                     <p>Здесь идет гражданская война. Мы недавно одержали первую победу над зловещей
                                         Галактической империей.</p>
-                                    <p>Во время сражения нашим разведчикам удалось выкрасть секретные чертежи
-                                        мощнейшего оружия Империи, которое называется Звездой смерти. Это бронированная
-                                        космическая станция, способная уничтожить целую планету.</p>
                                     <p>Можешь смело пролететь на одну секцию вперед. Эта территория под нашим
                                         контролем, а дальше будь осторожен.</p>
                                     <p>И да прибудет с тобой сила, исследователь {{name}}</p>

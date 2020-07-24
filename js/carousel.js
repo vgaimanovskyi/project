@@ -39,7 +39,7 @@ $(document).ready(function () {
         fade: true,
         swipe: false
     });
-    $(".aside-menu #slick-slide-control00").text("Об проекте");
+    $(".aside-menu #slick-slide-control00").text("О проекте");
     $(".aside-menu #slick-slide-control01").text("Управление");
     $(".aside-menu #slick-slide-control02").text("Квесты");
     $(".aside-menu #slick-slide-control03").text("Благодарность");
