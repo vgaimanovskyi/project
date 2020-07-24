@@ -350,10 +350,21 @@ body > i {
         transform-origin: top;
         transition-duration: 0.3s;
 
+        @media screen and (max-width: 767px) { height: 25px; }
+        @media screen and (max-width: 479px) { height: 20px; }
         &--type-0 {
             bottom: -20px;
             width: 5px;
             background-image: linear-gradient(#00d0ff, transparent);
+
+            @media screen and (max-width: 767px) {
+                bottom: -18px;
+                width: 4px;
+            }
+            @media screen and (max-width: 479px) {
+                bottom: -15px;
+                width: 3px;
+            }
         }
         &--type-1 {
             bottom: -15px;
@@ -367,24 +378,62 @@ body > i {
                 width: 5px;
                 height: 100%;
                 background-image: linear-gradient(#a5f88b, transparent);
+            
+                @media screen and (max-width: 767px) { width: 3px; }
+                @media screen and (max-width: 479px) { width: 2px; }
             }
             &::before { left: 0; }
             &::after { right: 0; }
+            @media screen and (max-width: 767px) {
+                bottom: -18px;
+                width: 12px;
+            }
+            @media screen and (max-width: 479px) {
+                bottom: -15px;
+                width: 10px;
+            }
         }   
         &--type-2 {
             bottom: 0;
             width: 6px;
             background-image: linear-gradient(#e7e292, transparent);
+        
+            @media screen and (max-width: 767px) {
+                bottom: -8px;
+                width: 5px;
+            }
+            @media screen and (max-width: 479px) {
+                bottom: -7px;
+                width: 4px;
+            }
         }
         &--type-3 {
             bottom: -5px;
             width: 16px;
             background-image: linear-gradient(#9ee8fa, transparent);
+        
+            @media screen and (max-width: 767px) {
+                bottom: -10px;
+                width: 10px;
+            }
+            @media screen and (max-width: 479px) {
+                bottom: -12px;
+                width: 8px;
+            }
         }
         &--type-4 {
             bottom: -4px;
             width: 5px;
             background-image: linear-gradient(#8ed6f1, transparent);
+        
+            @media screen and (max-width: 767px) {
+                bottom: -10px;
+                width: 4px;
+            }
+            @media screen and (max-width: 479px) {
+                bottom: -8px;
+                width: 3px;
+            }
         }
         &--animate { transform: translateX(-50%) scale(1); }
     }
@@ -501,7 +550,7 @@ body > i {
     &:nth-last-child(2) { background-image: url(../images/bg/galaxy01.jpg); }  
     &:last-child {
         background-image: url(../images/bg/galaxy-start.jpg);
-        box-shadow: 0 100px 85px -25px #000 inset;
+        box-shadow: 0 100px 70px -25px #000 inset;
         background-size: auto;
         background-position: 25%;
     }  

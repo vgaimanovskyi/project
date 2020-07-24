@@ -147,9 +147,6 @@ const app = new Vue({
             modal: false,
             question: [],
             answer: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            time: 1500,
-            min: 0,
-            sec: 0,
             you: 0,
             achieve: false
         },
@@ -184,7 +181,6 @@ const app = new Vue({
             } else if (!this.admin) {
                 this.step = Math.floor(Math.random() * 3 + 1);;
             }
-            // this.step = Math.floor(Math.random() * 6 + 1);
             this.startFly = this.plane.score;
             this.plane.score += +this.step;
             this.endFly = this.plane.score;
@@ -192,20 +188,7 @@ const app = new Vue({
             this.fly(this.startFly);
         },
         fly(n) {
-            // console.log(n, !(n - 4) % 6);
             console.log(n);
-
-            if (window.innerHeight < 576) {
-                window.scrollTo({
-                    top: this.sectorArr[n] + 350,
-                    behavior: "smooth"
-                });
-            } else {
-                window.scrollTo({
-                    top: this.sectorArr[n],
-                    behavior: "smooth"
-                });
-            }
 
             if (this.step > 0) {
                 n++;
@@ -232,10 +215,22 @@ const app = new Vue({
                 this.startFly = n;
                 this.plane.top = this.planetArr[n - 1].top;
                 this.plane.left = this.planetArr[n - 1].left;
-
-                // console.log(this.planetArr[n - 1])
-
+                console.log("plane.top", n);
                 setTimeout(this.fly, 2000, this.startFly);
+
+                if (window.innerHeight < 576) {
+                    window.scrollTo({
+                        top: this.sectorArr[n] + 350,
+                        behavior: "smooth"
+                    });
+                    console.log("scroll");
+                } else {
+                    window.scrollTo({
+                        top: this.sectorArr[n] - 100,
+                        behavior: "smooth"
+                    });
+                    console.log("scroll", n);
+                }
             } else {
                 this.plane.fire = false;
             };
