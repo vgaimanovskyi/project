@@ -1404,6 +1404,7 @@ body > i {
         &:focus, &:hover { width: 55px; background-image: url(../images/svg/play-button.svg#play-hover); }
         &.slick-prev { left: 0px; transform: translate(-100%, -50%) rotate(180deg); }
         &.slick-next { right: 0px; transform: translate(100%, -50%); }
+        @media screen and (max-width: 575px) { background-image: url(../images/svg/play-button-mob.svg); }
     }
 }
 .panel-block {
