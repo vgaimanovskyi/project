@@ -500,6 +500,18 @@ body > i.aminate {
   background-position-x: -252px;
 }
 
+.achieves .achieve--quest17 {
+  background-position-x: -72px;
+}
+
+.achieves .achieve--quest20 {
+  background-position-x: -216px;
+}
+
+.achieves .achieve--quest21 {
+  background-position-x: -144px;
+}
+
 @media screen and (max-width: 991px) {
   .achieves .achieve {
     width: 32px;
@@ -522,6 +534,15 @@ body > i.aminate {
   }
   .achieves .achieve--quest15 {
     background-position-x: -224px;
+  }
+  .achieves .achieve--quest17 {
+    background-position-x: -64px;
+  }
+  .achieves .achieve--quest20 {
+    background-position-x: -192px;
+  }
+  .achieves .achieve--quest21 {
+    background-position-x: -128px;
   }
 }
 
@@ -547,6 +568,15 @@ body > i.aminate {
   }
   .achieves .achieve--quest15 {
     background-position-x: -140px;
+  }
+  .achieves .achieve--quest17 {
+    background-position-x: -40px;
+  }
+  .achieves .achieve--quest20 {
+    background-position-x: -120px;
+  }
+  .achieves .achieve--quest21 {
+    background-position-x: -80px;
   }
 }
 
@@ -1702,6 +1732,10 @@ body > i.aminate {
 
 .modal .body--station--death-star {
   background-image: url(../images/quests/quest17_data43.jpg);
+}
+
+.modal .body--station--tatooine {
+  background-image: url(../images/quests/quest21_data45.jpg);
 }
 
 .modal .body--station--finish {

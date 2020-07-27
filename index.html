@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Космический исследователь - образовательный проект. Это выпускная работа в рамках курса Front-End Development Beetroot Accademy.">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://kit.fontawesome.com/d223746498.js" crossorigin="anonymous"></script>
     <script src="js/replace.js"></script>
     <title>Beetroot graduation project</title>
 </head>
@@ -55,9 +57,10 @@
                         title="Золота колекція пісень Павла Зіброва"></div>
                     <div class="achieve achieve--quest15" v-if="quest15.achieve"
                         title="Метка власти древних Тёмных повелителей ситхов"></div>
-                    <!-- <div class="achieve" v-if="quest7.achieve"></div> -->
-                    <!-- <div class="achieve" v-if="quest8.achieve"></div> -->
-                    <!-- <div class="achieve" v-if="quest9.achieve"></div> -->
+                    <div class="achieve achieve--quest17" v-if="quest17.achieve" title="Камень силы со Звезды Смерти">
+                    </div>
+                    <div class="achieve achieve--quest20" v-if="quest20.achieve" title="Трофей с охоты"></div>
+                    <div class="achieve achieve--quest21" v-if="quest21.achieve" title="Сувенир из Татуина"></div>
                     <!-- <div class="achieve" v-if="quest10.achieve"></div> -->
                 </div>
             </div>
@@ -771,7 +774,7 @@
                                                 <input type="radio" value="4" v-model="quest5.question1">
                                                 #title
                                             </label>
-                                            <button class="quest-form__btn" @click="questAnswer('q4q1')">
+                                            <button class="quest-form__btn" @click="questAnswer('q5q1')">
                                                 ответить
                                             </button>
                                         </form>
@@ -800,7 +803,7 @@
                                                 <input type="radio" value="4" v-model="quest5.question2">
                                                 body { color: #fdf5e6; }
                                             </label>
-                                            <button class="quest-form__btn" @click="questAnswer('q4q2')">
+                                            <button class="quest-form__btn" @click="questAnswer('q5q2')">
                                                 ответить
                                             </button>
                                         </form>
@@ -829,7 +832,7 @@
                                                 <input type="radio" value="4" v-model="quest5.question3">
                                                 translate()
                                             </label>
-                                            <button class="quest-form__btn" @click="questAnswer('q4q3')">
+                                            <button class="quest-form__btn" @click="questAnswer('q5q3')">
                                                 ответить
                                             </button>
                                         </form>
@@ -2451,6 +2454,394 @@
                 </div> <!-- // body -->
             </div> <!-- // fild -->
         </div> <!-- // modal quest19 data-score='35' -->
+        <!-- modal quest20 data-score='13' -->
+        <div class="modal" v-show="quest20.modal">
+            <div class="fild">
+                <div class="body">
+                    <div class="panel-block">
+                        <div class="panel-block__col panel-block__col--photo">
+                            <img src="images/quests/quest1-1_data3.jpg" alt="quest20-1"
+                                class="panel__photo panel__photo--show">
+                            <img src="images/quests/quest20-2_data13.jpg" alt="quest20-2" class="panel__photo">
+                            <img src="images/quests/quest20-3_data13.jpg" alt="quest20-3" class="panel__photo">
+                            <img src="images/quests/quest20-4_data13.jpg" alt="quest20-4" class="panel__photo">
+                        </div>
+                        <div class="panel-block__col">
+                            <div class="panel">
+                                <div class="panel-carousel">
+                                    <div class="panel-carousel__block">
+                                        <div class="panel__text">
+                                            <p>
+                                                Вы уже {{stepCount}} ход в пути. От еды в тюбиках Вас уже тошнит.
+                                            </p>
+                                            <p>
+                                                Рядом есть обитаемая планета, где можно неплохо поохотиться и потом
+                                                устроить барбекю.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="panel-carousel__block">
+                                        <div class="panel__text">
+                                            <p>
+                                                Вы приземлились, выбрали место, в трюме корабля нашли новенькие, еще не
+                                                распакованные селки.
+                                            </p>
+                                            <p>
+                                                Охотник с Вас так себе, но, к счастью, тут есть инструкция. Немного
+                                                поработав головой, должно все получиться.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="panel-carousel__block">
+                                        <div class="panel__text">
+                                            <p class="important">Инструкция:</p>
+                                            <p>Ловушка должна быть круглой, радиус круга 25рх и красного цвета.</p>
+                                            <p>Отдельно, каркас ловушки должнен быть двойной, черного цвета и толщиной
+                                                3рх.</p>
+                                            <p>Горизонтально ловушка должны быть по центру области.</p>
+                                        </div>
+                                    </div>
+                                    <div class="panel-carousel__block">
+                                        <div class="panel__text">
+                                            <form class="quest-form" onsubmit="return false">
+                                                <label>
+                                                    <code>
+                                                        .box {<br>
+                                                            background-color: <input type="text" v-model="quest20.question1" :disabled="quest20.answer1 === quest20.question1" style="width: 100px;">;<br>
+                                                            width: <input type="text" v-model="quest20.question2" :disabled="quest20.answer2 === quest20.question2" style="width: 100px;">px;<br>
+                                                            height: <input type="text" v-model="quest20.question3" :disabled="quest20.answer3 === quest20.question3" style="width: 100px;">px;<br>
+                                                            margin: <input type="text" v-model="quest20.question4" :disabled="quest20.answer4 === quest20.question4" style="width: 100px;">px;<br>
+                                                            border: <input type="text" v-model="quest20.question5" :disabled="quest20.answer5 === quest20.question5" style="width: 100px;">px;<br>
+                                                            border-radius: <input type="text" v-model="quest20.question6" :disabled="quest20.answer6 === quest20.question6" style="width: 100px;">;<br>
+                                                        }
+                                                    </code>
+                                                </label>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div> <!-- // panel-carousel -->
+                            </div>
+                            <div class="panel panel--down">
+                                <button class="panel__btn" @click="quest20.modal = false;" :disabled="quest20.answer1 === quest20.question1 
+                                    && quest20.answer2 === quest20.question2 
+                                    && quest20.answer3 === quest20.question3 
+                                    && quest20.answer4 === quest20.question4 
+                                    && quest20.answer5 === quest20.question5 
+                                    && quest20.answer6 === quest20.question6">Ну его!</button>
+                                <button class="panel__btn"
+                                    @click="quest20.modal = false; quest20.achieve = true; plane.life += 1" v-if="quest20.answer1 === quest20.question1 
+                                    && quest20.answer2 === quest20.question2 
+                                    && quest20.answer3 === quest20.question3 
+                                    && quest20.answer4 === quest20.question4 
+                                    && quest20.answer5 === quest20.question5 
+                                    && quest20.answer6 === quest20.question6">Выполнено!</button>
+                            </div>
+                        </div>
+                    </div> <!-- // panel-block -->
+                </div> <!-- // body -->
+            </div> <!-- // fild -->
+        </div> <!-- // modal quest20 data-score='13' -->
+        <!-- modal quest21 data-score='45' -->
+        <div class="modal" v-show="quest21.modal">
+            <div class="fild">
+                <div class="body body--station body--station--tatooine">
+                    <div class="station-block">
+                        <div class="panel panel--border">
+                            <div class="panel-carousel">
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>
+                                            Вы приземлились на планету Татуин. Она находится на пересечении многих
+                                            гиперпространственных маршрутов. </p>
+                                        <p>
+                                            Далёкий от бдительных глаз Империи, Татуин стал пристанищем для различного
+                                            рода авантюристов — контрабандистов, наёмников и охотников за головами.
+                                        </p>
+                                        <p>
+                                            Вам необходимо пополнить запасы продовольства и подготовить корабль.
+                                        </p>
+                                        <p>
+                                            При общении с местными нужно вести себя естественно и не привлекать лишнего
+                                            внимания.
+                                        </p>
+                                        <p>
+                                            Если четверть опрошенных что-то заподозрит - будет туго!
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Choose the most appropriate option.</p>
+                                        <ol class="panel__list">
+                                            <li>
+                                                <div class="list-question">
+                                                    Wreckage from the plane was scattered ...... a wide area.
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest21.question[0]">over</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest21.question[0]">from</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest21.question[0]">on</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest21.question[0]">at</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    He makes reading-lamps ...... old wine bottles.
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest21.question[1]">with</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest21.question[1]">by</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest21.question[1]">out of</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest21.question[1]">of</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    He began his career twenty years ago ...... a doctor.
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest21.question[2]">like</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest21.question[2]">as</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest21.question[2]">of</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest21.question[2]">such as</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    She sighed ...... relief.
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest21.question[3]">with</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest21.question[3]">on</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest21.question[3]">of</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest21.question[3]">at</label>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Choose the most appropriate option.</p>
+                                        <ol class="panel__list" start="5">
+                                            <li>
+                                                <div class="list-question">
+                                                    The chairman is opposed ...... giving the affair any publicity.
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest21.question[4]">to</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest21.question[4]">at</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest21.question[4]">by</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest21.question[4]">with</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    He shared his property ...... his daughter and his sister.
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest21.question[5]">among</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest21.question[5]">between</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest21.question[5]">amongst</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest21.question[5]">within</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    She was standing laughing ...... a crowd of fans.
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest21.question[6]">among</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest21.question[6]">between</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest21.question[6]">within</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest21.question[6]">next to</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    She got married ...... her childhood sweetheart.
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest21.question[7]">__</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest21.question[7]">with</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest21.question[7]">at</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest21.question[7]">to</label>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Choose the most appropriate option.</p>
+                                        <ol class="panel__list" start="9">
+                                            <li>
+                                                <div class="list-question">
+                                                    I dreamt ...... you last night.
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest21.question[8]">with</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest21.question[8]">of</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest21.question[8]">about</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest21.question[8]">for</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    Sometimes I dream ...... running away to a farm.
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest21.question[9]">__</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest21.question[9]">about</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest21.question[9]">of</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest21.question[9]">on</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    She always dresses ...... green.
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest21.question[10]">on</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest21.question[10]">in</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest21.question[10]">of</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest21.question[10]">__</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    When I entered ...... the room everybody was speaking loudly.
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest21.question[11]">__</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest21.question[11]">into</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest21.question[11]">to</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest21.question[11]">in</label>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text">
+                                        <p>Choose the most appropriate option.</p>
+                                        <ol class="panel__list" start="13">
+                                            <li>
+                                                <div class="list-question">
+                                                    Let’s go ...... skiing next weekend.
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest21.question[12]">for</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest21.question[12]">to</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest21.question[12]">__</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest21.question[12]">into</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    This is the solution ...... all problems.
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest21.question[13]">of</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest21.question[13]">by</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest21.question[13]">with</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest21.question[13]">to</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    The country is rich ...... natural resources.
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest21.question[14]">for</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest21.question[14]">by</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest21.question[14]">with</label>
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest21.question[14]">in</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-question">
+                                                    You can borrow my dictionary, but I must have it back ...... Monday.
+                                                    <label><input type="radio" value="1"
+                                                            v-model="quest21.question[15]">by</label>
+                                                    <label><input type="radio" value="2"
+                                                            v-model="quest21.question[15]">until</label>
+                                                    <label><input type="radio" value="3"
+                                                            v-model="quest21.question[15]">till</label>
+                                                    <label><input type="radio" value="4"
+                                                            v-model="quest21.question[15]">to</label>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="panel-carousel__block">
+                                    <div class="panel__text" v-if="quest21.answer.length != quest21.question.length">
+                                        <p>Вы не готовы отправляться.</p>
+                                        <p>Еще остались вопросы без ответов.</p>
+                                    </div>
+                                    <div class="panel__text" v-else>
+                                        <p>Все сделано.</p>
+                                        <p>Готовы отправляться?</p>
+                                        <button class="quest-form__btn" @click.once="questAnswer('quest21')"
+                                            v-show="quest21.you === 0">
+                                            Да.
+                                        </button>
+                                        <p v-if="quest21.you > 0 && 12 > quest21.you">
+                                            Ваш результат {{quest21.you}}/{{quest21.answer.length}}<br>
+                                            Вы привлекли к себе излишнее внимание местных бандюганов! Бросайте все и
+                                            сматывайтесь!
+                                        </p>
+                                        <p v-else-if="quest21.you >= 12">
+                                            Ваш результат {{quest21.you}}/{{quest21.answer.length}}<br>
+                                            Вы не вызвали излишних подозрений и даже купили сувенирчик на память.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div> <!-- // panel-carousel -->
+                        </div>
+                        <div class="panel panel--down panel--border">
+                            <button class="panel__btn" @click="quest21.modal = false; plane.life += -2"
+                                :disabled="quest21.you >= 12">
+                                Бежать отсюда!</button>
+                            <button class="panel__btn" @click="quest21.modal = false; quest21.achieve = true"
+                                v-if="quest21.you >= 12">
+                                полетели</button>
+                        </div>
+                    </div> <!-- // station-block -->
+                </div> <!-- // body -->
+            </div> <!-- // fild -->
+        </div> <!-- // modal quest21 data-score='45' -->
 
         <!-- modal questFinal data-score='46' -->
         <div class="modal" v-if="questFinish.modal">

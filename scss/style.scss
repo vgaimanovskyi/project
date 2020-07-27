@@ -269,9 +269,9 @@ body > i {
         &--quest10 { background-position-x: -108px; }
         &--quest13 { background-position-x: -288px; }
         &--quest15 { background-position-x: -252px; }
-        // &:nth-child(7) { background-position-x: -216px; }
-        // &:nth-child(8) { background-position-x: -72px; }
-        // &:nth-child(9) { background-position-x: -144px; }
+        &--quest17 { background-position-x: -72px; }
+        &--quest20 { background-position-x: -216px; }
+        &--quest21 { background-position-x: -144px; }
         // &:last-child { background-position-x: -324px; }
 
         @media screen and (max-width: 991px) {
@@ -284,9 +284,9 @@ body > i {
             &--quest10 { background-position-x: -96px; }
             &--quest13 { background-position-x: -256px; }
             &--quest15 { background-position-x: -224px; }
-            // &:nth-child(7) { background-position-x: -192px; }
-            // &:nth-child(8) { background-position-x: -64px; }
-            // &:nth-child(9) { background-position-x: -128px; }
+            &--quest17 { background-position-x: -64px; }
+            &--quest20 { background-position-x: -192px; }
+            &--quest21 { background-position-x: -128px; }
             // &:last-child { background-position-x: -288px; }
         }
         @media screen and (max-width: 767px) {
@@ -299,9 +299,9 @@ body > i {
             &--quest10 { background-position-x: -60px; }
             &--quest13 { background-position-x: -160px; }
             &--quest15 { background-position-x: -140px; }
-            // &:nth-child(7) { background-position-x: -120px; }
-            // &:nth-child(8) { background-position-x: -40px; }
-            // &:nth-child(9) { background-position-x: -80px; }
+            &--quest17 { background-position-x: -40px; }
+            &--quest20 { background-position-x: -120px; }
+            &--quest21 { background-position-x: -80px; }
             // &:last-child { background-position-x: -180px; }
         }
     }
@@ -546,7 +546,6 @@ body > i {
         background-image: url(../images/bg/galaxy-finish.jpg);
         
         @media screen and (max-width: 479px) { background-position: 25%; }
-        
     }  
     &--bg-5 { background-image: url(../images/bg/galaxy05.jpg); }  
     &--bg-4 { background-image: url(../images/bg/galaxy04.jpg); }  
@@ -1163,6 +1162,7 @@ body > i {
                 background-position: 70% bottom;
             }
             &--death-star { background-image: url(../images/quests/quest17_data43.jpg); }
+            &--tatooine { background-image: url(../images/quests/quest21_data45.jpg); }   
             &--finish { background-image: url(../images/quests/questFinish_data46.jpg); }
             @media screen and (max-width: 767px) {
                 background-image: none;
@@ -1404,7 +1404,6 @@ body > i {
         &:focus, &:hover { width: 55px; background-image: url(../images/svg/play-button.svg#play-hover); }
         &.slick-prev { left: 0px; transform: translate(-100%, -50%) rotate(180deg); }
         &.slick-next { right: 0px; transform: translate(100%, -50%); }
-        @media screen and (max-width: 575px) { background-image: url(../images/svg/play-button-mob.svg); }
     }
 }
 .panel-block {

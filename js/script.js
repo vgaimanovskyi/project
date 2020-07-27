@@ -156,6 +156,29 @@ const app = new Vue({
         quest19: {
             modal: false,
         },
+        quest20: {
+            modal: false,
+            question1: "",
+            answer1: "red",
+            question2: "",
+            answer2: "50",
+            question3: "",
+            answer3: "50",
+            question4: "",
+            answer4: "0 auto",
+            question5: "",
+            answer5: "3px double black",
+            question6: "",
+            answer6: "50%",
+            achieve: false
+        },
+        quest21: {
+            modal: false,
+            question: [],
+            answer: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            you: 0,
+            achieve: false
+        },
         questFinish: {
             modal: false,
         }
@@ -193,7 +216,7 @@ const app = new Vue({
             if (this.step > 0) {
                 n++;
             }
-            if (n <= this.endFly) {
+            if (n <= this.endFly && this.step != 0) {
 
                 if (n === 1 && this.endFly === 1 || !((n - 1) % 6)) {
                     // n === 1 || n === 7 || n === 13 || n === 19 || n === 25 || n === 31 || n === 37 || n === 43
@@ -286,6 +309,10 @@ const app = new Vue({
                 this.openModal("quest18");
             } else if (this.endFly === 35 && this.plane.left === this.planetArr[34].left && this.plane.top === this.planetArr[34].top) {
                 this.openModal("quest19");
+            } else if (this.endFly === 13 && this.plane.left === this.planetArr[12].left && this.plane.top === this.planetArr[12].top) {
+                this.openModal("quest20");
+            } else if (this.endFly === 45 && this.plane.left === this.planetArr[44].left && this.plane.top === this.planetArr[44].top) {
+                this.openModal("quest21");
             } else if (this.plane.left === this.planetArr[45].left && this.plane.top === this.planetArr[45].top) {
                 this.openModal("questFinish");
             }
@@ -353,18 +380,24 @@ const app = new Vue({
                 this.quest18.modal = true;
             } else if (q === "quest19") {
                 this.quest19.modal = true;
+            } else if (q === "quest20") {
+                this.quest20.modal = true;
+                $(".panel-carousel").slick("setPosition");
+            } else if (q === "quest21") {
+                this.quest21.modal = true;
+                $(".panel-carousel").slick("setPosition");
             } else if (q === "questFinish") {
                 this.questFinish.modal = true;
             }
         },
         questAnswer(q) {
-            if (q === "q4q1") {
+            if (q === "q5q1") {
                 this.quest5.you += this.quest5.question1;
                 this.quest5.answer1 = true;
-            } else if (q === "q4q2") {
+            } else if (q === "q5q2") {
                 this.quest5.you += this.quest5.question2;
                 this.quest5.answer2 = true;
-            } else if (q === "q4q3") {
+            } else if (q === "q5q3") {
                 this.quest5.you += this.quest5.question3;
                 this.quest5.answer3 = true;
             } else if (q === "q9q1") {
@@ -392,6 +425,12 @@ const app = new Vue({
                 for (let i = 0; i <= this.quest17.question.length - 1; i++) {
                     if (this.quest17.question[i] == this.quest17.answer[i]) {
                         this.quest17.you++;
+                    }
+                }
+            } else if (q === "quest21") {
+                for (let i = 0; i <= this.quest21.question.length - 1; i++) {
+                    if (this.quest21.question[i] == this.quest21.answer[i]) {
+                        this.quest21.you++;
                     }
                 }
             }
