@@ -1,8 +1,3 @@
-/* window.scrollTo({
-top: document.body.scrollHeight,
-behavior: "smooth"
-}); */
-
 const planetArr = [];
 const sectorArr = [];
 const planets = document.getElementsByClassName("planet-block");
@@ -20,8 +15,7 @@ for (let planet of planets) {
 for (let s of sector) {
     sectorArr.unshift(pageYOffset + s.getBoundingClientRect().top - s.getBoundingClientRect().height);
 }
-console.log("sectorArr", sectorArr);
-// console.log("sectorArr", sectorArr[10], "plane.top", sectorArr[0] + 800);
+// console.log("sectorArr", sectorArr);
 
 const app = new Vue({
     el: '#app',
@@ -36,7 +30,7 @@ const app = new Vue({
         plane: {
             path: "",
             type: 0,
-            life: 5,
+            life: 3,
             score: 0,
             top: sectorArr[0] + 800,
             left: 100,
@@ -179,6 +173,20 @@ const app = new Vue({
             you: 0,
             achieve: false
         },
+        quest22: {
+            modal: false,
+        },
+        quest23: {
+            modal: false,
+            question1: "",
+            answer1: "flex-end",
+            question2: "",
+            answer2: "center",
+            achieve: false
+        },
+        quest24: {
+            modal: false,
+        },
         questFinish: {
             modal: false,
         }
@@ -197,10 +205,10 @@ const app = new Vue({
             this.stepCount++;
             this.plane.fire = true;
             this.plane.start = false;
-            if (this.endFly === 10 || this.endFly === 22 || this.endFly === 33) {
+            if (this.endFly === 1 || this.endFly === 10 || this.endFly === 22 || this.endFly === 33 || this.endFly === 42) {
                 this.step = 1;
             } else if (this.endFly === 28) {
-                this.step = 4;
+                this.step = 2;
             } else if (!this.admin) {
                 this.step = Math.floor(Math.random() * 3 + 1);;
             }
@@ -211,7 +219,7 @@ const app = new Vue({
             this.fly(this.startFly);
         },
         fly(n) {
-            console.log(n);
+            // console.log(n);
 
             if (this.step > 0) {
                 n++;
@@ -220,25 +228,22 @@ const app = new Vue({
 
                 if (n === 1 && this.endFly === 1 || !((n - 1) % 6)) {
                     // n === 1 || n === 7 || n === 13 || n === 19 || n === 25 || n === 31 || n === 37 || n === 43
-                    console.log(n);
                     this.plane.rotate = true;
                     this.plane.reverse = false;
                 } else if (n === 4 || !((n - 4) % 6)) {
                     // n === 4 || n === 10 || n === 16 || n === 22 || n === 28 || n === 34 || n === 40 || n === 46
-                    console.log(n);
                     this.plane.reverse = true;
                     this.plane.rotate = false;
                 } else if (!(n % 3)) {
                     // n === 3 || n === 6 || n === 9 || n === 12 || n === 15 || n === 18 || n === 21 || n === 24 || n === 27 || n === 30 || n === 33 || n === 36 || n === 39 || n === 42 || n === 45
                     this.plane.reverse = false;
                     this.plane.rotate = false;
-                    // console.log(n);
                 }
 
                 this.startFly = n;
                 this.plane.top = this.planetArr[n - 1].top;
                 this.plane.left = this.planetArr[n - 1].left;
-                console.log("plane.top", n);
+
                 setTimeout(this.fly, 2000, this.startFly);
 
                 if (window.innerWidth < 479) {
@@ -313,12 +318,17 @@ const app = new Vue({
                 this.openModal("quest20");
             } else if (this.endFly === 45 && this.plane.left === this.planetArr[44].left && this.plane.top === this.planetArr[44].top) {
                 this.openModal("quest21");
+            } else if (this.endFly === 1 && this.plane.left === this.planetArr[0].left && this.plane.top === this.planetArr[0].top) {
+                this.openModal("quest22");
+            } else if (this.endFly === 21 && this.plane.left === this.planetArr[20].left && this.plane.top === this.planetArr[20].top) {
+                this.openModal("quest23");
+            } else if (this.endFly === 42 && this.plane.left === this.planetArr[41].left && this.plane.top === this.planetArr[41].top) {
+                this.openModal("quest24");
             } else if (this.plane.left === this.planetArr[45].left && this.plane.top === this.planetArr[45].top) {
                 this.openModal("questFinish");
             }
         },
         changeStep(s) {
-            // alert("На один ход назад");
             this.step = s;
             if (s < 0) {
                 this.endFly = this.plane.score;
@@ -329,8 +339,6 @@ const app = new Vue({
                 this.plane.score += this.step;
                 this.endFly = this.plane.score;
             }
-
-            // console.log("startFly", this.startFly, "endFly", this.endFly);
 
             this.fly(this.startFly);
             this.step = 0;
@@ -386,6 +394,13 @@ const app = new Vue({
             } else if (q === "quest21") {
                 this.quest21.modal = true;
                 $(".panel-carousel").slick("setPosition");
+            } else if (q === "quest22") {
+                this.quest22.modal = true;
+            } else if (q === "quest23") {
+                this.quest23.modal = true;
+                $(".panel-carousel").slick("setPosition");
+            } else if (q === "quest24") {
+                this.quest24.modal = true;
             } else if (q === "questFinish") {
                 this.questFinish.modal = true;
             }

@@ -50,18 +50,20 @@
                     <div class="achieve achieve--quest1" v-if="quest1.achieve" title="Автограф Эйлома Шаска"></div>
                     <div class="achieve achieve--quest5" v-if="quest5.achieve" title="Медаль от феянина Валеры">
                     </div>
-                    <div class="achieve achieve--quest9" v-if="quest9.achieve" title="Тест по js"></div>
-                    <div class="achieve achieve--quest10" v-if="quest10.achieve" title="Брелок от Тентель-Вентеля">
-                    </div>
-                    <div class="achieve achieve--quest13" v-if="quest13.achieve"
-                        title="Золота колекція пісень Павла Зіброва"></div>
-                    <div class="achieve achieve--quest15" v-if="quest15.achieve"
-                        title="Метка власти древних Тёмных повелителей ситхов"></div>
-                    <div class="achieve achieve--quest17" v-if="quest17.achieve" title="Камень силы со Звезды Смерти">
-                    </div>
                     <div class="achieve achieve--quest20" v-if="quest20.achieve" title="Трофей с охоты"></div>
-                    <div class="achieve achieve--quest21" v-if="quest21.achieve" title="Сувенир из Татуина"></div>
-                    <!-- <div class="achieve" v-if="quest10.achieve"></div> -->
+                    <div class="achieve achieve--quest23" v-if="quest23.achieve" title="За крутой пилотаж">
+                        <div class="achieve achieve--quest9" v-if="quest9.achieve" title="Тест по js"></div>
+                        <div class="achieve achieve--quest10" v-if="quest10.achieve" title="Брелок от Тентель-Вентеля">
+                        </div>
+                        <div class="achieve achieve--quest13" v-if="quest13.achieve"
+                            title="Золота колекція пісень Павла Зіброва"></div>
+                        <div class="achieve achieve--quest15" v-if="quest15.achieve"
+                            title="Метка власти древних Тёмных повелителей ситхов"></div>
+                        <div class="achieve achieve--quest17" v-if="quest17.achieve"
+                            title="Камень силы со Звезды Смерти">
+                        </div>
+                        <div class="achieve achieve--quest21" v-if="quest21.achieve" title="Сувенир из Татуина"></div>
+                    </div>
                 </div>
             </div>
             <div class="menu__block menu__block--hamburger">
@@ -126,7 +128,7 @@
                     <div class="fild-row">
                         <div class="sector">
                             <div class="planet-block" data-score="42">
-                                <div class="planet" :class="{'planet--animate': sectorArr[27] > (plane.top - 800) }">
+                                <div class="planet">
                                 </div>
                             </div>
                         </div>
@@ -138,7 +140,7 @@
                         </div>
                         <div class="sector">
                             <div class="planet-block" data-score="40">
-                                <div class="planet" :class="{'planet--animate': sectorArr[27] > (plane.top - 800) }">
+                                <div class="planet">
                                 </div>
                             </div>
                         </div>
@@ -725,7 +727,7 @@
                     </div> <!-- // panel-block -->
                 </div> <!-- // body -->
             </div> <!-- // fild -->
-        </div> <!-- // modal quest4 data-score='10' || quest8 data-score='22' || quest12 data-score='31' -->
+        </div> <!-- // modal quest4 data-score='10' || quest8 data-score='22' -->
         <!-- modal quest5 data-score='12' -->
         <div class="modal" v-show="quest5.modal">
             <div class="fild">
@@ -1202,7 +1204,7 @@
                                     <p>Это был радар. Потрепаный жизнью, но может быть полезным.</p>
                                     <p>Подключив его, перед Вами открылась звездная карта этой галактики.</p>
                                     <p>Хорошая находка!</p>
-                                    <p>Следующий прыжок будет максимальным.</p>
+                                    <p>Следующий прыжок будет на две секции.</p>
                                     <p>Погнали!</p>
                                 </div>
                             </div>
@@ -1575,8 +1577,7 @@
                                             <li>
                                                 <div class="list-question">
                                                     Would you mind ...... these plates a wipe before putting them in
-                                                    the
-                                                    cupboard?
+                                                    the cupboard?
                                                     <label><input type="radio" value="4"
                                                             v-model="quest15.question[10]">making</label>
                                                     <label><input type="radio" value="3"
@@ -1693,8 +1694,7 @@
                                             <li>
                                                 <div class="list-question">
                                                     Once the plane is in the air, you can ...... your seat belts if
-                                                    you
-                                                    wish.
+                                                    you wish.
                                                     <label><input type="radio" value="2"
                                                             v-model="quest15.question[17]">undress</label>
                                                     <label><input type="radio" value="1"
@@ -2522,7 +2522,7 @@
                                 </div> <!-- // panel-carousel -->
                             </div>
                             <div class="panel panel--down">
-                                <button class="panel__btn" @click="quest20.modal = false;" :disabled="quest20.answer1 === quest20.question1 
+                                <button class="panel__btn" @click="quest20.modal = false; plane.life += -1" :disabled="quest20.answer1 === quest20.question1 
                                     && quest20.answer2 === quest20.question2 
                                     && quest20.answer3 === quest20.question3 
                                     && quest20.answer4 === quest20.question4 
@@ -2842,6 +2842,130 @@
                 </div> <!-- // body -->
             </div> <!-- // fild -->
         </div> <!-- // modal quest21 data-score='45' -->
+        <!-- modal quest22 data-score='1' -->
+        <div class="modal" v-if="quest22.modal">
+            <div class="fild">
+                <div class="body">
+                    <div class="panel-block">
+                        <div class="panel-block__col panel-block__col--photo">
+                            <img src="images/quests/quest22_data1.jpg" alt="Mercury"
+                                class="panel__photo panel__photo--show">
+                        </div>
+                        <div class="panel-block__col">
+                            <div class="panel">
+                                <div class="panel__alert">внимание!</div>
+                                <div class="panel__text">
+                                    <p>
+                                        Вы только в начале своего космического пути.
+                                    </p>
+                                    <p>
+                                        Вы сбросили скорость на минимум, чтоб насладиться всей красотой космоса.
+                                    </p>
+                                    <p>
+                                        Следующий скачек будет только на одну секцию.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="panel panel--down">
+                                <button class="panel__btn" @click="quest22.modal = false;">продолжить</button>
+                            </div>
+                        </div>
+                    </div> <!-- // panel-block -->
+                </div> <!-- // body -->
+            </div> <!-- // fild -->
+        </div> <!-- // modal quest22 data-score='1' -->
+        <!-- modal quest23 data-score='21' -->
+        <div class="modal" v-show="quest23.modal">
+            <div class="fild">
+                <div class="body">
+                    <div class="panel-block">
+                        <div class="panel-block__col panel-block__col--photo">
+                            <img src="images/quests/quest23-1_data21.jpg" alt="quest23-1"
+                                class="panel__photo panel__photo--show">
+                            <img src="images/quests/quest23-2_data21.jpg" alt="quest23-2" class="panel__photo">
+                        </div>
+                        <div class="panel-block__col">
+                            <div class="panel">
+                                <div class="panel-carousel">
+                                    <div class="panel-carousel__block">
+                                        <div class="panel__text">
+                                            <p>
+                                                Это еще одна интересная и уникальная планета на Вашем пути.
+                                            </p>
+                                            <p>
+                                                Погодные условия на ней сейчас не очень благоприятные, потому посадку
+                                                придется проводить вручную.
+                                            </p>
+                                            <p>
+                                                Без сомнений у Вас это не вызовет никаких сложностей.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="panel-carousel__block">
+                                        <div class="panel__text">
+                                            <p>Ваша посадочная зона №6, справа по-центру.</p>
+                                            <form class="quest-form" onsubmit="return false" style="margin: 0px;">
+                                                <label>
+                                                    <code>
+                                                        .zone {<br>
+                                                            ...<br>
+                                                            display: flex;<br>
+                                                            flex-direction: row;<br>
+                                                            justify-content: <input type="text" v-model="quest23.question1" :disabled="quest23.answer1 === quest23.question1" style="width: 80px;">;<br>
+                                                        }<br>
+                                                        .spaceship {<br>
+                                                            ...<br>
+                                                            align-self: <input type="text" v-model="quest23.question2" :disabled="quest23.answer2 === quest23.question2" style="width: 80px;">;<br>
+                                                        }
+                                                    </code>
+                                                </label>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div> <!-- // panel-carousel -->
+                            </div>
+                            <div class="panel panel--down">
+                                <button class="panel__btn" @click="quest23.modal = false; plane.life += -1"
+                                    :disabled="quest23.answer1 === quest23.question1 && quest23.answer2 === quest23.question2">
+                                    Ну его!</button>
+                                <button class="panel__btn" @click="quest23.modal = false; quest23.achieve = true;"
+                                    v-if="quest23.answer1 === quest23.question1 && quest23.answer2 === quest23.question2">успешно!</button>
+                            </div>
+                        </div>
+                    </div> <!-- // panel-block -->
+                </div> <!-- // body -->
+            </div> <!-- // fild -->
+        </div> <!-- // modal quest23 data-score='21' -->
+        <!-- modal quest24 data-score='42'  -->
+        <div class="modal" v-if="quest24.modal">
+            <div class="fild">
+                <div class="body">
+                    <div class="panel-block">
+                        <div class="panel-block__col panel-block__col--photo">
+                            <img src="images/map/data42.gif" alt="black hole" class="panel__photo panel__photo--show">
+                        </div>
+                        <div class="panel-block__col">
+                            <div class="panel">
+                                <div class="panel__alert">опасность!</div>
+                                <div class="panel__text">
+                                    <p>
+                                        Вы попали в зону влияния черной дыры!
+                                    </p>
+                                    <p>
+                                        Чтобы вырваться из нее понадобится максимальная мощность. </p>
+                                    <p>
+                                        Следующий скачек будет только на одну секцию.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="panel panel--down">
+                                <button class="panel__btn" @click="quest24.modal = false;">продолжить</button>
+                            </div>
+                        </div>
+                    </div> <!-- // panel-block -->
+                </div> <!-- // body -->
+            </div> <!-- // fild -->
+        </div> <!-- // modal quest24 data-score='42' -->
 
         <!-- modal questFinal data-score='46' -->
         <div class="modal" v-if="questFinish.modal">

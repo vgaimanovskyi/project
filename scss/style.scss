@@ -161,7 +161,7 @@ body > i {
     .life {
         width: 25px;
         height: 25px;
-        background-image: url(../images/rocket.svg);
+        background-image: url(../images/svg/rocket.svg);
 
         @media screen and (max-width: 991px) {
             width: 22px;
@@ -214,7 +214,7 @@ body > i {
         
         @media screen and (max-width: 991px) { width: 100px; }
         @media screen and (max-width: 479px) { width: 75px; }
-        &:disabled {  border-color: red; }
+        &:disabled { border-color: red; }
     }
 }
 .hamburger {
@@ -272,7 +272,7 @@ body > i {
         &--quest17 { background-position-x: -72px; }
         &--quest20 { background-position-x: -216px; }
         &--quest21 { background-position-x: -144px; }
-        // &:last-child { background-position-x: -324px; }
+        &--quest23 { background-position-x: -324px; }
 
         @media screen and (max-width: 991px) {
             width: 32px;
@@ -287,7 +287,7 @@ body > i {
             &--quest17 { background-position-x: -64px; }
             &--quest20 { background-position-x: -192px; }
             &--quest21 { background-position-x: -128px; }
-            // &:last-child { background-position-x: -288px; }
+            &--quest23 { background-position-x: -288px; }
         }
         @media screen and (max-width: 767px) {
             width: 20px;
@@ -302,7 +302,7 @@ body > i {
             &--quest17 { background-position-x: -40px; }
             &--quest20 { background-position-x: -120px; }
             &--quest21 { background-position-x: -80px; }
-            // &:last-child { background-position-x: -180px; }
+            &--quest23 { background-position-x: -180px; }
         }
     }
 }
@@ -565,18 +565,13 @@ body > i {
     flex-direction: row;
     flex-wrap: wrap;   
 
-    &--reverse {
-        flex-direction: row-reverse;
-        // background-color: #ccc;
-    }
+    &--reverse { flex-direction: row-reverse; }
     
 }
 .sector {
     flex-grow: 1;
-    // width: 400px;
     width: 33.33333%;
     height: 400px;
-    // border: 1px solid black;
     box-sizing: border-box;
     text-align: center;
     position: relative;
@@ -1060,8 +1055,9 @@ body > i {
     }
     &[data-score='42'] {
         & .planet {
-            background-image: url(../images/map/data42.jpg);
+            background-image: url(../images/map/data42.gif);
             transform: scale(0.7);
+            background-position: center;
         }   
     }
     &[data-score='43'] {

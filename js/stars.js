@@ -28,7 +28,7 @@ function stars() {
         body.appendChild(star);
         i++;
     }
-}
+};
 if (document.body.clientWidth >= 1250) {
     stars();
-}
+};

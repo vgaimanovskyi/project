@@ -311,7 +311,7 @@ body > i.aminate {
 .lives .life {
   width: 25px;
   height: 25px;
-  background-image: url(../images/rocket.svg);
+  background-image: url(../images/svg/rocket.svg);
 }
 
 @media screen and (max-width: 991px) {
@@ -512,6 +512,10 @@ body > i.aminate {
   background-position-x: -144px;
 }
 
+.achieves .achieve--quest23 {
+  background-position-x: -324px;
+}
+
 @media screen and (max-width: 991px) {
   .achieves .achieve {
     width: 32px;
@@ -543,6 +547,9 @@ body > i.aminate {
   }
   .achieves .achieve--quest21 {
     background-position-x: -128px;
+  }
+  .achieves .achieve--quest23 {
+    background-position-x: -288px;
   }
 }
 
@@ -577,6 +584,9 @@ body > i.aminate {
   }
   .achieves .achieve--quest21 {
     background-position-x: -80px;
+  }
+  .achieves .achieve--quest23 {
+    background-position-x: -180px;
   }
 }
 
@@ -1585,9 +1595,10 @@ body > i.aminate {
 }
 
 .planet-block[data-score='42'] .planet {
-  background-image: url(../images/map/data42.jpg);
+  background-image: url(../images/map/data42.gif);
   -webkit-transform: scale(0.7);
           transform: scale(0.7);
+  background-position: center;
 }
 
 .planet-block[data-score='43'] .planet {
