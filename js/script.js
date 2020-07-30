@@ -269,7 +269,6 @@ const app = new Vue({
                         top: this.sectorArr[n],
                         behavior: "smooth"
                     });
-                    console.log("scroll", n);
                 }
             } else {
                 this.plane.fire = false;

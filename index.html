@@ -47,22 +47,25 @@
             </div>
             <div class="menu__block menu__block--achieves">
                 <div class="achieves">
-                    <div class="achieve achieve--quest1" v-if="quest1.achieve" title="Автограф Эйлома Шаска"></div>
+                    <div class="achieve achieve--quest1" v-if="quest1.achieve" title="Автограф Эйлома Шаска">
+                    </div>
                     <div class="achieve achieve--quest5" v-if="quest5.achieve" title="Медаль от феянина Валеры">
                     </div>
-                    <div class="achieve achieve--quest20" v-if="quest20.achieve" title="Трофей с охоты"></div>
+                    <div class="achieve achieve--quest20" v-if="quest20.achieve" title="Трофей с охоты">
+                    </div>
                     <div class="achieve achieve--quest23" v-if="quest23.achieve" title="За крутой пилотаж">
-                        <div class="achieve achieve--quest9" v-if="quest9.achieve" title="Тест по js"></div>
-                        <div class="achieve achieve--quest10" v-if="quest10.achieve" title="Брелок от Тентель-Вентеля">
-                        </div>
-                        <div class="achieve achieve--quest13" v-if="quest13.achieve"
-                            title="Золота колекція пісень Павла Зіброва"></div>
-                        <div class="achieve achieve--quest15" v-if="quest15.achieve"
-                            title="Метка власти древних Тёмных повелителей ситхов"></div>
-                        <div class="achieve achieve--quest17" v-if="quest17.achieve"
-                            title="Камень силы со Звезды Смерти">
-                        </div>
-                        <div class="achieve achieve--quest21" v-if="quest21.achieve" title="Сувенир из Татуина"></div>
+                    </div>
+                    <div class="achieve achieve--quest9" v-if="quest9.achieve" title="Тест по js">
+                    </div>
+                    <div class="achieve achieve--quest10" v-if="quest10.achieve" title="Брелок от Тентель-Вентеля">
+                    </div>
+                    <div class="achieve achieve--quest13" v-if="quest13.achieve"
+                        title="Золота колекція пісень Павла Зіброва"></div>
+                    <div class="achieve achieve--quest15" v-if="quest15.achieve"
+                        title="Метка власти древних Тёмных повелителей ситхов"></div>
+                    <div class="achieve achieve--quest17" v-if="quest17.achieve" title="Камень силы со Звезды Смерти">
+                    </div>
+                    <div class="achieve achieve--quest21" v-if="quest21.achieve" title="Сувенир из Татуина">
                     </div>
                 </div>
             </div>
@@ -574,7 +577,7 @@
             <div class="fild">
                 <div class="body">
                     <div class="panel-block">
-                        <div class="panel-block__col panel-block__col--photo">
+                        <div class="panel-block__col panel-block__col--photo panel-block__col--quest1">
                             <img src="images/quests/quest1-1_data3.jpg" alt="quest1-1"
                                 class="panel__photo panel__photo--show">
                             <img src="images/quests/quest1-2_data3.jpg" alt="quest1-2" class="panel__photo">
@@ -583,7 +586,7 @@
                         </div>
                         <div class="panel-block__col">
                             <div class="panel">
-                                <div class="panel-carousel">
+                                <div class="panel-carousel panel-carousel--quest1">
                                     <div class="panel-carousel__block">
                                         <div class="panel__text">
                                             <p>На панеле повилось сообщение о неисправности одного из двигателей.
@@ -680,7 +683,7 @@
                                 <div class="panel__alert">внимание!</div>
                                 <div class="panel__text">
                                     <p>
-                                        Пролетая мимо планеты, Вы получили дополнительное ускорение и пролетели на 1
+                                        Пролетая мимо планеты, Вы получили дополнительное ускорение и пролетели на одну
                                         секцию дальше.
                                     </p>
                                 </div>
@@ -918,7 +921,7 @@
                                 <div class="panel__text">
                                     <p>Вы подобрали летающую капсулу. Это был топливный бак.</p>
                                     <p>В нем было немного топлива. Оно куда лучше вашего 92го...</p>
-                                    <p>Перелив его к себе, Вы смогли дополнительно совершить прыжок на 1 секцию
+                                    <p>Перелив его к себе, Вы смогли дополнительно совершить прыжок на одну секцию
                                         вперед.
                                     </p>
                                 </div>
@@ -2459,7 +2462,7 @@
             <div class="fild">
                 <div class="body">
                     <div class="panel-block">
-                        <div class="panel-block__col panel-block__col--photo">
+                        <div class="panel-block__col panel-block__col--photo panel-block__col--quest20">
                             <img src="images/quests/quest1-1_data3.jpg" alt="quest20-1"
                                 class="panel__photo panel__photo--show">
                             <img src="images/quests/quest20-2_data13.jpg" alt="quest20-2" class="panel__photo">
@@ -2468,7 +2471,7 @@
                         </div>
                         <div class="panel-block__col">
                             <div class="panel">
-                                <div class="panel-carousel">
+                                <div class="panel-carousel panel-carousel--quest20">
                                     <div class="panel-carousel__block">
                                         <div class="panel__text">
                                             <p>
@@ -2484,7 +2487,7 @@
                                         <div class="panel__text">
                                             <p>
                                                 Вы приземлились, выбрали место, в трюме корабля нашли новенькие, еще не
-                                                распакованные селки.
+                                                распакованные силки.
                                             </p>
                                             <p>
                                                 Охотник с Вас так себе, но, к счастью, тут есть инструкция. Немного
@@ -2552,7 +2555,8 @@
                                     <div class="panel__text">
                                         <p>
                                             Вы приземлились на планету Татуин. Она находится на пересечении многих
-                                            гиперпространственных маршрутов. </p>
+                                            гиперпространственных маршрутов.
+                                        </p>
                                         <p>
                                             Далёкий от бдительных глаз Империи, Татуин стал пристанищем для различного
                                             рода авантюристов — контрабандистов, наёмников и охотников за головами.
@@ -2859,7 +2863,7 @@
                                         Вы только в начале своего космического пути.
                                     </p>
                                     <p>
-                                        Вы сбросили скорость на минимум, чтоб насладиться всей красотой космоса.
+                                        Вы сбросили скорость на минимум и решили насладиться всей красотой космоса.
                                     </p>
                                     <p>
                                         Следующий скачек будет только на одну секцию.
@@ -2879,14 +2883,14 @@
             <div class="fild">
                 <div class="body">
                     <div class="panel-block">
-                        <div class="panel-block__col panel-block__col--photo">
+                        <div class="panel-block__col panel-block__col--photo panel-block__col--quest23">
                             <img src="images/quests/quest23-1_data21.jpg" alt="quest23-1"
                                 class="panel__photo panel__photo--show">
                             <img src="images/quests/quest23-2_data21.jpg" alt="quest23-2" class="panel__photo">
                         </div>
                         <div class="panel-block__col">
                             <div class="panel">
-                                <div class="panel-carousel">
+                                <div class="panel-carousel panel-carousel--quest23">
                                     <div class="panel-carousel__block">
                                         <div class="panel__text">
                                             <p>
@@ -2952,7 +2956,8 @@
                                         Вы попали в зону влияния черной дыры!
                                     </p>
                                     <p>
-                                        Чтобы вырваться из нее понадобится максимальная мощность. </p>
+                                        Чтобы вырваться из нее понадобится максимальная мощность.
+                                    </p>
                                     <p>
                                         Следующий скачек будет только на одну секцию.
                                     </p>
@@ -3029,7 +3034,7 @@
 
     <script src="js/stars.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" type="text/javascript"></script>
     <script src="js/script.js"></script>
     <script src="js/carousel.js"></script>

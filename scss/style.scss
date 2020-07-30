@@ -1496,10 +1496,11 @@ body > i {
     }
     &__text {
         max-height: 400px;
-        // padding-right: 10px;
+        padding-right: 10px;
         overflow-y: auto;
         margin: 40px 0;
         
+        @media screen and (max-width: 991px) { padding-right: 0; }
         @media screen and (max-width: 767px) { 
             max-height: 500px;
             margin: 20px 0;
@@ -1731,6 +1732,7 @@ body > i {
     }
     @media screen and (max-width: 767px) { padding-top: 20px; }
     @media screen and (max-height: 575px) { height: 80px; }
+    @media screen and (max-width: 479px) { height: 90px; }
     & .slick-dots {
         list-style-type: none;
         padding: 0;
@@ -1746,6 +1748,7 @@ body > i {
             height: 100%;
             margin: 0 auto;
         }
+        @media screen and (max-width: 479px) { justify-content: space-between; }
         @media screen and (max-height: 575px) { max-width: 100%; }
         li {
             display: flex;
@@ -1757,10 +1760,15 @@ body > i {
                 width: 50%;
                 margin: 0;
             }
+            @media screen and (max-width: 479px) { 
+                margin-bottom: 10px;
+
+                &:nth-last-child(2) { margin-bottom: 0; }
+            }
             @media screen and (max-height: 575px) {
                 width: fit-content;
                 margin-right: 20px;
-
+                
                 &:last-child { margin-right: 0; }
             }
             &::before {
@@ -1821,7 +1829,10 @@ body > i {
     }
     @media screen and (max-width: 767px) { padding: 20px; }
     @media screen and (max-height: 575px) { height: calc(100vh - 90px); }
-    @media screen and (max-height: 479px) { padding: 10px; }
+    @media screen and (max-width: 479px) { 
+        height: calc(100vh - 100px);
+        padding: 10px;
+    }
 }
 .main-carousel {
 
