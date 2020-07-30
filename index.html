@@ -2386,11 +2386,10 @@
                             <button class="panel__btn" @click="quest17.modal = false; plane.life += -2"
                                 :disabled="quest17.you > 0">
                                 Бежать отсюда!</button>
-                            <button class="panel__btn"
-                                @click="quest17.modal = false; plane.life += -2; quest17.achieve = true"
+                            <button class="panel__btn" @click="quest17.modal = false; plane.life += -2;"
                                 v-if="quest17.you > 0 && 20 > quest17.you">
                                 увы</button>
-                            <button class="panel__btn" @click="quest15.modal = false; quest15.achieve = true"
+                            <button class="panel__btn" @click="quest17.modal = false; quest17.achieve = true"
                                 v-if="quest17.you >= 20">
                                 отлично</button>
                         </div>
@@ -2835,8 +2834,7 @@
                             </div> <!-- // panel-carousel -->
                         </div>
                         <div class="panel panel--down panel--border">
-                            <button class="panel__btn" @click="quest21.modal = false; plane.life += -2"
-                                :disabled="quest21.you >= 12">
+                            <button class="panel__btn" @click="quest21.modal = false; plane.life += -2">
                                 Бежать отсюда!</button>
                             <button class="panel__btn" @click="quest21.modal = false; quest21.achieve = true"
                                 v-if="quest21.you >= 12">
